@@ -1,5 +1,10 @@
 #pragma once
 
+#include <string>
+
+#include "Mesh.h"
+#include "Material.h"
+
 /// <summary>
 /// 일반적으로 찍어내지 않는 오브젝트를 사용할 때 상속하여 사용
 /// 예시 사용 처) Camera, Canvas, Grid, SkyBox

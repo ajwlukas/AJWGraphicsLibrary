@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Canvas.h>
+
 /// <summary>
 /// UsingShader CanvasVS, DefferedRenderPS
 /// numRTT = PixelHeader에 렌더 타겟 갯수를 본다.
@@ -24,7 +26,7 @@ public:
 	virtual void Render() override;
 
 	/// 그릴곳을 세팅 (재료준비, 캔버스 세팅?), ex) albedomap, normalMap, 세팅
-	void SetRenderTargets() {	DC->OMSetRenderTargets(renderTargets.size(), renderTargets.data(), DX->depthStencilView);	}
+	//void SetRenderTargets() {	DC->OMSetRenderTargets(renderTargets.size(), renderTargets.data(), DX->depthStencilView);	}
 
 	void OnResize();
 

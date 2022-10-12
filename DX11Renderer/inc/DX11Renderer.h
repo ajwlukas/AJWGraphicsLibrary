@@ -7,8 +7,7 @@
 #include "Resource.h"
 #include "DXTKFont.h"
 
-//#include "AimCanvas.h"
-
+#include "Mesh.h"
 
 class Camera;
 class Instance;
@@ -21,11 +20,14 @@ class Grid;
 class DefferedRenderer;
 class RenderTargetTexutre;
 class GeoMetryFactory;
-class AimCanvas;
 class PostProcessor;
 
 class AJW_GRAPHICS_DLLEXPORT DX11Renderer
 {
+	//빼는거 테스트영역
+public:
+
+	//
 private:
 	DX11Renderer();
 	~DX11Renderer();

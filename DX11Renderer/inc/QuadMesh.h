@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Meshes\Mesh.h"
+#include "Mesh.h"
 
 class QuadMesh : public Mesh
 {

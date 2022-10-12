@@ -2,6 +2,8 @@
 #include "ASEFile.h"
 #include "ASELoader.h"
 
+#include "JWMath.h"
+
 #include "PathDefine.h"
 
 #define NEXT aseLexer->GetToken(tokenString)
@@ -817,137 +819,137 @@ for (UINT i = 0; i < aseBones.size(); i++)				\
 }
 void ASELoader::CreateObject(Proto& object)
 {
-	object.parts.resize(aseObjects.size());
+	//object.parts.resize(aseObjects.size());
 
-	object.bones.resize(aseBones.size());
-	//지오오브젝트 transform 데이터 넣어줌
+	//object.bones.resize(aseBones.size());
+	////지오오브젝트 transform 데이터 넣어줌
 
-	//Create
-	OBJECT_LOOP_START
-		object.parts[i] = new InstancingObject();
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		object.bones[i] = new InstancingObject();
-	BONE_LOOP_END
+	////Create
+	//OBJECT_LOOP_START
+	//	object.parts[i] = new InstancingObject();
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	object.bones[i] = new InstancingObject();
+	//BONE_LOOP_END
 
-		//Name
-		OBJECT_LOOP_START
-		ParseName(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		ParseName(dest, src);
-	BONE_LOOP_END
+	//	//Name
+	//	OBJECT_LOOP_START
+	//	ParseName(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	ParseName(dest, src);
+	//BONE_LOOP_END
 
-		//Matrix
-		OBJECT_LOOP_START
-		MatrixCorrection(src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		MatrixCorrection(src);
-	BONE_LOOP_END
+	//	//Matrix
+	//	OBJECT_LOOP_START
+	//	MatrixCorrection(src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	MatrixCorrection(src);
+	//BONE_LOOP_END
 
-		//GeoMetry
-		OBJECT_LOOP_START
-		CreateGeometry(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateGeometry(dest, src);
-	BONE_LOOP_END
+	//	//GeoMetry
+	//	OBJECT_LOOP_START
+	//	CreateGeometry(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateGeometry(dest, src);
+	//BONE_LOOP_END
 
-		OBJECT_LOOP_START
-		ConnectParentInfo(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		ConnectParentInfo(dest, src);
-	BONE_LOOP_END
+	//	OBJECT_LOOP_START
+	//	ConnectParentInfo(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	ConnectParentInfo(dest, src);
+	//BONE_LOOP_END
 
-		TestConnectParentInfo(object);
+	//	TestConnectParentInfo(object);
 
-	OBJECT_LOOP_START
-		CreateTransform(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateTransform(dest, src);
-	BONE_LOOP_END
+	//OBJECT_LOOP_START
+	//	CreateTransform(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateTransform(dest, src);
+	//BONE_LOOP_END
 
-		OBJECT_LOOP_START
-		CreateAnimClip(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateAnimClip(dest, src);
-	BONE_LOOP_END
-		CreateSkinner(object, objPtrByName);
+	//	OBJECT_LOOP_START
+	//	CreateAnimClip(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateAnimClip(dest, src);
+	//BONE_LOOP_END
+	//	CreateSkinner(object, objPtrByName);
 }
 
 void ASELoader::CreateObjectTest(Proto& object)
 {
-	object.parts.resize(aseObjects.size());
+	//object.parts.resize(aseObjects.size());
 
-	object.bones.resize(aseBones.size());
-	//지오오브젝트 transform 데이터 넣어줌
+	//object.bones.resize(aseBones.size());
+	////지오오브젝트 transform 데이터 넣어줌
 
-	//Create
-	OBJECT_LOOP_START
-		object.parts[i] = new InstancingObject();
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		object.bones[i] = new InstancingObject();
-	BONE_LOOP_END
+	////Create
+	//OBJECT_LOOP_START
+	//	object.parts[i] = new InstancingObject();
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	object.bones[i] = new InstancingObject();
+	//BONE_LOOP_END
 
-		//Name
-		OBJECT_LOOP_START
-		ParseName(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		ParseName(dest, src);
-	BONE_LOOP_END
+	//	//Name
+	//	OBJECT_LOOP_START
+	//	ParseName(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	ParseName(dest, src);
+	//BONE_LOOP_END
 
-		//Matrix
-		OBJECT_LOOP_START
-		MatrixCorrection(src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		MatrixCorrection(src);
-	BONE_LOOP_END
+	//	//Matrix
+	//	OBJECT_LOOP_START
+	//	MatrixCorrection(src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	MatrixCorrection(src);
+	//BONE_LOOP_END
 
-		//GeoMetry
-		OBJECT_LOOP_START
-		CreateGeometryTest(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateGeometryTest(dest, src);
-	BONE_LOOP_END
+	//	//GeoMetry
+	//	OBJECT_LOOP_START
+	//	CreateGeometryTest(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateGeometryTest(dest, src);
+	//BONE_LOOP_END
 
-		OBJECT_LOOP_START
-		ConnectParentInfo(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		ConnectParentInfo(dest, src);
-	BONE_LOOP_END
+	//	OBJECT_LOOP_START
+	//	ConnectParentInfo(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	ConnectParentInfo(dest, src);
+	//BONE_LOOP_END
 
-		TestConnectParentInfo(object);
+	//	TestConnectParentInfo(object);
 
-	OBJECT_LOOP_START
-		CreateTransform(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateTransform(dest, src);
-	BONE_LOOP_END
+	//OBJECT_LOOP_START
+	//	CreateTransform(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateTransform(dest, src);
+	//BONE_LOOP_END
 
-		OBJECT_LOOP_START
-		CreateAnimClipTest(dest, src);
-	OBJECT_LOOP_END
-		BONE_LOOP_START
-		CreateAnimClipTest(dest, src);
-	BONE_LOOP_END
-		CreateSkinner(object, objPtrByName);
+	//	OBJECT_LOOP_START
+	//	CreateAnimClipTest(dest, src);
+	//OBJECT_LOOP_END
+	//	BONE_LOOP_START
+	//	CreateAnimClipTest(dest, src);
+	//BONE_LOOP_END
+	//	CreateSkinner(object, objPtrByName);
 }
 
 void ASELoader::ParseName(InstancingObject* dest, ASEObject* src)
 {
-	dest->name = src->name;
+	/*dest->name = src->name;
 
-	objPtrByName.insert(make_pair(dest->name, dest));
+	objPtrByName.insert(make_pair(dest->name, dest));*/
 }
 
 void ASELoader::MatrixCorrection(ASEObject* src)
@@ -1001,83 +1003,83 @@ void ASELoader::CreateGeometry(InstancingObject* dest, ASEObject* src)
 
 void ASELoader::CreateMesh(InstancingObject* dest, ASEObject* src, VertexSet& vertexSet)
 {
-	vector<UINT> indices;
+	//vector<UINT> indices;
 
-	Matrix worldInverse = XMMatrixInverse(nullptr, allMatrix[src->name]);
-	//버텍스 정보 채워주는 부분
-	for (UINT j = 0; j < src->mesh.numFaces; j++)
-	{
-		for (UINT k = 0; k < 3; k++)
-		{
-			indices.push_back(3 * j + k);
+	//Matrix worldInverse = XMMatrixInverse(nullptr, allMatrix[src->name]);
+	////버텍스 정보 채워주는 부분
+	//for (UINT j = 0; j < src->mesh.numFaces; j++)
+	//{
+	//	for (UINT k = 0; k < 3; k++)
+	//	{
+	//		indices.push_back(3 * j + k);
 
-			float pos[3];
-			Vector3 vertexPos;
+	//		float pos[3];
+	//		Vector3 vertexPos;
 
-			//포지션 넣어주는 곳
-			{
-				vertexPos.x = src->mesh.vertexList[src->mesh.faceList[j][k]].x;
-				vertexPos.y = src->mesh.vertexList[src->mesh.faceList[j][k]].y;
-				vertexPos.z = src->mesh.vertexList[src->mesh.faceList[j][k]].z;
-				vertexPos = vertexPos * worldInverse;
+	//		//포지션 넣어주는 곳
+	//		{
+	//			vertexPos.x = src->mesh.vertexList[src->mesh.faceList[j][k]].x;
+	//			vertexPos.y = src->mesh.vertexList[src->mesh.faceList[j][k]].y;
+	//			vertexPos.z = src->mesh.vertexList[src->mesh.faceList[j][k]].z;
+	//			vertexPos = vertexPos * worldInverse;
 
-				pos[0] = vertexPos.x;
-				pos[1] = vertexPos.y;
-				pos[2] = vertexPos.z;
-				vertexSet.AddData(pos, sizeof(pos));
-			}
+	//			pos[0] = vertexPos.x;
+	//			pos[1] = vertexPos.y;
+	//			pos[2] = vertexPos.z;
+	//			vertexSet.AddData(pos, sizeof(pos));
+	//		}
 
-			//uv넣어주는 곳
-			if (src->mesh.tVertList.size() > 0)
-			{
-				float uv[2];
-				uv[0] = src->mesh.tVertList[src->mesh.TFaceList[j][k]].u;
-				uv[1] = src->mesh.tVertList[src->mesh.TFaceList[j][k]].v;
+	//		//uv넣어주는 곳
+	//		if (src->mesh.tVertList.size() > 0)
+	//		{
+	//			float uv[2];
+	//			uv[0] = src->mesh.tVertList[src->mesh.TFaceList[j][k]].u;
+	//			uv[1] = src->mesh.tVertList[src->mesh.TFaceList[j][k]].v;
 
-				vertexSet.AddData(uv, sizeof(uv));
-			}
+	//			vertexSet.AddData(uv, sizeof(uv));
+	//		}
 
-			//normal 넣어주는 곳
-			if (src->mesh.normals.size() > 0)
-			{
-				float normal[3];
-				normal[0] = determinants[src->name] ? -src->mesh.normals[j][k].x : src->mesh.normals[j][k].x;
-				normal[1] = determinants[src->name] ? -src->mesh.normals[j][k].y : src->mesh.normals[j][k].y;
-				normal[2] = determinants[src->name] ? -src->mesh.normals[j][k].z : src->mesh.normals[j][k].z;
+	//		//normal 넣어주는 곳
+	//		if (src->mesh.normals.size() > 0)
+	//		{
+	//			float normal[3];
+	//			normal[0] = determinants[src->name] ? -src->mesh.normals[j][k].x : src->mesh.normals[j][k].x;
+	//			normal[1] = determinants[src->name] ? -src->mesh.normals[j][k].y : src->mesh.normals[j][k].y;
+	//			normal[2] = determinants[src->name] ? -src->mesh.normals[j][k].z : src->mesh.normals[j][k].z;
 
-				vertexSet.AddData(normal, sizeof(normal));
-			}
+	//			vertexSet.AddData(normal, sizeof(normal));
+	//		}
 
-			//tangent 넣어주는 곳
-			if (src->mesh.tangents.size() > 0)
-			{
-				float tangent[3];
-				tangent[0] = src->mesh.tangents[src->mesh.TFaceList[j][k]].x;
-				tangent[1] = src->mesh.tangents[src->mesh.TFaceList[j][k]].y;
-				tangent[2] = src->mesh.tangents[src->mesh.TFaceList[j][k]].z;
+	//		//tangent 넣어주는 곳
+	//		if (src->mesh.tangents.size() > 0)
+	//		{
+	//			float tangent[3];
+	//			tangent[0] = src->mesh.tangents[src->mesh.TFaceList[j][k]].x;
+	//			tangent[1] = src->mesh.tangents[src->mesh.TFaceList[j][k]].y;
+	//			tangent[2] = src->mesh.tangents[src->mesh.TFaceList[j][k]].z;
 
-				vertexSet.AddData(tangent, sizeof(tangent));
-			}
+	//			vertexSet.AddData(tangent, sizeof(tangent));
+	//		}
 
-			//skinning 정보 넣어주는 곳
-			if (src->boneList.size() > 0)
-			{
-				UINT refIndex[4] = {};
-				float weight[4] = {};
-				for (UINT m = 0; m < src->weights[src->mesh.faceList[j][k]].size(); m++)
-				{
-					refIndex[m] = src->weights[src->mesh.faceList[j][k]][m].index;
-					weight[m] = src->weights[src->mesh.faceList[j][k]][m].weight;
-				}
+	//		//skinning 정보 넣어주는 곳
+	//		if (src->boneList.size() > 0)
+	//		{
+	//			UINT refIndex[4] = {};
+	//			float weight[4] = {};
+	//			for (UINT m = 0; m < src->weights[src->mesh.faceList[j][k]].size(); m++)
+	//			{
+	//				refIndex[m] = src->weights[src->mesh.faceList[j][k]][m].index;
+	//				weight[m] = src->weights[src->mesh.faceList[j][k]][m].weight;
+	//			}
 
-				vertexSet.AddData(refIndex, sizeof(refIndex));
-				vertexSet.AddData(weight, sizeof(weight));
-			}
-		}
-	}
+	//			vertexSet.AddData(refIndex, sizeof(refIndex));
+	//			vertexSet.AddData(weight, sizeof(weight));
+	//		}
+	//	}
+	//}
 
 
-	dest->mesh = new Mesh(vertexSet, indices.data(), indices.size(), vertexSet.GetCorrespondingShaderFileName());
+	//dest->mesh = new Mesh(vertexSet, indices.data(), indices.size(), vertexSet.GetCorrespondingShaderFileName());
 
 	//dest->material->SetShader(L"UVLightPixel.hlsl");//todo : 임시 코드
 
@@ -1091,7 +1093,7 @@ void ASELoader::CreateMesh(InstancingObject* dest, ASEObject* src, VertexSet& ve
 void ASELoader::CreateMaterial(InstancingObject* dest, ASEObject* src)
 {
 	//머티리얼
-	dest->material = new Material();
+	/*dest->material = new Material();
 	if (src->matRef > -1)
 	{
 		if (aseMats.size() > 0)
@@ -1111,14 +1113,14 @@ void ASELoader::CreateMaterial(InstancingObject* dest, ASEObject* src)
 				dest->material->SetNormalMap(wstr1);
 			}
 		}
-	}
+	}*/
 }
 
 void ASELoader::CreateMaterialTest(InstancingObject* dest, ASEObject* src)
 {
 	//머티리얼
 
-	MaterialDesc desc;
+	/*MaterialDesc desc;
 
 	wstring diffuseFileName = L"";
 	wstring normalFileName = L"";
@@ -1201,7 +1203,7 @@ void ASELoader::CreateMaterialTest(InstancingObject* dest, ASEObject* src)
 
 	
 
-	dest->material = new Material(desc);
+	dest->material = new Material(desc);*/
 
 }
 
@@ -1280,62 +1282,62 @@ void ASELoader::CreateAnimClipTest(InstancingObject* dest, ASEObject* src)
 {
 	//animation정보가 있다면
 
-	if (!src->animClip.empty())
-	{
-		dest->animator = new Animator();
+	//if (!src->animClip.empty())
+	//{
+	//	dest->animator = new Animator();
 
-		dest->animator->SetTransform(&(dest->transform));
-		for (auto clip : src->animClip)
-		{
+	//	dest->animator->SetTransform(&(dest->transform));
+	//	for (auto clip : src->animClip)
+	//	{
 
-			//정보를 담을 구조체
-			MeshAnimClip* input = new MeshAnimClip();
+	//		//정보를 담을 구조체
+	//		MeshAnimClip* input = new MeshAnimClip();
 
-			//이름을 입력
-			input->name = clip->name;
+	//		//이름을 입력
+	//		input->name = clip->name;
 
-			//pos Frames
-			for (UINT j = 0; j < clip->posClip.time.size(); j++)
-			{
-				input->posFrames.push_back(new MeshPosFrame());
-				input->posFrames.back()->time = clip->posClip.time[j] / 1000.0f;
-				input->posFrames.back()->pos = clip->posClip.controlPos[j];
-			}
+	//		//pos Frames
+	//		for (UINT j = 0; j < clip->posClip.time.size(); j++)
+	//		{
+	//			input->posFrames.push_back(new MeshPosFrame());
+	//			input->posFrames.back()->time = clip->posClip.time[j] / 1000.0f;
+	//			input->posFrames.back()->pos = clip->posClip.controlPos[j];
+	//		}
 
-			//누산식 *1
-			//XMVECTOR lastQuaternion;
-			//pos Frames
-			for (UINT j = 0; j < clip->rotClip.time.size(); j++)
-			{
-				input->rotFrames.push_back(new MeshRotFrame());
-				input->rotFrames.back()->time = clip->rotClip.time[j] / 1000.0f;
+	//		//누산식 *1
+	//		//XMVECTOR lastQuaternion;
+	//		//pos Frames
+	//		for (UINT j = 0; j < clip->rotClip.time.size(); j++)
+	//		{
+	//			input->rotFrames.push_back(new MeshRotFrame());
+	//			input->rotFrames.back()->time = clip->rotClip.time[j] / 1000.0f;
 
-				XMVECTOR _axis = XMVectorSet(
-					clip->rotClip.controlRot[j].x,
-					clip->rotClip.controlRot[j].y,
-					clip->rotClip.controlRot[j].z, 0.f);
+	//			XMVECTOR _axis = XMVectorSet(
+	//				clip->rotClip.controlRot[j].x,
+	//				clip->rotClip.controlRot[j].y,
+	//				clip->rotClip.controlRot[j].z, 0.f);
 
-				XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
-				XMVECTOR _quarternion = XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
+	//			XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
+	//			XMVECTOR _quarternion = XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
 
-				//누산식 *2
-				/*if (j > 0)
-				{
-					_quarternion = XMQuaternionMultiply(lastQuaternion, _quarternion);
-				}
+	//			//누산식 *2
+	//			/*if (j > 0)
+	//			{
+	//				_quarternion = XMQuaternionMultiply(lastQuaternion, _quarternion);
+	//			}
 
-				lastQuaternion = _quarternion;*/
+	//			lastQuaternion = _quarternion;*/
 
-				JWMath::QuatToEuler(input->rotFrames.back()->rot.x, input->rotFrames.back()->rot.y, input->rotFrames.back()->rot.z,
-					move(_quarternion.m128_f32[0]),
-					move(_quarternion.m128_f32[1]),
-					move(_quarternion.m128_f32[2]),
-					move(_quarternion.m128_f32[3]));
-			}
+	//			JWMath::QuatToEuler(input->rotFrames.back()->rot.x, input->rotFrames.back()->rot.y, input->rotFrames.back()->rot.z,
+	//				move(_quarternion.m128_f32[0]),
+	//				move(_quarternion.m128_f32[1]),
+	//				move(_quarternion.m128_f32[2]),
+	//				move(_quarternion.m128_f32[3]));
+	//		}
 
-			dest->animator->AddAnimClip(input);
-		}
-	}
+	//		dest->animator->AddAnimClip(input);
+	//	}
+	//}
 }
 
 void ASELoader::CreateGeometryTest(InstancingObject* dest, ASEObject* src)
@@ -1429,13 +1431,13 @@ void ASELoader::CreateTangents(ASEObject* src)
 
 void ASELoader::ConnectParentInfo(InstancingObject* dest, ASEObject* src)
 {
-	if (src->parentName.length() > 0)
-		dest->transform.parent = &(objPtrByName.at(src->parentName)->transform);
+	/*if (src->parentName.length() > 0)
+		dest->transform.parent = &(objPtrByName.at(src->parentName)->transform);*/
 }
 
 void ASELoader::TestConnectParentInfo(Proto& object)
 {
-	int wholeSize = aseObjects.size() + aseBones.size();
+	/*int wholeSize = aseObjects.size() + aseBones.size();
 	object.parentInfo.resize(wholeSize);
 	for (int i = 0; i < wholeSize; i++)
 		object.parentInfo[i] = -1;
@@ -1464,7 +1466,7 @@ void ASELoader::TestConnectParentInfo(Proto& object)
 		for (int j = 0; j < aseBones.size(); j++)
 			if (aseBones[j]->name == aseBones[i]->parentName)
 				object.parentInfo[aseObjects.size() + i] = aseObjects.size() + j;
-	}
+	}*/
 
 
 }
@@ -1494,7 +1496,7 @@ void ASELoader::CreateInputElementDesc(ASEObject* src, VertexSet& vertexSet)
 
 void ASELoader::CreateTransform(InstancingObject* dest, ASEObject* src)
 {
-	Matrix local = allMatrix.at(src->name);
+	/*Matrix local = allMatrix.at(src->name);
 
 	if (src->parentName.length() > 0)
 	{
@@ -1519,73 +1521,73 @@ void ASELoader::CreateTransform(InstancingObject* dest, ASEObject* src)
 
 
 	JWMath::QuatToEuler(dest->transform.rot.x, dest->transform.rot.y, dest->transform.rot.z,
-		move(rot.m128_f32[0]), move(rot.m128_f32[1]), move(rot.m128_f32[2]), move(rot.m128_f32[3]));
+		move(rot.m128_f32[0]), move(rot.m128_f32[1]), move(rot.m128_f32[2]), move(rot.m128_f32[3]));*/
 
 }
 
 void ASELoader::CreateAnimClip(InstancingObject* dest, ASEObject* src)
 {
-	if (!src->animClip.empty())
-	{
-			//애니메이터를 생성해주고
-			dest->animator = new Animator();
-			dest->animator->SetTransform(&(dest->transform));
+	//if (!src->animClip.empty())
+	//{
+	//		//애니메이터를 생성해주고
+	//		dest->animator = new Animator();
+	//		dest->animator->SetTransform(&(dest->transform));
 
-		for (auto clip : src->animClip)
-		{
-			//정보를 담을 구조체
-			MeshAnimClip* input = new MeshAnimClip();
+	//	for (auto clip : src->animClip)
+	//	{
+	//		//정보를 담을 구조체
+	//		MeshAnimClip* input = new MeshAnimClip();
 
-			//이름을 입력
-			input->name = clip->name;
+	//		//이름을 입력
+	//		input->name = clip->name;
 
-			//pos Frames
-			for (UINT j = 0; j < clip->posClip.time.size(); j++)
-			{
-				input->posFrames.push_back(new MeshPosFrame());
-				input->posFrames.back()->time = clip->posClip.time[j] / 1000.0f;
-				input->posFrames.back()->pos = clip->posClip.controlPos[j];
-			}
+	//		//pos Frames
+	//		for (UINT j = 0; j < clip->posClip.time.size(); j++)
+	//		{
+	//			input->posFrames.push_back(new MeshPosFrame());
+	//			input->posFrames.back()->time = clip->posClip.time[j] / 1000.0f;
+	//			input->posFrames.back()->pos = clip->posClip.controlPos[j];
+	//		}
 
 
-			XMVECTOR lastQuaternion;
-			//pos Frames
-			for (UINT j = 0; j < clip->rotClip.time.size(); j++)
-			{
-				input->rotFrames.push_back(new MeshRotFrame());
-				input->rotFrames.back()->time = clip->rotClip.time[j] / 1000.0f;
+	//		XMVECTOR lastQuaternion;
+	//		//pos Frames
+	//		for (UINT j = 0; j < clip->rotClip.time.size(); j++)
+	//		{
+	//			input->rotFrames.push_back(new MeshRotFrame());
+	//			input->rotFrames.back()->time = clip->rotClip.time[j] / 1000.0f;
 
-				XMVECTOR _axis = XMVectorSet(
-					clip->rotClip.controlRot[j].x,
-					clip->rotClip.controlRot[j].y,
-					clip->rotClip.controlRot[j].z, 0.f);
+	//			XMVECTOR _axis = XMVectorSet(
+	//				clip->rotClip.controlRot[j].x,
+	//				clip->rotClip.controlRot[j].y,
+	//				clip->rotClip.controlRot[j].z, 0.f);
 
-				XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
-				XMVECTOR _quarternion = XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
+	//			XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
+	//			XMVECTOR _quarternion = XMQuaternionRotationAxis(_axis, clip->rotClip.controlRot[j].w);
 
-				if (j > 0)
-				{
-					_quarternion = XMQuaternionMultiply(lastQuaternion, _quarternion);
-				}
+	//			if (j > 0)
+	//			{
+	//				_quarternion = XMQuaternionMultiply(lastQuaternion, _quarternion);
+	//			}
 
-				lastQuaternion = _quarternion;
+	//			lastQuaternion = _quarternion;
 
-				JWMath::QuatToEuler(input->rotFrames.back()->rot.x, input->rotFrames.back()->rot.y, input->rotFrames.back()->rot.z,
-					move(_quarternion.m128_f32[0]),
-					move(_quarternion.m128_f32[1]),
-					move(_quarternion.m128_f32[2]),
-					move(_quarternion.m128_f32[3]));
-			}
+	//			JWMath::QuatToEuler(input->rotFrames.back()->rot.x, input->rotFrames.back()->rot.y, input->rotFrames.back()->rot.z,
+	//				move(_quarternion.m128_f32[0]),
+	//				move(_quarternion.m128_f32[1]),
+	//				move(_quarternion.m128_f32[2]),
+	//				move(_quarternion.m128_f32[3]));
+	//		}
 
-			dest->animator->AddAnimClip(input);
-		}
-	}
+	//		dest->animator->AddAnimClip(input);
+	//	}
+	//}
 }
 
 
 void ASELoader::CreateSkinner(Proto& object, unordered_map<string, InstancingObject*>& objPtrByName)
 {
-	for (UINT i = 0; i < aseObjects.size(); i++)
+	/*for (UINT i = 0; i < aseObjects.size(); i++)
 	{
 		ASEObject* from = aseObjects[i];
 		InstancingObject* o = object.parts[i];
@@ -1597,5 +1599,5 @@ void ASELoader::CreateSkinner(Proto& object, unordered_map<string, InstancingObj
 			o->skinner = new Skinner(o);
 			o->instants->AddBuffer<Bones, 11>();
 		}
-	}
+	}*/
 }

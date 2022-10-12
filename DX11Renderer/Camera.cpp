@@ -76,7 +76,7 @@ void Camera::OnResize(UINT height, UINT width)
 
 void Camera::Move()
 {
-	if (KeyBoard::Get()->Press(VK_LSHIFT))
+	/*if (KeyBoard::Get()->Press(VK_LSHIFT))
 	{
 		if (KeyBoard::Get()->Press(VK_LBUTTON))
 		{
@@ -101,7 +101,7 @@ void Camera::Move()
 			way.y -= camMovSpeed;
 
 		transform.pos += way * *(transform.World()) * TIME->Delta();
-	}
+	}*/
 }
 
 void Camera::ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir)

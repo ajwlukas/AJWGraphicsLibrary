@@ -1,6 +1,7 @@
 #pragma once
-#include "pch_dx_11.h"
 
+#include <string>
+#include "Vertex.h"
 /// <summary>
 /// 버텍스, 인덱스, 인풋레이아웃 정보를 가지고 있는 오브젝트
 /// 
@@ -11,20 +12,20 @@ struct Mesh
 {
 public:
 	Mesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-		wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	virtual ~Mesh();
 	void Set();
 
 	const UINT& GetIndexCount() const { return indexCount; }
 
-	void SetShader(wstring vsFileName) {
+	/*void SetShader(wstring vsFileName) {
 		this->vsFileName = vsFileName;
 		RESOURCES->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
 		shader = RESOURCES->vertexShaders->Get(vsFileName);
-	}
+	}*/
 
 private:
-	wstring vsFileName;
+	std::wstring vsFileName;
 	Resource<ID3D11InputLayout> inputLayout;
 	D3D_PRIMITIVE_TOPOLOGY topology;
 

@@ -3,9 +3,8 @@
 #include "DX11Renderer.h"
 
 #include "Transform.h"
-#include "GameObjects\Camera.h"
+#include "Camera.h"
 
-#include "AimCanvas.h"
 #include "PostProcessor.h"
 
 DX11Renderer* DX11Renderer::instance = nullptr;
@@ -53,14 +52,6 @@ HRESULT DX11Renderer::Init()
 
     resources = new Resources();
 
-    //defferedRenderer = new DefferedRenderer();
-    //skyboxRTT = new RenderTargetTexutre();
-
-
-    //postProcessor = new PostProcessor(defferedRenderer->rtts[7], skyboxRTT);
-
-    //SetRTTasBackBuffer(postProcessor->GetLastRTT());
-    //defferedRenderer->SetRenderTarget(skyboxRTT);
     hr = CreateRtv();
     if (hr != S_OK) return hr;
 
@@ -75,11 +66,6 @@ HRESULT DX11Renderer::Init()
 
     SetViewPort();
 
-    //factory = new GeoMetryFactory();
-    /*font = new DXTKFont();
-    font->Create();*/
-
-    //TestInit(); 
 
     return hr;
 }
@@ -358,7 +344,7 @@ void DX11Renderer::TestUpdate()
     defferedRenderer->Update();
     grid->Update();
 
-    factory->Update();
+    //factory->Update();
 
 }
 
@@ -367,11 +353,11 @@ void DX11Renderer::PreRender()
     cam->Render();
 
     //foward Rendering
-    defferedRenderer->SetRenderTargets();//디퍼드에 필요한 렌더 타겟들 세팅
+    //defferedRenderer->SetRenderTargets();//디퍼드에 필요한 렌더 타겟들 세팅
     
     dc->OMSetDepthStencilState(depthStencilState, 1);
 
-    factory->Render();//디퍼드 준비물들 준비 == 포워드 렌더링
+    //factory->Render();//디퍼드 준비물들 준비 == 포워드 렌더링
 }
 
 /// 이 사이에 오브젝트 그리기 호출
@@ -398,52 +384,52 @@ void DX11Renderer::PostRender()
 
     //DebugFont();
 }
-
-void DX11Renderer::DebugFont()
-{
-    font->DrawTest();
-
-    wstring fps = to_wstring(TIME->FPS());
-    font->DrawTextColor(50, 50, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = L"Mouse Delta X : ";
-    font->DrawTextColor(50, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = L"Mouse Delta Y : ";
-    font->DrawTextColor(50, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = to_wstring(KeyBoard::Get()->mouseDx);
-    font->DrawTextColor(150, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = to_wstring(KeyBoard::Get()->mouseDy);
-    font->DrawTextColor(150, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = L"Rot X : ";
-    font->DrawTextColor(50, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = L"Rot Y : ";
-    font->DrawTextColor(50, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = L"Rot Z : ";
-    font->DrawTextColor(50, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = to_wstring(cam->transform.worldRot.x);
-    font->DrawTextColor(120, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = to_wstring(cam->transform.worldRot.y);
-    font->DrawTextColor(120, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = to_wstring(cam->transform.worldRot.z);
-    font->DrawTextColor(120, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = L"CamPos X : ";
-    font->DrawTextColor(50, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = L"CamPos Y : ";
-    font->DrawTextColor(50, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = L"CamPos Z : ";
-    font->DrawTextColor(50, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-
-    fps = to_wstring(cam->transform.pos.x);
-    font->DrawTextColor(120, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = to_wstring(cam->transform.pos.y);
-    font->DrawTextColor(120, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-    fps = to_wstring(cam->transform.pos.z);
-    font->DrawTextColor(120, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-}
+//
+//void DX11Renderer::DebugFont()
+//{
+//    font->DrawTest();
+//
+//    wstring fps = to_wstring(TIME->FPS());
+//    font->DrawTextColor(50, 50, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = L"Mouse Delta X : ";
+//    font->DrawTextColor(50, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = L"Mouse Delta Y : ";
+//    font->DrawTextColor(50, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = to_wstring(KeyBoard::Get()->mouseDx);
+//    font->DrawTextColor(150, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = to_wstring(KeyBoard::Get()->mouseDy);
+//    font->DrawTextColor(150, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = L"Rot X : ";
+//    font->DrawTextColor(50, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = L"Rot Y : ";
+//    font->DrawTextColor(50, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = L"Rot Z : ";
+//    font->DrawTextColor(50, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = to_wstring(cam->transform.worldRot.x);
+//    font->DrawTextColor(120, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = to_wstring(cam->transform.worldRot.y);
+//    font->DrawTextColor(120, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = to_wstring(cam->transform.worldRot.z);
+//    font->DrawTextColor(120, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = L"CamPos X : ";
+//    font->DrawTextColor(50, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = L"CamPos Y : ";
+//    font->DrawTextColor(50, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = L"CamPos Z : ";
+//    font->DrawTextColor(50, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//
+//    fps = to_wstring(cam->transform.pos.x);
+//    font->DrawTextColor(120, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = to_wstring(cam->transform.pos.y);
+//    font->DrawTextColor(120, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//    fps = to_wstring(cam->transform.pos.z);
+//    font->DrawTextColor(120, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
+//}
 
 void DX11Renderer::EndRender()
 {

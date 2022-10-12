@@ -66,32 +66,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObjects\InstancingObject.h">
+    <ClInclude Include="inc\InstancingObject.h">
       <Filter>헤더 파일\0_Root\Object</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjects\Camera.h">
+    <ClInclude Include="inc\Camera.h">
       <Filter>헤더 파일\0_Root\Object\environments</Filter>
     </ClInclude>
-    <ClInclude Include="Utility\FbxLoader.h">
+    <ClInclude Include="inc\FbxLoader.h">
       <Filter>헤더 파일\0_Root\필터미정</Filter>
     </ClInclude>
-    <ClInclude Include="Meshes\Mesh.h">
+    <ClInclude Include="inc\ASEFile.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ASELoader.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Lexer.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Vertex.h">
       <Filter>헤더 파일\0_Root\Object\Component\Geo</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\ASEFile.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\ASELoader.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility\Lexer.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="Meshes\Vertex.h">
-      <Filter>헤더 파일\0_Root\Object\Component\Geo</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\AimCanvas.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="inc\Animator.h">
       <Filter>헤더 파일</Filter>
@@ -195,6 +189,9 @@
     <ClInclude Include="inc\Vector3.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Mesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX11Renderer.cpp">
@@ -203,13 +200,10 @@
     <ClCompile Include="pch_dx_11.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Meshes\Mesh.cpp">
+    <ClCompile Include="inc\Vertex.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Meshes\Vertex.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjects\Camera.cpp">
+    <ClCompile Include="Camera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Utility\FbxLoader.cpp">
@@ -227,7 +221,7 @@
     <ClCompile Include="Material.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjects\InstancingObject.cpp">
+    <ClCompile Include="inc\InstancingObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Animator.cpp">
@@ -290,9 +284,6 @@
     <ClCompile Include="IPass.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AimCanvas.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CanvasManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -315,6 +306,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Resources.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="inc\Mesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

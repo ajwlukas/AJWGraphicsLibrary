@@ -1,5 +1,7 @@
 #include "pch_dx_11.h"
 #include "Transform.h"
+
+#include "JWMath.h"
 //#include <directxmath.h>
 
 Vector3 Transform::WorldUp = { 0,1,0,0 };

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "GameObjects\InstancingObject.h"
+#include "InstancingObject.h"
 
 class Sphere : public InstancingObject
-{
+{/*
 public:
 	Sphere();
 	~Sphere();
@@ -17,5 +17,5 @@ public:
 	Resource<ID3D11RasterizerState> wireFrame;
 	Resource<ID3D11RasterizerState> defaultRasterizerState;
 
-	UINT sectorCount, stackCount;
+	UINT sectorCount, stackCount;*/
 };

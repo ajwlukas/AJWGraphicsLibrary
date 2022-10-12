@@ -2,11 +2,11 @@
 #include "Component.h"
 
 
-namespace lukasG
-{
-	Component::Component(InstancingObject* object)
-		:object(object)
-	{
-	}
-
-}
+//namespace lukasG
+//{
+//	Component::Component(InstancingObject* object)
+//		:object(object)
+//	{
+//	}
+//
+//}

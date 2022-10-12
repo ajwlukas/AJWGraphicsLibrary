@@ -82,7 +82,6 @@ typedef XMMATRIX Matrix;
 
 #include "Utility.h"
 
-#include "pch_common.h"
 
 #include "DX11Renderer.h"
 #include "Resources.h"
@@ -90,8 +89,8 @@ typedef XMMATRIX Matrix;
 #include "Vector3.h"
 #include "Transform.h"
 
-#include "Meshes/Vertex.h"
-#include "Meshes/Mesh.h"
+#include "Vertex.h"
+#include "Mesh.h"
 #include "Material.h"
 
 #include "Component.h"
@@ -100,11 +99,11 @@ typedef XMMATRIX Matrix;
 
 #include "Instants.h"
 
-#include "GameObjects\InstancingObject.h"
+#include "InstancingObject.h"
 #include "Object.h"
 #include "Proto.h"
 
-#include "GameObjects\Camera.h"
+#include "Camera.h"
 #include "RenderTargetTexture.h"
 #include "DefferedRenderer.h"
 #include "SkyBox.h"

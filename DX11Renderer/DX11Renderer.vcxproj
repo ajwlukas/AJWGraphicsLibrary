@@ -168,8 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GameObjects\Camera.h" />
-    <ClInclude Include="inc\AimCanvas.h" />
+    <ClInclude Include="inc\Camera.h" />
     <ClInclude Include="inc\Animator.h" />
     <ClInclude Include="inc\Box.h" />
     <ClInclude Include="inc\Canvas.h" />
@@ -185,6 +184,7 @@
     <ClInclude Include="inc\Instants.h" />
     <ClInclude Include="inc\IPass.h" />
     <ClInclude Include="inc\Material.h" />
+    <ClInclude Include="inc\Mesh.h" />
     <ClInclude Include="inc\Object.h" />
     <ClInclude Include="inc\Pass_Bloom.h" />
     <ClInclude Include="inc\Pass_DownSampler.h" />
@@ -204,16 +204,14 @@
     <ClInclude Include="inc\Transform.h" />
     <ClInclude Include="inc\Utility.h" />
     <ClInclude Include="inc\Vector3.h" />
-    <ClInclude Include="Meshes\Mesh.h" />
-    <ClInclude Include="Meshes\Vertex.h" />
-    <ClInclude Include="GameObjects\InstancingObject.h" />
-    <ClInclude Include="Utility\ASEFile.h" />
-    <ClInclude Include="Utility\ASELoader.h" />
-    <ClInclude Include="Utility\FbxLoader.h" />
-    <ClInclude Include="Utility\Lexer.h" />
+    <ClInclude Include="inc\Vertex.h" />
+    <ClInclude Include="inc\InstancingObject.h" />
+    <ClInclude Include="inc\ASEFile.h" />
+    <ClInclude Include="inc\ASELoader.h" />
+    <ClInclude Include="inc\FbxLoader.h" />
+    <ClInclude Include="inc\Lexer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AimCanvas.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CanvasManager.cpp" />
@@ -223,15 +221,15 @@
     <ClCompile Include="DXTKFont.cpp" />
     <ClCompile Include="GeometryFactory.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="inc\Mesh.cpp" />
     <ClCompile Include="Instants.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="DX11Renderer.cpp" />
-    <ClCompile Include="GameObjects\Camera.cpp" />
-    <ClCompile Include="GameObjects\InstancingObject.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="inc\InstancingObject.cpp" />
     <ClCompile Include="IPass.cpp" />
     <ClCompile Include="Material.cpp" />
-    <ClCompile Include="Meshes\Mesh.cpp" />
-    <ClCompile Include="Meshes\Vertex.cpp" />
+    <ClCompile Include="inc\Vertex.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Pass_Bloom.cpp" />
     <ClCompile Include="Pass_DownSampler.cpp" />

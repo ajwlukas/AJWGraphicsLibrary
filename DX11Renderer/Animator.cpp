@@ -17,7 +17,7 @@ void Animator::Update()
 
 	//manipulate transform
 	SetCurrentFrameLerped();
-	float timeElapsed = playRate * DELTA;
+	float timeElapsed = playRate;// *DELTA;
 	//add times
 	if (currentAnimClip->hasPosInfo)
 		posTimeElapsed += timeElapsed;
@@ -187,12 +187,12 @@ void Animator::SetCurrentFrameLerped()
 
 		XMVECTOR lerped = XMQuaternionSlerp(prevQuat, nextQuat, ratio);
 
-		JWMath::QuatToEuler(refTransform->rot.x, refTransform->rot.y, refTransform->rot.z,
+		/*JWMath::QuatToEuler(refTransform->rot.x, refTransform->rot.y, refTransform->rot.z,
 			move(lerped.m128_f32[0]),
 			move(lerped.m128_f32[1]),
 			move(lerped.m128_f32[2]),
 			move(lerped.m128_f32[3])
-		);
+		);*/
 
 	}
 }

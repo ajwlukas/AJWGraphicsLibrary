@@ -105,8 +105,8 @@ void DefferedRenderer::Render()
 	static bool temp_flag = false;
 
 
-	if (KeyBoard::Get()->Down(VK_F1))
-		temp_flag = !temp_flag;
+	//if (KeyBoard::Get()->Down(VK_F1))
+	//	temp_flag = !temp_flag;
 
 	if(temp_flag)
 	for (UINT i = 0; i < numRTT; i++)

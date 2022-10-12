@@ -1,6 +1,8 @@
 #pragma once
 
-#include "pch_dx_11.h"
+#include <string>
+#include <vector>
+#include <unordered_map>
 
 class ShaderNameFinder
 {
@@ -15,10 +17,10 @@ public:
 		shaderNames["_POSITION_UV_NORMAL_TANGENT_REFINDEX_WEIGHT"] = L"SkinningTangentAnimationVertex.hlsl";
 	}
 
-	wstring Find(string semanticString) { return shaderNames.at(semanticString); }
+	std::wstring Find(std::string semanticString) { return shaderNames.at(semanticString); }
 
 private:
-	unordered_map<string, wstring> shaderNames;
+	std::unordered_map<std::string, std::wstring> shaderNames;
 };
 
 enum class DataType
@@ -51,14 +53,14 @@ public:
 	D3D11_INPUT_ELEMENT_DESC* GetDescsData() { return descs.data(); }
 	UINT GetDescsSize() { return descs.size(); }
 
-	wstring GetCorrespondingShaderFileName() { return shaderFinder.Find(semanticString); }
+	std::wstring GetCorrespondingShaderFileName() { return shaderFinder.Find(semanticString); }
 private:
-	vector<DWORD> verticesData;//실제 버텍스들의 데이터
+	std::vector<DWORD> verticesData;//실제 버텍스들의 데이터
 	UINT memIndex;
 
-	vector<D3D11_INPUT_ELEMENT_DESC> descs;
+	std::vector<D3D11_INPUT_ELEMENT_DESC> descs;
 	UINT stride;//버텍스 하나의 크기
 
-	string semanticString;
+	std::string semanticString;
 	static ShaderNameFinder shaderFinder;//인풋 성분에 따라 알맞은 기본 쉐이더의 이름을 주게
 };
