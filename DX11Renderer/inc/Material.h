@@ -1,4 +1,13 @@
 #pragma once
+
+#include <string>
+#include "Export.h"
+
+//typedef XMFLOAT2 float2;
+//typedef XMFLOAT3 float3;
+//typedef XMFLOAT4 float4;
+//typedef XMMATRIX Matrix;
+
 /// <summary>
 /// Material 생성하는 2가지 방법,
 /// 1. MaterialDesc에 데이터를 작성해서 Material 생성자에 넣어줘서 생성
@@ -6,7 +15,7 @@
 /// 
 /// written by Ssreppa 22.06.22
 /// </summary>
-struct MaterialDesc
+struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
 {
 	MaterialDesc()
 		:pixelShaderName(L"LightPixel.hlsl"), diffuseFileName(L""),samplerDesc{}
@@ -20,13 +29,13 @@ struct MaterialDesc
 	float4 diffuse;
 	float4 specular;
 
-	wstring pixelShaderName;
-	wstring diffuseFileName;
-	wstring normalFileName;
+	std::wstring pixelShaderName;
+	std::wstring diffuseFileName;
+	std::wstring normalFileName;
 	D3D11_SAMPLER_DESC samplerDesc;
 };
 
-class Material
+class AJW_GRAPHICS_DLLEXPORT Material
 {
 public:
 	Material(const MaterialDesc& desc = MaterialDesc());
@@ -34,11 +43,11 @@ public:
 
 	void Set();
 
-	void SetShader(wstring fileName);
+	void SetShader(std::wstring fileName);
 
-	void SetDiffuseMap(wstring fileName);
-	void SetNormalMap(wstring fileName);
-	void SetSpecularMap(wstring fileName);
+	void SetDiffuseMap(std::wstring fileName);
+	void SetNormalMap(std::wstring fileName);
+	void SetSpecularMap(std::wstring fileName);
 
 
 	void SetSamplerState(D3D11_SAMPLER_DESC samplerDesc);
@@ -50,7 +59,7 @@ public:
 		float4 specular;
 	}data;
 
-	wstring pixelShaderName;
+	std::wstring pixelShaderName;
 private:
 	ID3D11PixelShader* pixelShader;
 	Resource<ID3D11ShaderResourceView> diffuse;

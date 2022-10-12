@@ -4,6 +4,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Export.h"
+
 class ShaderNameFinder
 {
 public:
@@ -23,13 +25,13 @@ private:
 	std::unordered_map<std::string, std::wstring> shaderNames;
 };
 
-enum class DataType
+ enum class AJW_GRAPHICS_DLLEXPORT DataType
 {
 	FLOAT,
 	UINT
 };
 
-class VertexSet//저절로 만드는 버텍스 만드는 테스트 구조
+ class AJW_GRAPHICS_DLLEXPORT VertexSet//저절로 만드는 버텍스 만드는 테스트 구조
 {
 public:
 	VertexSet()
@@ -38,7 +40,7 @@ public:
 
 	}
 	void AddElementToDesc(UINT dataSize, DataType type,
-		LPCSTR  SemanticName, int SemanticIndex = 0,
+		LPCSTR  SemanticName, int SemanticIndex = 0,	
 		int inputSlot = 0, int InstanceDataStepRate = 0);
 	//주의 : Element 넣은 순서로 데이터를 넣어주어야함
 

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+
+#include "Export.h"
 #include "Vertex.h"
 /// <summary>
 /// 버텍스, 인덱스, 인풋레이아웃 정보를 가지고 있는 오브젝트
@@ -8,7 +10,7 @@
 /// written by Ssreppa 22.06.22
 /// </summary>
 
-struct Mesh
+ struct AJW_GRAPHICS_DLLEXPORT Mesh
 {
 public:
 	Mesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount,

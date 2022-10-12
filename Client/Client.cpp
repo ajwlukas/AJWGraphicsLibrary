@@ -4,12 +4,10 @@
 #include "framework.h"
 #include "Client.h"
 
-
 #pragma comment (lib, "DX11Renderer.lib")
 
-#include "DX11Renderer.h"
+#include "App.h"
 
-typedef DX11Renderer RenderEngine;//todo : typedef CUSTOM_ENGINE engine
 
 #define MAX_LOADSTRING 100
 
@@ -50,10 +48,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
     memset(&msg, 0, sizeof(msg));
 
-    {
-        RenderEngine::Create();
-        HRESULT hr = RenderEngine::Get()->Init();
-    }
+
+    App* app = new App();
 
     // 기본 메시지 루프입니다:
     while (msg.message != WM_QUIT)
@@ -65,20 +61,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-
             //UpdatePart
             {
                 //RenderEngine::Get()->TestUpdate();
             }
 
-            //BeginPart
-            {
-                RenderEngine::Get()->BeginRenderT();
-            }
-
 
             //RenderPart
             {
+
+                app->Update();
                 //RenderEngine::Get()->PreRender();
 
                 //RenderEngine::Get()->SetSwapchainRenderTarget();
@@ -86,16 +78,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 //RenderEngine::Get()->PostRender();
             }
 
-            //EndPart
-            {
-                RenderEngine::Get()->EndRender();
-            }
         }
     }
 
-    {
-        RenderEngine::Delete();
-    }
 
 
     return (int) msg.wParam;
