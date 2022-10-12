@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\Shaders">
+      <UniqueIdentifier>{04629245-90c9-4057-95e6-33da38f94ace}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root">
+      <UniqueIdentifier>{e7ac97ea-f46a-4714-9525-33cc1a93fcbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\DrawResource">
+      <UniqueIdentifier>{e32ca9b7-aa73-4e28-85f7-ce439c344fda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object">
+      <UniqueIdentifier>{d8a088af-73ca-40a3-bc36-9938343dc7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object\Component">
+      <UniqueIdentifier>{ef33cb9d-f0a5-4de6-80d1-df37d20d7521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object\Component\Geo">
+      <UniqueIdentifier>{c7fff0a7-d712-4169-a60a-97ab61c8867b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object\environments">
+      <UniqueIdentifier>{eab4561d-9534-4cbc-a4eb-ec83a10cb813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object\Geometry">
+      <UniqueIdentifier>{71e9f4d3-f164-4be6-ba2b-3b8b3b7849da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Object\DefferedRenderTexture">
+      <UniqueIdentifier>{44ca56c4-d92d-4717-a047-e11ea983425d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\필터미정">
+      <UniqueIdentifier>{5cbf872f-fc81-4366-a39c-7b2983391dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Shaders\Headers">
+      <UniqueIdentifier>{8d5a43db-7453-4091-aeee-27f95005c04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\필터미정\ASE">
+      <UniqueIdentifier>{422cfc9c-e993-45fa-8a5d-99303ff1476f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Factory">
+      <UniqueIdentifier>{23c45a55-b728-4ca3-a164-aeddc8a52a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\필터미정\path">
+      <UniqueIdentifier>{9611df0b-2332-44fc-bddc-efdbce5862ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\0_Root\Pass">
+      <UniqueIdentifier>{faafcd7b-ae80-4848-a1fc-74b35e042ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Shaders\Pass">
+      <UniqueIdentifier>{d74669eb-4af2-40c9-bf47-a4d9efafa7c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Shaders\Deffered">
+      <UniqueIdentifier>{41488246-79cb-480a-9d5f-6e509adfa1f4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObjects\InstancingObject.h">
+      <Filter>헤더 파일\0_Root\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Camera.h">
+      <Filter>헤더 파일\0_Root\Object\environments</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\FbxLoader.h">
+      <Filter>헤더 파일\0_Root\필터미정</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\Mesh.h">
+      <Filter>헤더 파일\0_Root\Object\Component\Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\ASEFile.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\ASELoader.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Lexer.h">
+      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\Vertex.h">
+      <Filter>헤더 파일\0_Root\Object\Component\Geo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\AimCanvas.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Animator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Box.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Canvas.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\CanvasManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Capsule.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Component.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\DefferedRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\DX11Renderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\DXTKFont.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Export.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GeometryFactory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Grid.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Instants.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\IPass.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Material.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Object.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Pass_Bloom.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Pass_DownSampler.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Pass_GaussianBlur.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\PathDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\pch_dx_11.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\PointLightsBuffer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\PostProcessor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Proto.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\QuadMesh.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\RenderTargetTexture.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Resources.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Skinner.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SkyBox.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Sphere.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Transform.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Utility.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Vector3.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DX11Renderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pch_dx_11.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\Mesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Meshes\Vertex.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Camera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\FbxLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\Lexer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\ASEFile.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\ASELoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\InstancingObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Skinner.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DefferedRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTargetTexture.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Instants.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Proto.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DXTKFont.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryFactory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Capsule.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IPass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="AimCanvas.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadMesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Pass_GaussianBlur.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Pass_DownSampler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Pass_Bloom.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLightsBuffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+</Project>
