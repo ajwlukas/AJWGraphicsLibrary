@@ -210,6 +210,7 @@
     <ClInclude Include="inc\ASELoader.h" />
     <ClInclude Include="inc\FbxLoader.h" />
     <ClInclude Include="inc\Lexer.h" />
+    <ClInclude Include="inc\typedef.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp" />

@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string>
+#include <d3d11.h>
+
+#include "typedef.h"
+#include "Resources.h"
 #include "Export.h"
 
-//typedef XMFLOAT2 float2;
-//typedef XMFLOAT3 float3;
-//typedef XMFLOAT4 float4;
-//typedef XMMATRIX Matrix;
 
 /// <summary>
 /// Material 积己窍绰 2啊瘤 规过,
@@ -18,7 +18,7 @@
 struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
 {
 	MaterialDesc()
-		:pixelShaderName(L"LightPixel.hlsl"), diffuseFileName(L""),samplerDesc{}
+		:pixelShaderName(L"Triangle.hlsl"), diffuseFileName(L""),samplerDesc{}
 	{
 		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;

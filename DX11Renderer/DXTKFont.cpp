@@ -153,3 +153,4 @@ void DXTKFont::DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, fontType typ
 	font[type]->DrawString(m_pSpriteBatch, _buffer, DirectX::XMFLOAT2((float)x, (float)y), DirectX::SimpleMath::Vector4(color), (0.0f), float2(0, 0), scaleamount);
 	m_pSpriteBatch->End();
 }
+

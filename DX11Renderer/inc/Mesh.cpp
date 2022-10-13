@@ -53,4 +53,7 @@ void Mesh::Set()
 	DC->IASetVertexBuffers(0, 1, &vertexBuffer, &vertexDataSize, &offset);
 	DC->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 	DC->VSSetShader(shader, 0, 0);//todo : 이거 메쉬로 넣어주자
+
+
+	DC->DrawIndexed(GetIndexCount(), 0, 0);
 }

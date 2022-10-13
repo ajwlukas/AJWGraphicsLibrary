@@ -15,17 +15,17 @@ App::App()
         ,{-0.5f, -0.5f}
         ,{0.5f, -0.5f}
     };
-    vertexAttribute.AddElementToDesc(sizeof(float),DataType::FLOAT,"POSITION");
+    vertexAttribute.AddElementToDesc(sizeof(float) * 2,DataType::FLOAT,"POSITION");
     vertexAttribute.AddData(vertices, sizeof(vertices));
     UINT indicies[]
         =
     {
-        0,1,2
+        0,2,1
     };
     mesh = new Mesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
 
-    //material = new Material();
-    //material->SetShader(L"Triangle.hlsl");
+    material = new Material();
+    material->SetShader(L"Triangle.hlsl");
 }
 
 App::~App()
@@ -39,9 +39,9 @@ void App::Update()
 {
     RenderEngine::Get()->BeginRenderT();
 
-    mesh->Set();
+    material->Set();
 
-    //material->Set();
+    mesh->Set();
 
     RenderEngine::Get()->EndRender();
 }
