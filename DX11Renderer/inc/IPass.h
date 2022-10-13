@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RenderTargetTexture.h"
 #include "QuadMesh.h"
 
 class IPass

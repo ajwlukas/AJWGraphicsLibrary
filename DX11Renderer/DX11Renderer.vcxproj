@@ -169,75 +169,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\Camera.h" />
-    <ClInclude Include="inc\Animator.h" />
-    <ClInclude Include="inc\Box.h" />
-    <ClInclude Include="inc\Canvas.h" />
-    <ClInclude Include="inc\CanvasManager.h" />
-    <ClInclude Include="inc\Capsule.h" />
-    <ClInclude Include="inc\Component.h" />
-    <ClInclude Include="inc\DefferedRenderer.h" />
-    <ClInclude Include="inc\DX11Renderer.h" />
-    <ClInclude Include="inc\DXTKFont.h" />
     <ClInclude Include="inc\Export.h" />
-    <ClInclude Include="inc\GeometryFactory.h" />
-    <ClInclude Include="inc\Grid.h" />
-    <ClInclude Include="inc\Instants.h" />
-    <ClInclude Include="inc\IPass.h" />
     <ClInclude Include="inc\Material.h" />
     <ClInclude Include="inc\Mesh.h" />
     <ClInclude Include="inc\Object.h" />
-    <ClInclude Include="inc\Pass_Bloom.h" />
-    <ClInclude Include="inc\Pass_DownSampler.h" />
-    <ClInclude Include="inc\Pass_GaussianBlur.h" />
     <ClInclude Include="inc\PathDefine.h" />
     <ClInclude Include="inc\pch_dx_11.h" />
-    <ClInclude Include="inc\PointLightsBuffer.h" />
-    <ClInclude Include="inc\PostProcessor.h" />
-    <ClInclude Include="inc\Proto.h" />
-    <ClInclude Include="inc\QuadMesh.h" />
-    <ClInclude Include="inc\RenderTargetTexture.h" />
     <ClInclude Include="inc\Resource.h" />
     <ClInclude Include="inc\Resources.h" />
-    <ClInclude Include="inc\Skinner.h" />
-    <ClInclude Include="inc\SkyBox.h" />
-    <ClInclude Include="inc\Sphere.h" />
-    <ClInclude Include="inc\Transform.h" />
     <ClInclude Include="inc\Utility.h" />
     <ClInclude Include="inc\Vector3.h" />
     <ClInclude Include="inc\Vertex.h" />
     <ClInclude Include="inc\InstancingObject.h" />
-    <ClInclude Include="inc\ASEFile.h" />
-    <ClInclude Include="inc\ASELoader.h" />
-    <ClInclude Include="inc\FbxLoader.h" />
-    <ClInclude Include="inc\Lexer.h" />
     <ClInclude Include="inc\typedef.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Box.cpp" />
-    <ClCompile Include="Canvas.cpp" />
-    <ClCompile Include="CanvasManager.cpp" />
-    <ClCompile Include="Capsule.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="DefferedRenderer.cpp" />
-    <ClCompile Include="DXTKFont.cpp" />
-    <ClCompile Include="GeometryFactory.cpp" />
-    <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="inc\Mesh.cpp" />
-    <ClCompile Include="Instants.cpp" />
-    <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="DX11Renderer.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="inc\InstancingObject.cpp" />
-    <ClCompile Include="IPass.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="inc\Vertex.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Pass_Bloom.cpp" />
-    <ClCompile Include="Pass_DownSampler.cpp" />
-    <ClCompile Include="Pass_GaussianBlur.cpp" />
-    <ClCompile Include="PointLightsBuffer.cpp" />
-    <ClCompile Include="PostProcessor.cpp" />
-    <ClCompile Include="Proto.cpp" />
     <ClCompile Include="pch_dx_11.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -245,18 +196,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch_dx_11.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="QuadMesh.cpp" />
-    <ClCompile Include="RenderTargetTexture.cpp" />
     <ClCompile Include="Resources.cpp" />
-    <ClCompile Include="Skinner.cpp" />
-    <ClCompile Include="SkyBox.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Utility.cpp" />
-    <ClCompile Include="Utility\ASEFile.cpp" />
-    <ClCompile Include="Utility\ASELoader.cpp" />
-    <ClCompile Include="Utility\FbxLoader.cpp" />
-    <ClCompile Include="Utility\Lexer.cpp" />
     <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -28,5 +28,5 @@ public:
 	Mesh* mesh;
 	Material* material;
 
-	Transform transform;
+	//Transform transform;
 };

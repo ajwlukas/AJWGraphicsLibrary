@@ -5,7 +5,8 @@
 #include <d3d11.h>
 #include <vector>
 #include "Resource.h"
-#include "DXTKFont.h"
+#include "Resources.h"
+//#include "DXTKFont.h"
 
 #include "Mesh.h"
 
@@ -58,7 +59,7 @@ public:
 
 	//AimCanvas* aimCanvas;
 	
-	DXTKFont* font;
+	//DXTKFont* font;
 	GeoMetryFactory* factory;
 
 	void TestInit();
@@ -67,7 +68,7 @@ public:
 
 	/////////////////////////
 
-	void DebugFont();
+	//void DebugFont();
 
 	void EndRender();
 private:
@@ -96,7 +97,7 @@ public:
 	ID3D11Device* GetDevice() { return device; }
 	ID3D11DeviceContext* GetDC() { return dc; }
 	Camera* GetCamera() { return cam; }
-	DXTKFont* GetFont() { return font; }
+	//DXTKFont* GetFont() { return font; }
 #pragma endregion
 
 #pragma region

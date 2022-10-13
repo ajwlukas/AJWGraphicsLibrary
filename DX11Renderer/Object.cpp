@@ -17,7 +17,7 @@ Object::~Object()
 
 void Object::Update()
 {
-	transform.UpdateWorld();
+	//transform.UpdateWorld();
 }
 
 void Object::Render()
@@ -32,17 +32,17 @@ void Object::SetPipeLine()
 {
 	mesh->Set();//setVertexBuffer; indexBuffer;
 
-	D3D11_MAPPED_SUBRESOURCE mappedResource;
-	ZeroMemory(&mappedResource, sizeof(D3D11_MAPPED_SUBRESOURCE));
+	/*D3D11_MAPPED_SUBRESOURCE mappedResource;
+	ZeroMemory(&mappedResource, sizeof(D3D11_MAPPED_SUBRESOURCE));*/
 
-	DC->Map(*transform.WorldBuffer(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	/*DC->Map(*transform.WorldBuffer(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);*/
 
 	// Copy Resource Data..
-	memcpy(mappedResource.pData, transform.World(), sizeof(*transform.World()));
+	//memcpy(mappedResource.pData, transform.World(), sizeof(*transform.World()));
 
 	// GPU Access UnLock Buffer Data..
-	DC->Unmap(*transform.WorldBuffer(), 0);
-	DC->VSSetConstantBuffers(0, 1, transform.WorldBuffer());
+	//DC->Unmap(*transform.WorldBuffer(), 0);
+	//DC->VSSetConstantBuffers(0, 1, transform.WorldBuffer());
 
 	//PS
 	material->Set();

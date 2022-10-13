@@ -64,6 +64,9 @@
     <Filter Include="헤더 파일\Shaders\Deffered">
       <UniqueIdentifier>{41488246-79cb-480a-9d5f-6e509adfa1f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\unused">
+      <UniqueIdentifier>{40984e47-a4b9-40db-b357-3b20b03abfa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\InstancingObject.h">
@@ -72,61 +75,7 @@
     <ClInclude Include="inc\Camera.h">
       <Filter>헤더 파일\0_Root\Object\environments</Filter>
     </ClInclude>
-    <ClInclude Include="inc\FbxLoader.h">
-      <Filter>헤더 파일\0_Root\필터미정</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ASEFile.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ASELoader.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Lexer.h">
-      <Filter>헤더 파일\0_Root\필터미정\ASE</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Vertex.h">
-      <Filter>헤더 파일\0_Root\Object\Component\Geo</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Animator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Box.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Canvas.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\CanvasManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Capsule.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Component.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\DefferedRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\DX11Renderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\DXTKFont.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Export.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\GeometryFactory.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Grid.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Instants.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\IPass.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="inc\Material.h">
@@ -135,52 +84,16 @@
     <ClInclude Include="inc\Object.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Pass_Bloom.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Pass_DownSampler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Pass_GaussianBlur.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="inc\PathDefine.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="inc\pch_dx_11.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="inc\PointLightsBuffer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\PostProcessor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Proto.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\QuadMesh.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\RenderTargetTexture.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="inc\Resources.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Skinner.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\SkyBox.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Sphere.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Transform.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="inc\Utility.h">
@@ -195,6 +108,9 @@
     <ClInclude Include="inc\typedef.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="inc\Vertex.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX11Renderer.cpp">
@@ -206,112 +122,22 @@
     <ClCompile Include="inc\Vertex.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\FbxLoader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\Lexer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\ASEFile.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility\ASELoader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Material.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="inc\InstancingObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Animator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Skinner.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Canvas.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DefferedRenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderTargetTexture.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Instants.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Proto.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DXTKFont.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryFactory.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Capsule.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="IPass.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CanvasManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PostProcessor.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadMesh.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Pass_GaussianBlur.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Pass_DownSampler.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Pass_Bloom.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="PointLightsBuffer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Resources.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="inc\Mesh.cpp">
+    <ClCompile Include="Mesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,10 +2,6 @@
 
 #include "DX11Renderer.h"
 
-#include "Transform.h"
-#include "Camera.h"
-
-#include "PostProcessor.h"
 
 DX11Renderer* DX11Renderer::instance = nullptr;
 
@@ -24,7 +20,7 @@ DX11Renderer::~DX11Renderer()
 
     TestDestructor();
 
-    SAFE_DELETE(font);
+    //SAFE_DELETE(font);
 
     depthStencilState.Return();
     noDepthStencilState.Return();
@@ -243,35 +239,35 @@ void DX11Renderer::OnResize()
      
         CreateAndSetDepthStencilView();
 
-        defferedRenderer->OnResize();
+        //defferedRenderer->OnResize();
 
-        postProcessor->OnResize();
+        //postProcessor->OnResize();
 
-        SetRTTasBackBuffer(postProcessor->GetLastRTT());
+        //SetRTTasBackBuffer(postProcessor->GetLastRTT());
 
-        skyboxRTT->OnResize();
+        //skyboxRTT->OnResize();
 
         SetViewPort();
     }
-    if (cam != nullptr)
-        cam->OnResize(height, width);
+    /*if (cam != nullptr)
+        cam->OnResize(height, width);*/
 }
 
 void DX11Renderer::SetRTTasBackBuffer(RenderTargetTexutre* rtt)
 {
-    rtt->rtv.Return();
+    //rtt->rtv.Return();
 
 
     ID3D11Texture2D* backBuffer = nullptr;
     swapChain->ResizeBuffers(1, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
     swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuffer);
 
-    resources->rtvs->CreateDefault(rtt->rtv, backBuffer);
+    //resources->rtvs->CreateDefault(rtt->rtv, backBuffer);
 
     backBuffer->Release();
     backBuffer = nullptr;
 
-    rtv = rtt->rtv;
+    //rtv = rtt->rtv;
 }
 
 void DX11Renderer::BeginRender()
@@ -282,13 +278,13 @@ void DX11Renderer::BeginRender()
 
 
 
-    defferedRenderer->ClearRenderTargetView();
+    //defferedRenderer->ClearRenderTargetView();
 
     dc->ClearRenderTargetView(rtv, transparent);
 
-    dc->ClearRenderTargetView(skyboxRTT->rtv, transparent);
+    //dc->ClearRenderTargetView(skyboxRTT->rtv, transparent);
 
-    postProcessor->ClearRenderTargets();
+    //postProcessor->ClearRenderTargets();
 
     dc->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
@@ -314,12 +310,12 @@ void DX11Renderer::BeginRenderT()
 
 void DX11Renderer::TestInit()
 {
-    cam = new Camera(); 
+    //cam = new Camera(); 
 
-    skyBox = new Skybox(cam);
+    //skyBox = new Skybox(cam);
 
 
-    grid = new Grid(cam);
+    //grid = new Grid(cam);
 }
 
 void DX11Renderer::TestDestructor()
@@ -336,13 +332,13 @@ void DX11Renderer::TestDestructor()
 void DX11Renderer::TestUpdate()
 {
 
-    cam->Update();
-    skyBox->Update();
+    //cam->Update();
+    //skyBox->Update();
     //canvas->Update();
     /*normalCanvas->Update();
     albedoCanvas->Update();*/
-    defferedRenderer->Update();
-    grid->Update();
+    //defferedRenderer->Update();
+    //grid->Update();
 
     //factory->Update();
 
@@ -350,7 +346,7 @@ void DX11Renderer::TestUpdate()
 
 void DX11Renderer::PreRender()
 {
-    cam->Render();
+    //cam->Render();
 
     //foward Rendering
     //defferedRenderer->SetRenderTargets();//디퍼드에 필요한 렌더 타겟들 세팅
@@ -365,7 +361,7 @@ void DX11Renderer::PreRender()
 
 void DX11Renderer::SetSwapchainRenderTarget()
 {
-    dc->OMSetRenderTargets(1, skyboxRTT->rtv, depthStencilView);//depthStencilView를 다른걸 쓰긴 해야할듯, 옵션도 다르게 줘야할까?
+    //dc->OMSetRenderTargets(1, skyboxRTT->rtv, depthStencilView);//depthStencilView를 다른걸 쓰긴 해야할듯, 옵션도 다르게 줘야할까?
 }
 
 
@@ -373,14 +369,14 @@ void DX11Renderer::PostRender()
 {
     dc->OMSetDepthStencilState(noDepthStencilState, 1);
     //Post Render(DefferedRender)
-    skyBox->Render();
-    grid->Render();
+    //skyBox->Render();
+    //grid->Render();
 
-    defferedRenderer->Render();
+    //defferedRenderer->Render();
 
-    postProcessor->Render();
+    //postProcessor->Render();
 
-    Canvas::manager.Render();
+    //Canvas::manager.Render();
 
     //DebugFont();
 }

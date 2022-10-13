@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <string>
 #include "Resource.h"
+#include "Utility.h"
 /// <summary>
 /// 가급적이면 생성자나, Init()같은 곳에서 한번만 호출해서 받아서 사용하길 권장(검색 한번만 하도록)
 /// Resource<ResourceType>으로 사용, 사용 후 Return() 해줄 것

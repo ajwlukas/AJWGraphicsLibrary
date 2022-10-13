@@ -1,13 +1,16 @@
 #pragma once
 
-class Camera : public Object
+class Camera //: public Object
 {
 public:
 	Camera();
 	~Camera();
 
-	virtual void Update() override;
-	virtual void Render() override;
+	//virtual void Update() override;
+	//virtual void Render() override;
+	
+	void Update() ;
+	void Render() ;
 
 	void OnResize(UINT height, UINT width);
 

@@ -79,11 +79,11 @@ typedef XMFLOAT3 float3;
 typedef XMFLOAT4 float4;
 typedef XMMATRIX Matrix;
 
+//
+//#include "Utility.h"
 
-#include "Utility.h"
 
-
-#include "DX11Renderer.h"
+#include "DX11Renderer.h"/*
 #include "Resources.h"
 
 #include "Vector3.h"
@@ -110,4 +110,4 @@ typedef XMMATRIX Matrix;
 #include "Canvas.h"
 #include "Grid.h"
 
-#include "GeometryFactory.h"
+#include "GeometryFactory.h"*/
