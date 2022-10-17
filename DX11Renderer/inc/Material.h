@@ -7,7 +7,6 @@
 #include "Resources.h"
 #include "Export.h"
 
-
 /// <summary>
 /// Material 생성하는 2가지 방법,
 /// 1. MaterialDesc에 데이터를 작성해서 Material 생성자에 넣어줘서 생성
@@ -15,6 +14,7 @@
 /// 
 /// written by Ssreppa 22.06.22
 /// </summary>
+
 struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
 {
 	MaterialDesc()
@@ -38,7 +38,7 @@ struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
 class AJW_GRAPHICS_DLLEXPORT Material
 {
 public:
-	Material(const MaterialDesc& desc = MaterialDesc());
+	Material(ID3D11DeviceContext* deviceContext, Resources* resources, const MaterialDesc& desc = MaterialDesc());
 	~Material();
 
 	void Set();
@@ -61,6 +61,9 @@ public:
 
 	std::wstring pixelShaderName;
 private:
+	ID3D11DeviceContext* dc;
+	Resources* resources;
+
 	ID3D11PixelShader* pixelShader;
 	Resource<ID3D11ShaderResourceView> diffuse;
 	Resource<ID3D11ShaderResourceView> normal;

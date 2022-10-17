@@ -50,5 +50,5 @@ void Object::SetPipeLine()
 
 void Object::Draw()
 {
-	DC->DrawIndexed(mesh->GetIndexCount(), 0, 0);
+	//DC->DrawIndexed(mesh->GetIndexCount(), 0, 0);
 }

@@ -1,23 +1,23 @@
 #include "pch_dx_11.h"
 #include "Material.h"
 
-Material::Material(const MaterialDesc& desc)
+Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, const MaterialDesc& desc)
 	:normal{}, diffuse{}, specular{},
 	samplerState{}, pixelShader(nullptr), pixelShaderName(desc.pixelShaderName)
 {
-	pixelShader = RESOURCES->pixelShaders->Get(desc.pixelShaderName);
+	pixelShader = resources->pixelShaders->Get(desc.pixelShaderName);
 
 	if (desc.diffuseFileName.length() > 0)
 	{ 
-		RESOURCES->srvs->GetFromFile(diffuse, desc.diffuseFileName);//todo : 비어있을 때 에러가 안남
+		resources->srvs->GetFromFile(diffuse, desc.diffuseFileName);//todo : 비어있을 때 에러가 안남
 	}
 
 	if (desc.normalFileName.length() > 0)
 	{ 
-		RESOURCES->srvs->GetFromFile(normal, desc.normalFileName);//todo : 비어있을 때 에러가 안남
+		resources->srvs->GetFromFile(normal, desc.normalFileName);//todo : 비어있을 때 에러가 안남
 	}
 
-		RESOURCES->samplerStates->Get(samplerState, desc.samplerDesc);
+	resources->samplerStates->Get(samplerState, desc.samplerDesc);
 
 		data.ambient = desc.ambient ;
 		data.diffuse = desc.diffuse	 ;
@@ -32,7 +32,7 @@ Material::Material(const MaterialDesc& desc)
 		cbd.StructureByteStride = 0;
 		D3D11_SUBRESOURCE_DATA initData;
 		initData.pSysMem = &data;
-		RESOURCES->buffers->Create(buffer, cbd, &initData);
+		resources->buffers->Create(buffer, cbd, &initData);
 }
 
 Material::~Material()
@@ -42,41 +42,41 @@ Material::~Material()
 void Material::Set()
 {//todo
 	if (diffuse.resource != nullptr)
-		DC->PSSetShaderResources(0, 1, diffuse);
+		dc->PSSetShaderResources(0, 1, diffuse);
 	if (normal.resource != nullptr)
-		DC->PSSetShaderResources(1, 1, normal);
+		dc->PSSetShaderResources(1, 1, normal);
 	if (specular.resource != nullptr)
-		DC->PSSetShaderResources(2, 1, specular);
+		dc->PSSetShaderResources(2, 1, specular);
 
-		DC->PSSetSamplers(0, 1, samplerState);
-		DC->PSSetShader(pixelShader,0,0);
+		dc->PSSetSamplers(0, 1, samplerState);
+		dc->PSSetShader(pixelShader,0,0);
 
-		DC->PSSetConstantBuffers(0, 1, buffer);
+		dc->PSSetConstantBuffers(0, 1, buffer);
 }
 
 void Material::SetShader(wstring fileName)
 {
 	pixelShaderName = fileName;
-	pixelShader = RESOURCES->pixelShaders->Get(fileName);
+	pixelShader = resources->pixelShaders->Get(fileName);
 }
 
 void Material::SetDiffuseMap(wstring fileName)
 {
 	//return;//todo : 임시 코드
-	RESOURCES->srvs->GetFromFile(diffuse, fileName);
+	resources->srvs->GetFromFile(diffuse, fileName);
 }
 
 void Material::SetNormalMap(wstring fileName)
 {
-	RESOURCES->srvs->GetFromFile(normal, fileName);
+	resources->srvs->GetFromFile(normal, fileName);
 }
 
 void Material::SetSpecularMap(wstring fileName)
 {
-	RESOURCES->srvs->GetFromFile(specular, fileName);
+	resources->srvs->GetFromFile(specular, fileName);
 }
 
 void Material::SetSamplerState(D3D11_SAMPLER_DESC samplerDesc)
 {
-	RESOURCES->samplerStates->Get(samplerState, samplerDesc);
+	resources->samplerStates->Get(samplerState, samplerDesc);
 }

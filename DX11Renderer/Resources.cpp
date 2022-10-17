@@ -3,20 +3,21 @@
 
 #include "PathDefine.h"
 
-Resources::Resources()
+Resources::Resources(ID3D11Device* device)
+	:device(device)
 {
-	vertexShaders = new VertexShaderResources();
-	inputLayouts = new InputLayoutResources();
-	pixelShaders = new PixelShaderResources();
-	srvs = new SRVResources();
-	samplerStates = new SamplerStateResources();
-	rasterStates = new RasterizerStateResources();
-	depthStencilStates = new DepthStencilStateResources();
-	blendStates = new BlendStateResources();
-	texture2Ds = new Texture2DResources();
-	rtvs = new RenderTargetViewResources();
-	depthStencilViews = new DepthStencilViewResources();
-	buffers = new BufferResources();
+	vertexShaders = new VertexShaderResources(this);
+	inputLayouts = new InputLayoutResources(this);
+	pixelShaders = new PixelShaderResources(this);
+	srvs = new SRVResources(this);
+	samplerStates = new SamplerStateResources(this);
+	rasterStates = new RasterizerStateResources(this);
+	depthStencilStates = new DepthStencilStateResources(this);
+	blendStates = new BlendStateResources(this);
+	texture2Ds = new Texture2DResources(this);
+	rtvs = new RenderTargetViewResources(this);
+	depthStencilViews = new DepthStencilViewResources(this);
+	buffers = new BufferResources(this);
 }
 
 Resources::~Resources()
@@ -40,7 +41,7 @@ ID3D11VertexShader* VertexShaderResources::Get(wstring shaderFileName)
 {
 	if (vertexShaders.find(shaderFileName) == vertexShaders.end())//해당하는 쉐이더가 없으면
 	{
-		HRESULT hr = DEVICE->CreateVertexShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &vertexShaders[shaderFileName]);
+		HRESULT hr = resources->device->CreateVertexShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &vertexShaders[shaderFileName]);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -99,8 +100,8 @@ void InputLayoutResources::Get(Resource<ID3D11InputLayout>& dest, D3D11_INPUT_EL
 
 	if (inputLayouts.find(key) == inputLayouts.end())//못 찾으면
 	{
-		HRESULT hr = DEVICE->CreateInputLayout(desc, descSize, RESOURCES->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferPointer(),
-			RESOURCES->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferSize(), &inputLayouts[key].data);
+		HRESULT hr = resources->device->CreateInputLayout(desc, descSize, resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferPointer(),
+			resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferSize(), &inputLayouts[key].data);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -138,7 +139,7 @@ ID3D11PixelShader* PixelShaderResources::Get(wstring shaderFileName)
 {
 	if (pixelShaders.find(shaderFileName) == pixelShaders.end())//해당하는 쉐이더가 없으면
 	{
-		HRESULT hr = DEVICE->CreatePixelShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &pixelShaders[shaderFileName]);
+		HRESULT hr = resources->device->CreatePixelShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &pixelShaders[shaderFileName]);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -170,7 +171,7 @@ void SRVResources::Create(Resource<ID3D11ShaderResourceView>& dest, D3D11_SHADER
 {
 	dest.Return();
 
-	HRESULT hr = DEVICE->CreateShaderResourceView(buffer, &desc, dest);
+	HRESULT hr = resources->device->CreateShaderResourceView(buffer, &desc, dest);
 
 	assert(SUCCEEDED(hr));
 
@@ -213,9 +214,9 @@ void SRVResources::GetFromFile(Resource<ID3D11ShaderResourceView>& dest, wstring
 		wstring extension = Utility::GetExtension(fileName);
 		HRESULT hr = S_OK;
 		if(extension == L"dds")
-			hr = CreateDDSTextureFromFile(DEVICE, path.c_str(), &res, &srvsFromTexture[fileName].data);
+			hr = CreateDDSTextureFromFile(resources->device, path.c_str(), &res, &srvsFromTexture[fileName].data);
 		else
-			hr = CreateWICTextureFromFile(DEVICE, path.c_str(), &res, &srvsFromTexture[fileName].data);
+			hr = CreateWICTextureFromFile(resources->device, path.c_str(), &res, &srvsFromTexture[fileName].data);
 
 		res->Release();
 
@@ -269,7 +270,7 @@ void SamplerStateResources::Get(Resource<ID3D11SamplerState>& dest, D3D11_SAMPLE
 
 	if (samplerStates.find(key) == samplerStates.end())//해당하는 srv가 없으면
 	{
-		HRESULT hr = DEVICE->CreateSamplerState(&desc, &samplerStates[key].data);
+		HRESULT hr = resources->device->CreateSamplerState(&desc, &samplerStates[key].data);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -324,7 +325,7 @@ void RasterizerStateResources::Get(Resource<ID3D11RasterizerState>& dest, D3D11_
 
 	if (rasterizerStates.find(key) == rasterizerStates.end())//해당하는 srv가 없으면
 	{
-		HRESULT hr = DEVICE->CreateRasterizerState(&desc, &rasterizerStates[key].data);
+		HRESULT hr = resources->device->CreateRasterizerState(&desc, &rasterizerStates[key].data);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -386,7 +387,7 @@ void DepthStencilStateResources::Get(Resource<ID3D11DepthStencilState>& dest, D3
 
 	if (depthStencilStates.find(key) == depthStencilStates.end())//해당하는 srv가 없으면
 	{
-		HRESULT hr = DEVICE->CreateDepthStencilState(&desc, &depthStencilStates[key].data);
+		HRESULT hr = resources->device->CreateDepthStencilState(&desc, &depthStencilStates[key].data);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -442,7 +443,7 @@ void BlendStateResources::Get(Resource<ID3D11BlendState>& dest, D3D11_BLEND_DESC
 
 	if (blendStates.find(key) == blendStates.end())//해당하는 데이터가 없으면 새로 생성
 	{
-		HRESULT hr = DEVICE->CreateBlendState(&desc, &blendStates[key].data);
+		HRESULT hr = resources->device->CreateBlendState(&desc, &blendStates[key].data);
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -488,7 +489,7 @@ void Texture2DResources::Create(Resource<ID3D11Texture2D>& dest, D3D11_TEXTURE2D
 
 	ID3D11Texture2D* data;
 
-	HRESULT hr = DEVICE->CreateTexture2D(&desc, pInitData, dest);
+	HRESULT hr = resources->device->CreateTexture2D(&desc, pInitData, dest);
 
 	assert(SUCCEEDED(hr));
 
@@ -523,7 +524,7 @@ void RenderTargetViewResources::Create(Resource<ID3D11RenderTargetView>& dest, D
 {
 	dest.Return();
 
-	HRESULT hr = DEVICE->CreateRenderTargetView(buffer, &desc, dest);
+	HRESULT hr = resources->device->CreateRenderTargetView(buffer, &desc, dest);
 
 	assert(SUCCEEDED(hr));
 
@@ -559,7 +560,7 @@ void DepthStencilViewResources::Create(Resource<ID3D11DepthStencilView>& dest, D
 {
 	dest.Return();
 
-	HRESULT hr = DEVICE->CreateDepthStencilView(buffer, &desc, dest);
+	HRESULT hr = resources->device->CreateDepthStencilView(buffer, &desc, dest);
 
 	assert(SUCCEEDED(hr));
 
@@ -596,7 +597,7 @@ void BufferResources::Create(Resource<ID3D11Buffer>& dest, D3D11_BUFFER_DESC des
 
 	ID3D11Texture2D* data;
 
-	HRESULT hr = DEVICE->CreateBuffer(&desc, pInitData, dest);
+	HRESULT hr = resources->device->CreateBuffer(&desc, pInitData, dest);
 
 	assert(SUCCEEDED(hr));
 

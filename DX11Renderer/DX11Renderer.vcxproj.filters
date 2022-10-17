@@ -13,68 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="헤더 파일\Shaders">
-      <UniqueIdentifier>{04629245-90c9-4057-95e6-33da38f94ace}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root">
-      <UniqueIdentifier>{e7ac97ea-f46a-4714-9525-33cc1a93fcbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\DrawResource">
-      <UniqueIdentifier>{e32ca9b7-aa73-4e28-85f7-ce439c344fda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object">
-      <UniqueIdentifier>{d8a088af-73ca-40a3-bc36-9938343dc7fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object\Component">
-      <UniqueIdentifier>{ef33cb9d-f0a5-4de6-80d1-df37d20d7521}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object\Component\Geo">
-      <UniqueIdentifier>{c7fff0a7-d712-4169-a60a-97ab61c8867b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object\environments">
-      <UniqueIdentifier>{eab4561d-9534-4cbc-a4eb-ec83a10cb813}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object\Geometry">
-      <UniqueIdentifier>{71e9f4d3-f164-4be6-ba2b-3b8b3b7849da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Object\DefferedRenderTexture">
-      <UniqueIdentifier>{44ca56c4-d92d-4717-a047-e11ea983425d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\필터미정">
-      <UniqueIdentifier>{5cbf872f-fc81-4366-a39c-7b2983391dc9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Shaders\Headers">
-      <UniqueIdentifier>{8d5a43db-7453-4091-aeee-27f95005c04f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\필터미정\ASE">
-      <UniqueIdentifier>{422cfc9c-e993-45fa-8a5d-99303ff1476f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Factory">
-      <UniqueIdentifier>{23c45a55-b728-4ca3-a164-aeddc8a52a07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\필터미정\path">
-      <UniqueIdentifier>{9611df0b-2332-44fc-bddc-efdbce5862ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\0_Root\Pass">
-      <UniqueIdentifier>{faafcd7b-ae80-4848-a1fc-74b35e042ceb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Shaders\Pass">
-      <UniqueIdentifier>{d74669eb-4af2-40c9-bf47-a4d9efafa7c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Shaders\Deffered">
-      <UniqueIdentifier>{41488246-79cb-480a-9d5f-6e509adfa1f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\unused">
-      <UniqueIdentifier>{40984e47-a4b9-40db-b357-3b20b03abfa4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\InstancingObject.h">
-      <Filter>헤더 파일\0_Root\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Camera.h">
-      <Filter>헤더 파일\0_Root\Object\environments</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Export.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -144,5 +84,6 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

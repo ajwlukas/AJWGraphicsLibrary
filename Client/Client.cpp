@@ -27,6 +27,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    HWND hWnd = GetActiveWindow();
+
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -51,33 +53,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     App* app = new App();
 
-    // 기본 메시지 루프입니다:
+
+
     while (msg.message != WM_QUIT)
     {
-        if (PeekMessage(&msg, msg.hwnd, 0, 0, PM_REMOVE))
+        if (PeekMessage(&msg, hWnd, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
         else
         {
-            //UpdatePart
-            {
-                //RenderEngine::Get()->TestUpdate();
-            }
-
-
-            //RenderPart
-            {
-
-                app->Update();
-                //RenderEngine::Get()->PreRender();
-
-                //RenderEngine::Get()->SetSwapchainRenderTarget();
-
-                //RenderEngine::Get()->PostRender();
-            }
-
+            app->Update();
         }
     }
 

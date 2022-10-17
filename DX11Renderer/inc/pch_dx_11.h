@@ -18,11 +18,6 @@
   }													  \
 }
 
-#define DX DX11Renderer::Get()
-#define DC DX11Renderer::Get()->GetDC()
-#define DEVICE DX11Renderer::Get()->GetDevice()
-#define RESOURCES DX11Renderer::Get()->GetResources()
-
 //commons
 #include <unordered_map>
 #include <iostream>

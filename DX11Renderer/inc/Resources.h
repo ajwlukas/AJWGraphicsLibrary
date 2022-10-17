@@ -1,6 +1,8 @@
 #pragma once
 #include <unordered_map>
 #include <string>
+#include <d3d11.h>
+
 #include "Resource.h"
 #include "Utility.h"
 /// <summary>
@@ -60,9 +62,11 @@ class DepthStencilViewResources;
 class Resources//모든 자원 매니저를 갖고있는 클래스
 {
 public:
-	Resources();
+	Resources(ID3D11Device* device);
 	~Resources();
 public:
+	ID3D11Device* device;
+
 	VertexShaderResources* vertexShaders;
 	InputLayoutResources* inputLayouts;
 	PixelShaderResources* pixelShaders;
@@ -87,6 +91,10 @@ public:
 	void Release();
 
 private:
+	friend class Resources;
+	Resources* resources;
+	VertexShaderResources(Resources* resources) : resources(resources) {}
+
 	std::unordered_map<std::wstring, ID3D11VertexShader*> vertexShaders;
 	std::unordered_map<std::wstring, ID3DBlob*> vertexShaderBlobs;
 	ID3DBlob* error = nullptr;
@@ -99,6 +107,9 @@ public:
 
 private:
 	friend class Resources;
+	Resources* resources;
+	InputLayoutResources(Resources* resources) : resources(resources) {}
+
 	void Release();
 
 	struct Data
@@ -119,6 +130,10 @@ public:
 	void Release();
 
 private:
+	friend class Resources;
+	Resources* resources;
+	PixelShaderResources(Resources* resources) : resources(resources) {}
+
 	std::unordered_map<std::wstring, ID3D11PixelShader*> pixelShaders;
 	std::unordered_map<std::wstring, ID3DBlob*> pixelShaderBlobs;
 	ID3DBlob* error;
@@ -132,6 +147,9 @@ public:
 
 private:
 	friend class Resources;
+	Resources* resources;
+	SRVResources(Resources* resources) : resources(resources) {}
+
 	void Release();
 
 	struct Data
@@ -152,6 +170,9 @@ public:
 
 private:
 	friend class Resources;
+	Resources* resources;
+	SamplerStateResources(Resources* resources) : resources(resources) {}
+
 	void Release();
 
 	struct Data
@@ -166,8 +187,17 @@ private:
 class RasterizerStateResources
 {
 public:
-	RasterizerStateResources()
-	{
+
+	void Get(Resource< ID3D11RasterizerState>& dest, D3D11_RASTERIZER_DESC desc);
+
+	void GetDefault(Resource< ID3D11RasterizerState>& dest) { Get(dest, defaultDesc); }
+	void GetWireMode(Resource< ID3D11RasterizerState>& dest) { Get(dest, wireFrameDesc); }
+	void SetDefault(D3D11_RASTERIZER_DESC desc);
+
+private:
+	friend class Resources;
+	Resources* resources;
+	RasterizerStateResources(Resources* resources) : resources(resources) {
 		D3D11_RASTERIZER_DESC desc = {};
 		desc.AntialiasedLineEnable = false;
 		desc.CullMode = D3D11_CULL_BACK;
@@ -183,18 +213,10 @@ public:
 
 		SetDefault(desc);
 
-		desc.FillMode =  D3D11_FILL_WIREFRAME;
+		desc.FillMode = D3D11_FILL_WIREFRAME;
 		wireFrameDesc = desc;
 	}
 
-	void Get(Resource< ID3D11RasterizerState>& dest, D3D11_RASTERIZER_DESC desc);
-
-	void GetDefault(Resource< ID3D11RasterizerState>& dest) { Get(dest, defaultDesc); }
-	void GetWireMode(Resource< ID3D11RasterizerState>& dest) { Get(dest, wireFrameDesc); }
-	void SetDefault(D3D11_RASTERIZER_DESC desc);
-
-private:
-	friend class Resources;
 	void Release();
 
 	struct Data
@@ -211,8 +233,15 @@ private:
 class DepthStencilStateResources
 {
 public:
-	DepthStencilStateResources()
-	{
+	void Get(Resource< ID3D11DepthStencilState>& dest,D3D11_DEPTH_STENCIL_DESC desc);
+
+	void GetDefault(Resource< ID3D11DepthStencilState>& dest) { Get(dest, defaultDesc); }
+	void SetDefault(D3D11_DEPTH_STENCIL_DESC desc);
+
+private:
+	friend class Resources;
+	Resources* resources;
+	DepthStencilStateResources(Resources* resources) : resources(resources) {
 		D3D11_DEPTH_STENCIL_DESC desc = {};
 
 		desc.DepthEnable = true;
@@ -235,13 +264,7 @@ public:
 
 		SetDefault(desc);
 	}
-	void Get(Resource< ID3D11DepthStencilState>& dest,D3D11_DEPTH_STENCIL_DESC desc);
 
-	void GetDefault(Resource< ID3D11DepthStencilState>& dest) { Get(dest, defaultDesc); }
-	void SetDefault(D3D11_DEPTH_STENCIL_DESC desc);
-
-private:
-	friend class Resources;
 	void Release();
 
 	struct Data
@@ -257,8 +280,15 @@ private:
 class BlendStateResources
 {
 public:
-	BlendStateResources()
-	{
+	void Get(Resource<ID3D11BlendState>& dest, D3D11_BLEND_DESC desc);
+
+	void GetDefault(Resource<ID3D11BlendState>& dest) { Get(dest, defaultDesc); };
+	void SetDefault(D3D11_BLEND_DESC desc);
+
+private:
+	friend class Resources;
+	Resources* resources;
+	BlendStateResources(Resources* resources) : resources(resources) {
 		D3D11_BLEND_DESC desc = {};
 		desc.RenderTarget[0].BlendEnable = TRUE;
 		desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
@@ -271,13 +301,7 @@ public:
 
 		SetDefault(desc);
 	}
-	void Get(Resource<ID3D11BlendState>& dest, D3D11_BLEND_DESC desc);
 
-	void GetDefault(Resource<ID3D11BlendState>& dest) { Get(dest, defaultDesc); };
-	void SetDefault(D3D11_BLEND_DESC desc);
-
-private:
-	friend class Resources;
 	void Release();
 
 	struct Data
@@ -299,6 +323,9 @@ public:
 
 private:
 	friend class Resources;
+	Resources* resources;
+	Texture2DResources(Resources* resources) : resources(resources) {}
+
 	void Release();
 
 	struct Data
@@ -317,6 +344,9 @@ public:
 
 private:
 	friend class Resources;
+	Resources* resources;
+	BufferResources(Resources* resources) : resources(resources) {}
+
 	void Release();
 
 	struct Data
@@ -331,8 +361,14 @@ private:
 class RenderTargetViewResources
 {
 public:
-	RenderTargetViewResources()
-	{
+	void Create(Resource<ID3D11RenderTargetView>& dest,D3D11_RENDER_TARGET_VIEW_DESC desc, ID3D11Resource* buffer);
+
+	void CreateDefault(Resource<ID3D11RenderTargetView>& dest, ID3D11Resource* buffer) { Create(dest, defaultDesc, buffer); };
+	void SetDefault(D3D11_RENDER_TARGET_VIEW_DESC desc) {	defaultDesc = desc;};
+private:
+	friend class Resources;
+	Resources* resources;
+	RenderTargetViewResources(Resources* resources) : resources(resources) {
 		D3D11_RENDER_TARGET_VIEW_DESC desc = {};
 		desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		desc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
@@ -340,12 +376,7 @@ public:
 
 		SetDefault(desc);
 	}
-	void Create(Resource<ID3D11RenderTargetView>& dest,D3D11_RENDER_TARGET_VIEW_DESC desc, ID3D11Resource* buffer);
 
-	void CreateDefault(Resource<ID3D11RenderTargetView>& dest, ID3D11Resource* buffer) { Create(dest, defaultDesc, buffer); };
-	void SetDefault(D3D11_RENDER_TARGET_VIEW_DESC desc) {	defaultDesc = desc;};
-private:
-	friend class Resources;
 	void Release();
 
 	struct Data
@@ -362,8 +393,14 @@ private:
 class DepthStencilViewResources
 {
 public:
-	DepthStencilViewResources()
-	{
+	void Create(Resource<ID3D11DepthStencilView>& dest,D3D11_DEPTH_STENCIL_VIEW_DESC desc, ID3D11Resource* buffer);
+
+	void CreateDefault(Resource<ID3D11DepthStencilView>& dest, ID3D11Resource* buffer) { Create(dest, defaultDesc, buffer); };
+	void SetDefault(D3D11_DEPTH_STENCIL_VIEW_DESC desc) {	defaultDesc = desc;};
+private:
+	friend class Resources;
+	Resources* resources;
+	DepthStencilViewResources(Resources* resources) : resources(resources) {
 		D3D11_DEPTH_STENCIL_VIEW_DESC desc = {};
 
 		desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -372,12 +409,7 @@ public:
 
 		SetDefault(desc);
 	}
-	void Create(Resource<ID3D11DepthStencilView>& dest,D3D11_DEPTH_STENCIL_VIEW_DESC desc, ID3D11Resource* buffer);
 
-	void CreateDefault(Resource<ID3D11DepthStencilView>& dest, ID3D11Resource* buffer) { Create(dest, defaultDesc, buffer); };
-	void SetDefault(D3D11_DEPTH_STENCIL_VIEW_DESC desc) {	defaultDesc = desc;};
-private:
-	friend class Resources;
 	void Release();
 
 	struct Data

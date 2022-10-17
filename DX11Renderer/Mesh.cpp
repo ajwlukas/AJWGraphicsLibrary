@@ -1,19 +1,21 @@
 #include "pch_dx_11.h"
 #include "Mesh.h"
 
-#include <functional>
-
-Mesh::Mesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
-	:vertexDataSize(vertexSet.GetVertexSize()) ,indexCount(indexCount), vsFileName(vsFileName), topology(topology)
+Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+	:vertexDataSize(vertexSet.GetVertexSize()) 
+	,indexCount(indexCount)
+	, vsFileName(vsFileName)
+	, topology(topology)
+	, dc(nullptr)
 {
 	desc = vertexSet.GetDescsData();
 	descSize = vertexSet.GetDescsSize();
 
 	//inputLayout
-	RESOURCES->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
+	resources->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
 
 	//shader
-	shader = RESOURCES->vertexShaders->Get(vsFileName);
+	shader = resources->vertexShaders->Get(vsFileName);
 
 	//vertexBuffer;
 	D3D11_BUFFER_DESC vbd;
@@ -25,7 +27,8 @@ Mesh::Mesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFi
 	vbd.StructureByteStride = 0;
 	D3D11_SUBRESOURCE_DATA vinitData;
 	vinitData.pSysMem = vertexSet.GetVerticesData();
-	HRESULT hr = DEVICE->CreateBuffer(&vbd, &vinitData, &vertexBuffer);
+
+	resources->buffers->Create(vertexBuffer, vbd, &vinitData);
 
 	//index Buffer
 	D3D11_BUFFER_DESC ibd;
@@ -37,23 +40,21 @@ Mesh::Mesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFi
 	ibd.StructureByteStride = 0;
 	D3D11_SUBRESOURCE_DATA iinitData;
 	iinitData.pSysMem = indexData;
-	hr = DEVICE->CreateBuffer(&ibd, &iinitData, &indexBuffer);
+
+	resources->buffers->Create(indexBuffer, ibd, &iinitData);
 }
 
 Mesh::~Mesh()
 {
-	vertexBuffer->Release();
-	indexBuffer->Release();
 }
 
 void Mesh::Set()
 {
-	DC->IASetInputLayout(inputLayout);
-	DC->IASetPrimitiveTopology(topology);//todo : 이거 메쉬로 넣어주자
-	DC->IASetVertexBuffers(0, 1, &vertexBuffer, &vertexDataSize, &offset);
-	DC->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-	DC->VSSetShader(shader, 0, 0);//todo : 이거 메쉬로 넣어주자
+	dc->IASetInputLayout(inputLayout);
+	dc->IASetPrimitiveTopology(topology);//todo : 이거 메쉬로 넣어주자
+	dc->IASetVertexBuffers(0, 1, vertexBuffer, &vertexDataSize, &offset);
+	dc->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	dc->VSSetShader(shader, 0, 0);//todo : 이거 메쉬로 넣어주자
 
-
-	DC->DrawIndexed(GetIndexCount(), 0, 0);
+	dc->DrawIndexed(GetIndexCount(), 0, 0);
 }

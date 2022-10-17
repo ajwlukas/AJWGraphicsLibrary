@@ -13,21 +13,9 @@ DX11Renderer::DX11Renderer()
 
 DX11Renderer::~DX11Renderer()
 {
-    for (int i = 0; i < 3; i++)
-    {
-        SAFE_DELETE( rtts[i]);
-    }
-
-    TestDestructor();
-
-    //SAFE_DELETE(font);
-
     depthStencilState.Return();
     noDepthStencilState.Return();
 
-    SAFE_DELETE(skyboxRTT);
-    SAFE_DELETE(postProcessor);
-    SAFE_DELETE(defferedRenderer);
     SAFE_DELETE(resources);
     SAFE_RELEASE(device);
     SAFE_RELEASE(dc);
@@ -46,7 +34,7 @@ HRESULT DX11Renderer::Init()
     hr = CreateDeviceAndSwapChain();
     if (hr != S_OK) return hr;
 
-    resources = new Resources();
+    resources = new Resources(device);
 
     hr = CreateRtv();
     if (hr != S_OK) return hr;
@@ -205,7 +193,7 @@ HRESULT DX11Renderer::CreateBlendState()
 
     resources->blendStates->GetDefault(blendState);
 
-    DC->OMSetBlendState(blendState, NULL, 0xFF);
+    dc->OMSetBlendState(blendState, NULL, 0xFF);
 
     return hr;
 }
@@ -235,40 +223,12 @@ void DX11Renderer::OnResize()
 
     if (dc != nullptr)
     {
-        //CreateRtv();
-     
         CreateAndSetDepthStencilView();
-
-        //defferedRenderer->OnResize();
-
-        //postProcessor->OnResize();
-
-        //SetRTTasBackBuffer(postProcessor->GetLastRTT());
-
-        //skyboxRTT->OnResize();
 
         SetViewPort();
     }
-    /*if (cam != nullptr)
-        cam->OnResize(height, width);*/
 }
 
-void DX11Renderer::SetRTTasBackBuffer(RenderTargetTexutre* rtt)
-{
-    //rtt->rtv.Return();
-
-
-    ID3D11Texture2D* backBuffer = nullptr;
-    swapChain->ResizeBuffers(1, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
-    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBuffer);
-
-    //resources->rtvs->CreateDefault(rtt->rtv, backBuffer);
-
-    backBuffer->Release();
-    backBuffer = nullptr;
-
-    //rtv = rtt->rtv;
-}
 
 void DX11Renderer::BeginRender()
 {
@@ -276,156 +236,21 @@ void DX11Renderer::BeginRender()
     float transparent[4] = { 0.0f,0.0f,0.0f,0.0f };//todo: 구차나서 일단 이렇게 해놓음
     float white[4] = { 1.0f,1.0f,1.0f,1.0f };//todo: 구차나서 일단 이렇게 해놓음
 
-
-
-    //defferedRenderer->ClearRenderTargetView();
-
-    dc->ClearRenderTargetView(rtv, transparent);
-
-    //dc->ClearRenderTargetView(skyboxRTT->rtv, transparent);
-
-    //postProcessor->ClearRenderTargets();
-
-    dc->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
-}
-
-void DX11Renderer::BeginRenderT()
-{
-    float color[4] = { 0.0f, 0.7f, 1.0f, 1.0f };
-    float transparent[4] = { 0.0f,0.0f,0.0f,0.0f };//todo: 구차나서 일단 이렇게 해놓음
-    float white[4] = { 1.0f,1.0f,1.0f,1.0f };//todo: 구차나서 일단 이렇게 해놓음
-
-
-
-    //defferedRenderer->ClearRenderTargetView();
-
     dc->ClearRenderTargetView(rtv, color);
 
-    //dc->ClearRenderTargetView(skyboxRTT->rtv, transparent);
-
-    //postProcessor->ClearRenderTargets();
-
     dc->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
-void DX11Renderer::TestInit()
-{
-    //cam = new Camera(); 
-
-    //skyBox = new Skybox(cam);
-
-
-    //grid = new Grid(cam);
-}
-
-void DX11Renderer::TestDestructor()
-{
-    SAFE_DELETE(cam);
-    SAFE_DELETE(skyBox);
-    SAFE_DELETE(canvas);
-    SAFE_DELETE(normalCanvas);
-    SAFE_DELETE(albedoCanvas);
-    SAFE_DELETE(grid);
-
-}
-
-void DX11Renderer::TestUpdate()
-{
-
-    //cam->Update();
-    //skyBox->Update();
-    //canvas->Update();
-    /*normalCanvas->Update();
-    albedoCanvas->Update();*/
-    //defferedRenderer->Update();
-    //grid->Update();
-
-    //factory->Update();
-
-}
 
 void DX11Renderer::PreRender()
 {
-    //cam->Render();
-
-    //foward Rendering
-    //defferedRenderer->SetRenderTargets();//디퍼드에 필요한 렌더 타겟들 세팅
-    
     dc->OMSetDepthStencilState(depthStencilState, 1);
-
-    //factory->Render();//디퍼드 준비물들 준비 == 포워드 렌더링
 }
-
-/// 이 사이에 오브젝트 그리기 호출
-/// 현재는  factory->Render(); 가 그역할 하는 중
-
-void DX11Renderer::SetSwapchainRenderTarget()
-{
-    //dc->OMSetRenderTargets(1, skyboxRTT->rtv, depthStencilView);//depthStencilView를 다른걸 쓰긴 해야할듯, 옵션도 다르게 줘야할까?
-}
-
 
 void DX11Renderer::PostRender()
 {
     dc->OMSetDepthStencilState(noDepthStencilState, 1);
-    //Post Render(DefferedRender)
-    //skyBox->Render();
-    //grid->Render();
-
-    //defferedRenderer->Render();
-
-    //postProcessor->Render();
-
-    //Canvas::manager.Render();
-
-    //DebugFont();
 }
-//
-//void DX11Renderer::DebugFont()
-//{
-//    font->DrawTest();
-//
-//    wstring fps = to_wstring(TIME->FPS());
-//    font->DrawTextColor(50, 50, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = L"Mouse Delta X : ";
-//    font->DrawTextColor(50, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = L"Mouse Delta Y : ";
-//    font->DrawTextColor(50, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = to_wstring(KeyBoard::Get()->mouseDx);
-//    font->DrawTextColor(150, 560, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = to_wstring(KeyBoard::Get()->mouseDy);
-//    font->DrawTextColor(150, 590, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = L"Rot X : ";
-//    font->DrawTextColor(50, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = L"Rot Y : ";
-//    font->DrawTextColor(50, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = L"Rot Z : ";
-//    font->DrawTextColor(50, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = to_wstring(cam->transform.worldRot.x);
-//    font->DrawTextColor(120, 660, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = to_wstring(cam->transform.worldRot.y);
-//    font->DrawTextColor(120, 690, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = to_wstring(cam->transform.worldRot.z);
-//    font->DrawTextColor(120, 720, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = L"CamPos X : ";
-//    font->DrawTextColor(50, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = L"CamPos Y : ";
-//    font->DrawTextColor(50, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = L"CamPos Z : ";
-//    font->DrawTextColor(50, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//
-//    fps = to_wstring(cam->transform.pos.x);
-//    font->DrawTextColor(120, 760, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = to_wstring(cam->transform.pos.y);
-//    font->DrawTextColor(120, 790, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//    fps = to_wstring(cam->transform.pos.z);
-//    font->DrawTextColor(120, 820, XMFLOAT4(0, 1, 0, 1), (TCHAR*)fps.c_str());
-//}
 
 void DX11Renderer::EndRender()
 {
