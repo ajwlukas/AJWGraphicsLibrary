@@ -6,7 +6,8 @@ Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, VertexSet& 
 	,indexCount(indexCount)
 	, vsFileName(vsFileName)
 	, topology(topology)
-	, dc(nullptr)
+	, dc(deviceContext)
+	, resources(resources)
 {
 	desc = vertexSet.GetDescsData();
 	descSize = vertexSet.GetDescsSize();
@@ -51,10 +52,10 @@ Mesh::~Mesh()
 void Mesh::Set()
 {
 	dc->IASetInputLayout(inputLayout);
-	dc->IASetPrimitiveTopology(topology);//todo : 이거 메쉬로 넣어주자
+	dc->IASetPrimitiveTopology(topology);
 	dc->IASetVertexBuffers(0, 1, vertexBuffer, &vertexDataSize, &offset);
 	dc->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-	dc->VSSetShader(shader, 0, 0);//todo : 이거 메쉬로 넣어주자
+	dc->VSSetShader(shader, 0, 0);
 
-	dc->DrawIndexed(GetIndexCount(), 0, 0);
+	dc->DrawIndexed(GetIndexCount(), 0, 0);//
 }

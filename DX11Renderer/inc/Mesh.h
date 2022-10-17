@@ -22,14 +22,15 @@ public:
 
 	const UINT& GetIndexCount() const { return indexCount; }
 
-	/*void SetShader(wstring vsFileName) {
+	void SetShader(std::wstring vsFileName) {
 		this->vsFileName = vsFileName;
-		RESOURCES->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
-		shader = RESOURCES->vertexShaders->Get(vsFileName);
-	}*/
+		resources->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
+		shader = resources->vertexShaders->Get(vsFileName);
+	}
 
 private:
 	ID3D11DeviceContext* dc;
+	Resources* resources;
 
 	std::wstring vsFileName;
 	Resource<ID3D11InputLayout> inputLayout;

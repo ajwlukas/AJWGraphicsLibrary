@@ -22,10 +22,10 @@ App::App()
     {
         0,2,1
     };
-    //mesh = new Mesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
+    mesh = RenderEngine::Get()->CreateMesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
 
-    //material = new Material();
-    //material->SetShader(L"Triangle.hlsl");
+    material = RenderEngine::Get()->CreateMaterial();
+    material->SetShader(L"Triangle.hlsl");
 }
 
 App::~App()
@@ -39,9 +39,9 @@ void App::Update()
 {
     RenderEngine::Get()->BeginRender();
 
-    //material->Set();
+    material->Set();
 
-    //mesh->Set();
+    mesh->Set();
 
     RenderEngine::Get()->EndRender();
 }

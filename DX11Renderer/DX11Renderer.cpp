@@ -141,7 +141,6 @@ HRESULT DX11Renderer::CreateAndSetDepthStencilView()
     depthBufferDesc.CPUAccessFlags = 0;
     depthBufferDesc.MiscFlags = 0;
 
-
     resources->texture2Ds->Create(depthStencilBuffer, depthBufferDesc);
 
     resources->depthStencilStates->GetDefault(depthStencilState);
@@ -172,7 +171,8 @@ HRESULT DX11Renderer::CreateAndSetDepthStencilView()
 
     resources->depthStencilViews->CreateDefault(depthStencilView, depthStencilBuffer);
 
-    dc->OMSetRenderTargets(1, rtv, depthStencilView);//todo : 여기
+    dc->OMSetRenderTargets(1, rtv, depthStencilView);
+
     return hr;
 }
 
@@ -255,4 +255,14 @@ void DX11Renderer::PostRender()
 void DX11Renderer::EndRender()
 {
     swapChain->Present(0, 0);
+}
+
+Mesh* DX11Renderer::CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+{
+    return new Mesh(dc, resources, vertexSet, indexData, indexCount, vsFileName, topology);
+}
+
+Material* DX11Renderer::CreateMaterial(const MaterialDesc& desc)
+{
+    return new Material(dc, resources, desc);
 }

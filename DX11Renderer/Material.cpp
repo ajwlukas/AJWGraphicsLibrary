@@ -4,6 +4,8 @@
 Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, const MaterialDesc& desc)
 	:normal{}, diffuse{}, specular{},
 	samplerState{}, pixelShader(nullptr), pixelShaderName(desc.pixelShaderName)
+	, dc(deviceContext)
+	, resources(resources)
 {
 	pixelShader = resources->pixelShaders->Get(desc.pixelShaderName);
 
