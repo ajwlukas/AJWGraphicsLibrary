@@ -1,11 +1,12 @@
 #include "pch_dx_11.h"
 #include "Material.h"
 
-Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, const MaterialDesc& desc)
+Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, const MaterialDesc& desc)
 	:normal{}, diffuse{}, specular{},
 	samplerState{}, pixelShader(nullptr), pixelShaderName(desc.pixelShaderName)
 	, dc(deviceContext)
 	, resources(resources)
+	, pipeline(pipeline)
 {
 	pixelShader = resources->pixelShaders->Get(desc.pixelShaderName);
 
@@ -54,6 +55,8 @@ void Material::Set()
 		dc->PSSetShader(pixelShader,0,0);
 
 		dc->PSSetConstantBuffers(0, 1, buffer);
+
+		pipeline->SetMaterial(this);
 }
 
 void Material::SetShader(wstring fileName)

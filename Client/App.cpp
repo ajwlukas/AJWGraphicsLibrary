@@ -2,8 +2,8 @@
 
 App::App()
 {
-    RenderEngine::Create();
-    HRESULT hr = RenderEngine::Get()->Init();
+    TL_Graphics::RenderSystem::Create();
+    TL_Graphics::RenderSystem::Get()->Init();
 
     struct Vertex
     {
@@ -22,26 +22,27 @@ App::App()
     {
         0,2,1
     };
-    mesh = RenderEngine::Get()->CreateMesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
 
-    material = RenderEngine::Get()->CreateMaterial();
-    material->SetShader(L"Triangle.hlsl");
+    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
+
+    material = TL_Graphics::RenderSystem::Get()->CreateMaterial();
+    material->SetShader();
 }
 
 App::~App()
 {
-    {
-        RenderEngine::Delete();
-    }
+     TL_Graphics::RenderSystem::Delete();
 }
 
 void App::Update()
 {
-    RenderEngine::Get()->BeginRender();
+    TL_Graphics::RenderSystem::Get()->Clear();
 
     material->Set();
 
     mesh->Set();
 
-    RenderEngine::Get()->EndRender();
+    TL_Graphics::RenderSystem::Get()->Draw();
+
+    TL_Graphics::RenderSystem::Get()->Present();
 }

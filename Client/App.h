@@ -1,6 +1,9 @@
 #pragma once
 
-#include "DX11Renderer.h"
+#include "RenderSystem.h"
+#include "IMesh.h"
+#include "IMaterial.h"
+
 #include "Mesh.h"
 #include "Material.h"
 #include "Vertex.h"
@@ -14,8 +17,8 @@ public:
 
 	void Update();
 
-	Mesh* mesh;
-	Material* material;
+	TL_Graphics::IMesh* mesh;
+	TL_Graphics::IMaterial* material;
 	VertexSet vertexAttribute;
 	//RenderEngine* renderEngine;
 };

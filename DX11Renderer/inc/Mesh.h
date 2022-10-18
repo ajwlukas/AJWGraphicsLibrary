@@ -3,7 +3,7 @@
 #include <d3d11.h>
 #include <string>
 
-#include "Export.h"
+#include "IMesh.h"
 #include "Resources.h"
 #include "Vertex.h"
 /// <summary>
@@ -12,13 +12,15 @@
 /// written by Ssreppa 22.06.22
 /// </summary>
 
- struct AJW_GRAPHICS_DLLEXPORT Mesh
+class Pipeline;
+
+ class  Mesh : public TL_Graphics::IMesh
 {
 public:
-	Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, VertexSet& vertexSet, UINT indexData[], UINT indexCount,
+	Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, VertexSet& vertexSet, UINT indexData[], UINT indexCount,
 		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	virtual ~Mesh();
-	void Set();
+	virtual void Set() override;
 
 	const UINT& GetIndexCount() const { return indexCount; }
 
@@ -31,6 +33,7 @@ public:
 private:
 	ID3D11DeviceContext* dc;
 	Resources* resources;
+	Pipeline* pipeline;
 
 	std::wstring vsFileName;
 	Resource<ID3D11InputLayout> inputLayout;

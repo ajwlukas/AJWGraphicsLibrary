@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Export.h"
+#include "RenderSystem.h"
 
 #include <d3d11.h>
 #include <vector>
@@ -10,29 +10,33 @@
 
 #include "Mesh.h"
 #include "Material.h"
+#include "Pipeline.h"
 
-class AJW_GRAPHICS_DLLEXPORT DX11Renderer
+class  DX11Renderer : public TL_Graphics::RenderSystem
 {
 public:
-	static void Create() { instance = nullptr ? instance : new DX11Renderer(); }
+	DX11Renderer();
+	virtual ~DX11Renderer();
+	/*static void Create() { instance = nullptr ? instance : new DX11Renderer(); }
 	static void Delete() { delete instance; }
-	static DX11Renderer* Get() { return instance; }
-	HRESULT Init();
+	static DX11Renderer* Get() { return instance; }*/
+	virtual HRESULT Init() override;
 
-	void BeginRender();
-	void PreRender();
-	void PostRender();
-	void EndRender();
+	virtual void Clear()override;
+	virtual void Draw() override;
+	virtual void Present()override;
 
-	Mesh* CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	virtual Mesh* CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount,
+		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST) override;
 
-	Material* CreateMaterial(const MaterialDesc& desc = MaterialDesc());
+	//이후할것 example
+	// Mesh* CreateAnimatingMesh();
+
+	virtual Material* CreateMaterial(const MaterialDesc& desc = MaterialDesc()) override;
+
 
 private:
-	DX11Renderer();
-	~DX11Renderer();
-	static DX11Renderer* instance;
+	//static DX11Renderer* instance;
 
 	HWND hWnd;
 	WINDOWINFO windowInfo;
@@ -44,7 +48,7 @@ private:
 
 	void OnResize();
 
-	class Resources* resources;
+	Resources* resources;
 
 	Resource<ID3D11DepthStencilView> depthStencilView;
 	Resource<ID3D11RenderTargetView> rtv;
@@ -53,6 +57,8 @@ private:
 	Resource<ID3D11DepthStencilState> noDepthStencilState;
 	Resource<ID3D11RasterizerState> rasterState;
 	Resource<ID3D11BlendState> blendState;
+
+	Pipeline* pipeline;
 
 	HRESULT CreateDeviceAndSwapChain();
 	HRESULT CreateRtv();

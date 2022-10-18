@@ -39,7 +39,6 @@ using namespace std;
 using namespace DirectX;
 
 #include "DXTK\d3dx11effect.h"
-//#include "DXTK\WICTextureLoader\LoaderHelpers.h"
 #include "DXTK\WICTextureLoader\WICTextureLoader.h"
 #include "DXTK\DDSTextureLoader.h"
 
@@ -74,35 +73,4 @@ typedef XMFLOAT3 float3;
 typedef XMFLOAT4 float4;
 typedef XMMATRIX Matrix;
 
-//
-//#include "Utility.h"
-
-
-#include "DX11Renderer.h"/*
-#include "Resources.h"
-
-#include "Vector3.h"
-#include "Transform.h"
-
-#include "Vertex.h"
-#include "Mesh.h"
-#include "Material.h"
-
-#include "Component.h"
-#include "Animator.h"
-#include "Skinner.h"
-
-#include "Instants.h"
-
-#include "InstancingObject.h"
-#include "Object.h"
-#include "Proto.h"
-
-#include "Camera.h"
-#include "RenderTargetTexture.h"
-#include "DefferedRenderer.h"
-#include "SkyBox.h"
-#include "Canvas.h"
-#include "Grid.h"
-
-#include "GeometryFactory.h"*/
+#include "DX11Renderer.h"

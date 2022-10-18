@@ -3,7 +3,7 @@
 #include "DX11Renderer.h"
 
 
-DX11Renderer* DX11Renderer::instance = nullptr;
+//DX11Renderer* DX11Renderer::instance = nullptr;
 
 DX11Renderer::DX11Renderer()
     :device(nullptr), dc(nullptr), hWnd(0), windowInfo{}, swapChain(nullptr), rtv{}, depthStencilBuffer{},
@@ -35,6 +35,7 @@ HRESULT DX11Renderer::Init()
     if (hr != S_OK) return hr;
 
     resources = new Resources(device);
+    pipeline = new Pipeline(dc);
 
     hr = CreateRtv();
     if (hr != S_OK) return hr;
@@ -230,7 +231,7 @@ void DX11Renderer::OnResize()
 }
 
 
-void DX11Renderer::BeginRender()
+void DX11Renderer::Clear()
 {
     float color[4] = { 0.0f, 0.7f, 1.0f, 1.0f };
     float transparent[4] = { 0.0f,0.0f,0.0f,0.0f };//todo: 구차나서 일단 이렇게 해놓음
@@ -242,27 +243,32 @@ void DX11Renderer::BeginRender()
 }
 
 
-void DX11Renderer::PreRender()
-{
-    dc->OMSetDepthStencilState(depthStencilState, 1);
-}
+//void DX11Renderer::PreRender()
+//{
+//    dc->OMSetDepthStencilState(depthStencilState, 1);
+//}
+//
+//void DX11Renderer::PostRender()
+//{
+//    dc->OMSetDepthStencilState(noDepthStencilState, 1);
+//}
 
-void DX11Renderer::PostRender()
-{
-    dc->OMSetDepthStencilState(noDepthStencilState, 1);
-}
-
-void DX11Renderer::EndRender()
+void DX11Renderer::Present()
 {
     swapChain->Present(0, 0);
 }
 
 Mesh* DX11Renderer::CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
 {
-    return new Mesh(dc, resources, vertexSet, indexData, indexCount, vsFileName, topology);
+    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, vsFileName, topology);
 }
 
 Material* DX11Renderer::CreateMaterial(const MaterialDesc& desc)
 {
-    return new Material(dc, resources, desc);
+    return new Material(dc, resources, pipeline, desc);
+}
+
+void DX11Renderer::Draw()
+{
+    pipeline->Draw();
 }

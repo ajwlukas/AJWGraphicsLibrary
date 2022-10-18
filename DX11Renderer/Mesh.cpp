@@ -1,13 +1,16 @@
 #include "pch_dx_11.h"
 #include "Mesh.h"
 
-Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+#include "Pipeline.h"
+
+Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
 	:vertexDataSize(vertexSet.GetVertexSize()) 
 	,indexCount(indexCount)
 	, vsFileName(vsFileName)
 	, topology(topology)
 	, dc(deviceContext)
 	, resources(resources)
+	,pipeline(pipeline)
 {
 	desc = vertexSet.GetDescsData();
 	descSize = vertexSet.GetDescsSize();
@@ -57,5 +60,5 @@ void Mesh::Set()
 	dc->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 	dc->VSSetShader(shader, 0, 0);
 
-	dc->DrawIndexed(GetIndexCount(), 0, 0);//
+	pipeline->SetMesh(this);
 }

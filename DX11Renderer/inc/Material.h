@@ -6,6 +6,7 @@
 #include "typedef.h"
 #include "Resources.h"
 #include "Export.h"
+#include "IMaterial.h"
 
 /// <summary>
 /// Material 积己窍绰 2啊瘤 规过,
@@ -35,13 +36,13 @@ struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
 	D3D11_SAMPLER_DESC samplerDesc;
 };
 
-class AJW_GRAPHICS_DLLEXPORT Material
+class Material : public TL_Graphics::IMaterial
 {
 public:
-	Material(ID3D11DeviceContext* deviceContext, Resources* resources, const MaterialDesc& desc = MaterialDesc());
-	~Material();
+	Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, const MaterialDesc& desc = MaterialDesc());
+	virtual ~Material();
 
-	void Set();
+	virtual void Set() override;
 
 	void SetShader(std::wstring fileName);
 
@@ -63,6 +64,7 @@ public:
 private:
 	ID3D11DeviceContext* dc;
 	Resources* resources;
+	Pipeline* pipeline;
 
 	ID3D11PixelShader* pixelShader;
 	Resource<ID3D11ShaderResourceView> diffuse;
