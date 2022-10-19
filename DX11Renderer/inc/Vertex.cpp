@@ -1,12 +1,13 @@
 #include "pch_dx_11.h"
 
-ShaderNameFinder VertexSet::shaderFinder;
 
-DXGI_FORMAT GetCorrectFormat(UINT dataCount, DataType type)
+namespace TL_Graphics
 {
-	switch (type)
+	DXGI_FORMAT GetCorrectFormat(UINT dataCount, TL_Graphics::DataType type)
 	{
-		case DataType::FLOAT:
+		switch (type)
+		{
+		case TL_Graphics::DataType::FLOAT:
 		{
 			switch (dataCount)
 			{
@@ -22,7 +23,7 @@ DXGI_FORMAT GetCorrectFormat(UINT dataCount, DataType type)
 				assert(false);
 			}
 		}
-		case DataType::UINT:
+		case TL_Graphics::DataType::UINT:
 		{
 			switch (dataCount)
 			{
@@ -39,42 +40,44 @@ DXGI_FORMAT GetCorrectFormat(UINT dataCount, DataType type)
 			}
 		}
 
-	default:
-		assert(false);
+		default:
+			assert(false);
+		}
 	}
-}
 
-void VertexSet::AddElementToDesc(UINT dataSize, DataType type, LPCSTR SemanticName, int SemanticIndex,
-	int inputSlot, int InstanceDataStepRate)
-{
-	UINT dataCount = dataSize / sizeof(DWORD);
+	void VertexSet::AddElementToDesc(UINT dataSize, TL_Graphics::DataType type, LPCSTR SemanticName, int SemanticIndex,
+		int inputSlot, int InstanceDataStepRate)
+	{
+		UINT dataCount = dataSize / sizeof(DWORD);
 
-	//FillDesc
-	D3D11_INPUT_ELEMENT_DESC desc;
-	desc.SemanticName = SemanticName;
-	desc.SemanticIndex = SemanticIndex;
-	desc.Format = GetCorrectFormat(dataCount, type);
-	desc.InputSlot = inputSlot;
-	desc.AlignedByteOffset = stride;
-	desc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;//todo : 나중에 수정 가능
-	desc.InstanceDataStepRate = InstanceDataStepRate;
+		//FillDesc
+		D3D11_INPUT_ELEMENT_DESC desc;
+		desc.SemanticName = SemanticName;
+		desc.SemanticIndex = SemanticIndex;
+		desc.Format = GetCorrectFormat(dataCount, type);
+		desc.InputSlot = inputSlot;
+		desc.AlignedByteOffset = stride;
+		desc.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;//todo : 나중에 수정 가능
+		desc.InstanceDataStepRate = InstanceDataStepRate;
 
-	descs.emplace_back(desc);
+		descs.emplace_back(desc);
 
-	stride += 4 * dataCount;//4바이트 단위 데이터만 받을 거임
+		stride += 4 * dataCount;//4바이트 단위 데이터만 받을 거임
 
-	//쉐이더 서치용 Semantic 정보 저장
-	semanticString += "_";
-	semanticString += SemanticName;
-}
+		//쉐이더 서치용 Semantic 정보 저장
+		semanticString += "_";
+		semanticString += SemanticName;
+	}
 
-void VertexSet::AddData(void* data, UINT dataSize)
-{
+	void VertexSet::AddData(void* data, UINT dataSize)
+	{
 
-	UINT dataCount = dataSize / sizeof(DWORD);
-	//FillData
-	verticesData.resize(verticesData.size() + dataCount);
-	memcpy(verticesData.data() + memIndex, data, sizeof(DWORD) * dataCount);
+		UINT dataCount = dataSize / sizeof(DWORD);
+		//FillData
+		verticesData.resize(verticesData.size() + dataCount);
+		memcpy(verticesData.data() + memIndex, data, sizeof(DWORD) * dataCount);
 
-	memIndex += dataCount;
+		memIndex += dataCount;
+	}
+
 }

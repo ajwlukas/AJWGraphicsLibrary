@@ -3,7 +3,7 @@
 
 #include "Pipeline.h"
 
-Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
 	:vertexDataSize(vertexSet.GetVertexSize()) 
 	,indexCount(indexCount)
 	, vsFileName(vsFileName)

@@ -26,13 +26,13 @@ public:
 	virtual void Draw() override;
 	virtual void Present()override;
 
-	virtual Mesh* CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount,
+	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
 		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST) override;
 
 	//이후할것 example
 	// Mesh* CreateAnimatingMesh();
 
-	virtual Material* CreateMaterial(const MaterialDesc& desc = MaterialDesc()) override;
+	virtual Material* CreateMaterial(const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc()) override;
 
 
 private:

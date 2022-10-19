@@ -16,30 +16,13 @@
 /// written by Ssreppa 22.06.22
 /// </summary>
 
-struct AJW_GRAPHICS_DLLEXPORT MaterialDesc
-{
-	MaterialDesc()
-		:pixelShaderName(L"Triangle.hlsl"), diffuseFileName(L""),samplerDesc{}
-	{
-		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
-		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
-		samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
-	}
-
-	float4 ambient = { 0.8f, 0.8f, 0.8f, 1.0f };
-	float4 diffuse;
-	float4 specular;
-
-	std::wstring pixelShaderName;
-	std::wstring diffuseFileName;
-	std::wstring normalFileName;
-	D3D11_SAMPLER_DESC samplerDesc;
-};
+class Pipeline;
 
 class Material : public TL_Graphics::IMaterial
 {
 public:
-	Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, const MaterialDesc& desc = MaterialDesc());
+	Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, std::wstring pixelShaderName,
+		D3D11_SAMPLER_DESC samplerDesc, const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc());
 	virtual ~Material();
 
 	virtual void Set() override;
@@ -55,9 +38,9 @@ public:
 
 	struct Data
 	{
-		float4 ambient;
-		float4 diffuse;
-		float4 specular;
+		float ambient[4];
+		float diffuse[4];
+		float specular[4];
 	}data;
 
 	std::wstring pixelShaderName;

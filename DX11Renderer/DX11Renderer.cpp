@@ -258,14 +258,18 @@ void DX11Renderer::Present()
     swapChain->Present(0, 0);
 }
 
-Mesh* DX11Renderer::CreateMesh(VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
 {
     return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, vsFileName, topology);
 }
 
-Material* DX11Renderer::CreateMaterial(const MaterialDesc& desc)
+Material* DX11Renderer::CreateMaterial(const TL_Graphics::MaterialDesc& desc)
 {
-    return new Material(dc, resources, pipeline, desc);
+    D3D11_SAMPLER_DESC samplerDesc = {};
+    samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+    return new Material(dc, resources, pipeline, L"Triangle.hlsl", samplerDesc, desc);
 }
 
 void DX11Renderer::Draw()

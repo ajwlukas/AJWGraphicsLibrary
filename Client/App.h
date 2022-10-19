@@ -19,6 +19,6 @@ public:
 
 	TL_Graphics::IMesh* mesh;
 	TL_Graphics::IMaterial* material;
-	VertexSet vertexAttribute;
+	TL_Graphics::VertexSet vertexAttribute;
 	//RenderEngine* renderEngine;
 };

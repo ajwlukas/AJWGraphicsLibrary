@@ -15,7 +15,7 @@ App::App()
         ,{-0.5f, -0.5f}
         ,{0.5f, -0.5f}
     };
-    vertexAttribute.AddElementToDesc(sizeof(float) * 2,DataType::FLOAT,"POSITION");
+    vertexAttribute.AddElementToDesc(sizeof(float) * 2, TL_Graphics::DataType::FLOAT,"POSITION");
     vertexAttribute.AddData(vertices, sizeof(vertices));
     UINT indicies[]
         =
@@ -26,7 +26,6 @@ App::App()
     mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
 
     material = TL_Graphics::RenderSystem::Get()->CreateMaterial();
-    material->SetShader();
 }
 
 App::~App()

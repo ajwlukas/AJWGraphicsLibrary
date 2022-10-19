@@ -1,14 +1,17 @@
 #include "pch_dx_11.h"
 #include "Material.h"
 
-Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, const MaterialDesc& desc)
+Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, std::wstring pixelShaderName,
+	D3D11_SAMPLER_DESC samplerDesc
+	, const TL_Graphics::MaterialDesc& desc)
 	:normal{}, diffuse{}, specular{},
-	samplerState{}, pixelShader(nullptr), pixelShaderName(desc.pixelShaderName)
+	samplerState{}, pixelShader(nullptr)
+	, pixelShaderName(pixelShaderName)
 	, dc(deviceContext)
 	, resources(resources)
 	, pipeline(pipeline)
 {
-	pixelShader = resources->pixelShaders->Get(desc.pixelShaderName);
+	pixelShader = resources->pixelShaders->Get(pixelShaderName);
 
 	if (desc.diffuseFileName.length() > 0)
 	{ 
@@ -20,11 +23,14 @@ Material::Material(ID3D11DeviceContext* deviceContext, Resources* resources, Pip
 		resources->srvs->GetFromFile(normal, desc.normalFileName);//todo : 비어있을 때 에러가 안남
 	}
 
-	resources->samplerStates->Get(samplerState, desc.samplerDesc);
+	resources->samplerStates->Get(samplerState, samplerDesc);
 
-		data.ambient = desc.ambient ;
+	memcpy(data.ambient, desc.ambient, sizeof(desc.ambient))		  ;
+	memcpy(data.diffuse, desc.diffuse, sizeof(desc.diffuse))			;
+	memcpy(data.specular, desc.specular, sizeof(desc.specular));
+		/*data.ambient = desc.ambient ;
 		data.diffuse = desc.diffuse	 ;
-		data.specular = desc.specular;
+		data.specular = desc.specular;*/
 
 		D3D11_BUFFER_DESC cbd;
 		cbd.Usage = D3D11_USAGE_DEFAULT;

@@ -17,7 +17,7 @@ class Pipeline;
  class  Mesh : public TL_Graphics::IMesh
 {
 public:
-	Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, VertexSet& vertexSet, UINT indexData[], UINT indexCount,
+	Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
 		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	virtual ~Mesh();
 	virtual void Set() override;
