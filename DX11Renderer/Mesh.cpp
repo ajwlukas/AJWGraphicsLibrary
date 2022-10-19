@@ -4,7 +4,7 @@
 #include "Pipeline.h"
 
 Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* pipeline, TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
-	:vertexDataSize(vertexSet.GetVertexSize()) 
+	:vertexDataSize(vertexSet.pimpl->GetVertexSize()) 
 	,indexCount(indexCount)
 	, vsFileName(vsFileName)
 	, topology(topology)
@@ -12,8 +12,8 @@ Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* p
 	, resources(resources)
 	,pipeline(pipeline)
 {
-	desc = vertexSet.GetDescsData();
-	descSize = vertexSet.GetDescsSize();
+	desc = vertexSet.pimpl->GetDescsData();
+	descSize = vertexSet.pimpl->GetDescsSize();
 
 	//inputLayout
 	resources->inputLayouts->Get(inputLayout, desc, descSize, vsFileName);
@@ -24,13 +24,13 @@ Mesh::Mesh(ID3D11DeviceContext* deviceContext, Resources* resources, Pipeline* p
 	//vertexBuffer;
 	D3D11_BUFFER_DESC vbd;
 	vbd.Usage = D3D11_USAGE_IMMUTABLE;
-	vbd.ByteWidth = vertexSet.GetVerticesSize();
+	vbd.ByteWidth = vertexSet.pimpl->GetVerticesSize();
 	vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vbd.CPUAccessFlags = 0;
 	vbd.MiscFlags = 0;
 	vbd.StructureByteStride = 0;
 	D3D11_SUBRESOURCE_DATA vinitData;
-	vinitData.pSysMem = vertexSet.GetVerticesData();
+	vinitData.pSysMem = vertexSet.pimpl->GetVerticesData();
 
 	resources->buffers->Create(vertexBuffer, vbd, &vinitData);
 

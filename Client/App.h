@@ -3,10 +3,7 @@
 #include "RenderSystem.h"
 #include "IMesh.h"
 #include "IMaterial.h"
-
-#include "Mesh.h"
-#include "Material.h"
-#include "Vertex.h"
+#include "IVertex.h"
 
 typedef DX11Renderer RenderEngine;//todo : typedef CUSTOM_ENGINE engine
 class App
