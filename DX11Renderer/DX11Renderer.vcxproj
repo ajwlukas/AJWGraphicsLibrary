@@ -104,7 +104,12 @@
       <ShaderModel>5.0</ShaderModel>
     </FxCompile>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"</Command>
+      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,7 +136,12 @@
       <ShaderType>Vertex</ShaderType>
     </FxCompile>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"</Command>
+      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -153,7 +163,12 @@
       <ShaderModel>5.0</ShaderModel>
     </FxCompile>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"</Command>
+      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -176,7 +191,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"</Command>
+      <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
+copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

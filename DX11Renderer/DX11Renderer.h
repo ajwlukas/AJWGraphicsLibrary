@@ -26,8 +26,7 @@ public:
 	virtual void Draw() override;
 	virtual void Present()override;
 
-	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-		std::wstring vsFileName = L"UVLightVertex.hlsl") override;
+	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount) override;
 
 	//이후할것 example
 	// Mesh* CreateAnimatingMesh();

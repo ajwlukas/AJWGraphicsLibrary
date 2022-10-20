@@ -22,8 +22,7 @@ namespace TL_Graphics
 		virtual void Draw() = 0;
 		virtual void Present() = 0;
 
-		virtual IMesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-			std::wstring vsFileName = L"UVLightVertex.hlsl") = 0;
+		virtual IMesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount) = 0;
 
 		virtual IMaterial* CreateMaterial(const MaterialDesc& desc = MaterialDesc()) = 0;
 	};

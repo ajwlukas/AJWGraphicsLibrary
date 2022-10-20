@@ -258,7 +258,7 @@ void DX11Renderer::Present()
     swapChain->Present(0, 0);
 }
 
-Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName)
+Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount)
 {
     return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, L"TriangleVS.hlsl");
 }

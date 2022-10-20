@@ -23,7 +23,7 @@ App::App()
         0,2,1
     };
 
-    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"Triangle.hlsl");
+    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3);
 
     material = TL_Graphics::RenderSystem::Get()->CreateMaterial();
 }
