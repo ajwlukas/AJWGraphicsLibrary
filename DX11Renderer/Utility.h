@@ -18,6 +18,7 @@ namespace Utility
 	std::string GetDirectoryName(std::string path);
 	std::string GetFileName(std::string path);
 	std::string GetFileNameWithoutExtension(std::string path);
+	std::string GetPathNameWithoutExtension(std::string path);
 
 	void ToUpper(std::string& value);
 

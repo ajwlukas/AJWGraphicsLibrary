@@ -82,6 +82,15 @@ string Utility::GetFileNameWithoutExtension(string path)
     return fileName.substr(0, index);
 }
 
+std::string Utility::GetPathNameWithoutExtension(std::string path)
+{
+    Replace(&path, "\\", "/");
+
+    size_t index = path.find_last_of('.');
+
+    return path.substr(0, index);
+}
+
 void Utility::ToUpper(string& value)
 {
     for (int i = 0; i < value.length(); i++)
