@@ -17,11 +17,3 @@ VSout VS(VSin input) : SV_POSITION
     
     return output;
 }
-
-float4 PS(VSout input) : SV_TARGET
-{
-    float4 output = { 1, 1, 1, 1 };
-    
-    
-    return output;
-}

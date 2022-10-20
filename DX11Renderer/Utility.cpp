@@ -126,3 +126,33 @@ void Utility::CreateFolders(string path)
             CreateDirectoryA(temp.c_str(), 0);
     }
 }
+
+std::vector<char> Utility::GetBinary(std::string path)
+{
+    std::ifstream fin(path, std::ios::binary);
+
+    fin.seekg(0, std::ios_base::end);
+    int size = (int)fin.tellg();
+    fin.seekg(0, std::ios_base::beg);
+    std::vector<char> binary(size);
+
+    fin.read(binary.data(), size);
+    fin.close();
+
+    return binary;
+}
+
+std::vector<char> Utility::GetBinaryW(std::wstring path)
+{
+    std::ifstream fin(path, std::ios::binary);
+
+    fin.seekg(0, std::ios_base::end);
+    int size = (int)fin.tellg();
+    fin.seekg(0, std::ios_base::beg);
+    std::vector<char> binary(size);
+
+    fin.read(binary.data(), size);
+    fin.close();
+
+    return binary;
+}

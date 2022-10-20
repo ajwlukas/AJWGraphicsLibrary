@@ -36,15 +36,27 @@ Resources::~Resources()
 	buffers->Release();
 }
 
-
 ID3D11VertexShader* VertexShaderResources::Get(wstring shaderFileName)
 {
 	if (vertexShaders.find(shaderFileName) == vertexShaders.end())//해당하는 쉐이더가 없으면
 	{
-		HRESULT hr = resources->device->CreateVertexShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &vertexShaders[shaderFileName]);
+		HRESULT hr;
+		if (Utility::ExistFileW(shaderFileName))
+		{
+			hr = resources->device->CreateVertexShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &vertexShaders[shaderFileName]);
+		}
+		else//cso로 부터 생성
+		{
+			string cso = Utility::GetFileNameWithoutExtension(Utility::ToString(shaderFileName)) + ".cso";
+
+			std::vector<char> compiledShader = Utility::GetBinary(cso);
+
+			hr = resources->device->CreateVertexShader(compiledShader.data(), compiledShader.size(), NULL, &vertexShaders[shaderFileName]);
+		}
 
 		assert(SUCCEEDED(hr));
 	}//생성
+
 
 	return vertexShaders[shaderFileName];
 }
@@ -58,7 +70,10 @@ ID3DBlob* VertexShaderResources::GetBlob(wstring shaderFileName)
 		HRESULT hr = D3DCompileFromFile(path.c_str(), 0, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VS", "vs_5_0",
 			SHADERFLAG, 0, &vertexShaderBlobs[shaderFileName], &error);//todo : Vertex.hlsl 작성 안함
 
+
 		assert(SUCCEEDED(hr));
+
+
 	}//생성
 
 	return vertexShaderBlobs[shaderFileName];
@@ -70,23 +85,6 @@ void VertexShaderResources::Release()
 		shader.second->Release();
 }
 
-//ID3D11InputLayout* InputLayoutResources::Get(Vertex* vertex, wstring vertexShaderFileName)//가상함수테이블 포인터의 값을 이용해 RTTI를 한다.
-//{
-//	DWORD vftptr;//가상함수테이블 포인터
-//	memcpy(&vftptr, vertex, sizeof(DWORD));
-//	wstring p = to_wstring(vftptr) + vertexShaderFileName;
-//	if (inputLayouts.find(p) == inputLayouts.end())//못 찾으면
-//	{
-//		HRESULT hr = DEVICE->CreateInputLayout(vertex->GetDesc(), vertex->GetDescSize(), RESOURCES->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferPointer(),
-//			RESOURCES->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferSize(), &inputLayouts[p]);
-//
-//		assert(SUCCEEDED(hr));
-//	}
-//
-//	return inputLayouts[p];
-//}
-
-//todo: 시멘틱 이름 더한걸로 바꿀까함
 
 void InputLayoutResources::Get(Resource<ID3D11InputLayout>& dest, D3D11_INPUT_ELEMENT_DESC* desc, UINT descSize, wstring vertexShaderFileName)
 {
@@ -100,8 +98,22 @@ void InputLayoutResources::Get(Resource<ID3D11InputLayout>& dest, D3D11_INPUT_EL
 
 	if (inputLayouts.find(key) == inputLayouts.end())//못 찾으면
 	{
-		HRESULT hr = resources->device->CreateInputLayout(desc, descSize, resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferPointer(),
-			resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferSize(), &inputLayouts[key].data);
+		HRESULT hr;
+		if (Utility::ExistFileW(vertexShaderFileName))
+		{
+			hr = resources->device->CreateInputLayout(desc, descSize, resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferPointer(),
+				resources->vertexShaders->GetBlob(vertexShaderFileName)->GetBufferSize(), &inputLayouts[key].data);
+		}
+		else//cso로 부터 생성
+		{
+			string cso = Utility::GetFileNameWithoutExtension(Utility::ToString(vertexShaderFileName)) + ".cso";
+
+			std::vector<char> compiledShader = Utility::GetBinary(cso);
+
+			hr = resources->device->CreateInputLayout(desc, descSize, compiledShader.data(),
+				compiledShader.size(), &inputLayouts[key].data);
+
+		}
 
 		assert(SUCCEEDED(hr));
 	}//생성
@@ -139,8 +151,19 @@ ID3D11PixelShader* PixelShaderResources::Get(wstring shaderFileName)
 {
 	if (pixelShaders.find(shaderFileName) == pixelShaders.end())//해당하는 쉐이더가 없으면
 	{
-		HRESULT hr = resources->device->CreatePixelShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &pixelShaders[shaderFileName]);
+		HRESULT hr;
+		if (Utility::ExistFileW(shaderFileName))
+		{
+			hr = resources->device->CreatePixelShader(GetBlob(shaderFileName)->GetBufferPointer(), GetBlob(shaderFileName)->GetBufferSize(), NULL, &pixelShaders[shaderFileName]);
+		}
+		else//cso로 부터 생성
+		{
+			string cso = Utility::GetFileNameWithoutExtension(Utility::ToString(shaderFileName)) + ".cso";
 
+			std::vector<char> compiledShader = Utility::GetBinary(cso);
+
+			hr = resources->device->CreatePixelShader(compiledShader.data(), compiledShader.size(), NULL, &pixelShaders[shaderFileName]);
+		}
 		assert(SUCCEEDED(hr));
 	}//생성
 
@@ -213,7 +236,7 @@ void SRVResources::GetFromFile(Resource<ID3D11ShaderResourceView>& dest, wstring
 
 		wstring extension = Utility::GetExtension(fileName);
 		HRESULT hr = S_OK;
-		if(extension == L"dds")
+		if (extension == L"dds")
 			hr = CreateDDSTextureFromFile(resources->device, path.c_str(), &res, &srvsFromTexture[fileName].data);
 		else
 			hr = CreateWICTextureFromFile(resources->device, path.c_str(), &res, &srvsFromTexture[fileName].data);

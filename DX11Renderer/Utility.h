@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <string>
 #include <vector>
+#include <fstream>
 
 
 namespace Utility
@@ -25,4 +26,6 @@ namespace Utility
 	bool ExistDirectory(std::string path);
 	void CreateFolders(std::string path);
 
+	std::vector<char> GetBinary(std::string path);
+	std::vector<char> GetBinaryW(std::wstring path);
 };

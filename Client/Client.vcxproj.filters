@@ -53,6 +53,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Triangle.hlsl" />
+    <FxCompile Include="TriangleVS.hlsl" />
+    <FxCompile Include="TrianglePS.hlsl" />
   </ItemGroup>
 </Project>

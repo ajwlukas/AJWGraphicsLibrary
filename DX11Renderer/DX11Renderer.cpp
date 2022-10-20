@@ -260,7 +260,7 @@ void DX11Renderer::Present()
 
 Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName)
 {
-    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, vsFileName);
+    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, L"TriangleVS.hlsl");
 }
 
 Material* DX11Renderer::CreateMaterial(const TL_Graphics::MaterialDesc& desc)
@@ -269,7 +269,7 @@ Material* DX11Renderer::CreateMaterial(const TL_Graphics::MaterialDesc& desc)
     samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
     samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
     samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
-    return new Material(dc, resources, pipeline, L"Triangle.hlsl", samplerDesc, desc);
+    return new Material(dc, resources, pipeline, L"TrianglePS.hlsl", samplerDesc, desc);
 }
 
 void DX11Renderer::Draw()
