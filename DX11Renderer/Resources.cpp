@@ -67,7 +67,7 @@ ID3DBlob* VertexShaderResources::GetBlob(wstring shaderFileName)
 	{
 		wstring path = shaderFileName;
 		//D3D_COMPILE_STANDARD_FILE_INCLUDE == hlsl에서 #include 쓸 수 있게 해주는 놈
-		HRESULT hr = D3DCompileFromFile(path.c_str(), 0, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VS", "vs_5_0",
+		HRESULT hr = D3DCompileFromFile(path.c_str(), 0, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "vs_5_0",
 			SHADERFLAG, 0, &vertexShaderBlobs[shaderFileName], &error);//todo : Vertex.hlsl 작성 안함
 
 
@@ -175,7 +175,7 @@ ID3DBlob* PixelShaderResources::GetBlob(wstring shaderFileName)
 	if (pixelShaderBlobs.find(shaderFileName) == pixelShaderBlobs.end())//해당하는 쉐이더가 없으면
 	{
 		wstring path = shaderFileName;
-		HRESULT hr = D3DCompileFromFile(path.c_str(), 0, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PS", "ps_5_0",
+		HRESULT hr = D3DCompileFromFile(path.c_str(), 0, D3D_COMPILE_STANDARD_FILE_INCLUDE, "main", "ps_5_0",
 			SHADERFLAG, 0, &pixelShaderBlobs[shaderFileName], &error);//todo : Pixel.hlsl 작성 안함
 
 		assert(SUCCEEDED(hr));

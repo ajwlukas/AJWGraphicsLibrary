@@ -13,55 +13,76 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\Renderer">
+      <UniqueIdentifier>{6460fa61-75d4-4637-b929-ee43017fa619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderer\Pipeline">
+      <UniqueIdentifier>{367a047c-24cd-4f8a-ae6c-b8517dbb8784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderer\Pipeline\Mesh">
+      <UniqueIdentifier>{f1458283-7d96-49af-b83e-f204f69f7989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderer\Pipeline\Material">
+      <UniqueIdentifier>{ecce6bad-81ab-4fe9-9eec-4844d9db9d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Export">
+      <UniqueIdentifier>{b7d8cc16-adf3-4563-a9a3-265ba4bf3209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderer\Resources">
+      <UniqueIdentifier>{88acb7d0-ac0c-4c24-ac80-060cf6a3ac41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\etc">
+      <UniqueIdentifier>{87c04ac9-2769-4437-bf8b-84c346032131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderer\Pipeline\Mesh\Vertex">
+      <UniqueIdentifier>{18f92a5a-afc1-49d2-b673-0be0d03acc25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Export.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="pch_dx_11.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="typedef.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="DX11Renderer.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Pipeline.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Renderer\Pipeline</Filter>
     </ClInclude>
-    <ClInclude Include="IMesh.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Mesh.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Material.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Export.h">
+      <Filter>헤더 파일\Export</Filter>
     </ClInclude>
     <ClInclude Include="IMaterial.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="IMesh.h">
+      <Filter>헤더 파일\Export</Filter>
     </ClInclude>
     <ClInclude Include="IVertex.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일\Renderer\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>헤더 파일\Renderer\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>헤더 파일\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="typedef.h">
+      <Filter>헤더 파일\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Mesh\Vertex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

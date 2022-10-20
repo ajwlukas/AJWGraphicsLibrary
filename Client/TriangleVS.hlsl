@@ -9,7 +9,7 @@ struct VSout
     float4 pos : SV_POSITION;
 };
 
-VSout VS(VSin input) : SV_POSITION
+VSout main(VSin input) : SV_POSITION
 {
     VSout output;
     

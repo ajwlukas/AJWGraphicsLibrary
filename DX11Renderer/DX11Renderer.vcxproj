@@ -212,7 +212,6 @@ copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Utility.h" />
-    <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="typedef.h" />
     <ClInclude Include="Pipeline.h" />
