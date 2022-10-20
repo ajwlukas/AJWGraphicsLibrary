@@ -27,7 +27,7 @@ public:
 	virtual void Present()override;
 
 	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-		std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST) override;
+		std::wstring vsFileName = L"UVLightVertex.hlsl") override;
 
 	//이후할것 example
 	// Mesh* CreateAnimatingMesh();

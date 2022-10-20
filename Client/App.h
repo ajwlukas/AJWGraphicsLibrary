@@ -5,7 +5,7 @@
 #include "IMaterial.h"
 #include "IVertex.h"
 
-typedef DX11Renderer RenderEngine;//todo : typedef CUSTOM_ENGINE engine
+
 class App
 {
 public:

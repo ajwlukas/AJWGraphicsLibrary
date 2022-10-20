@@ -4,8 +4,8 @@
 
 #include "IMesh.h"
 #include "IMaterial.h"
-#include "Mesh.h"
-#include "Material.h"
+#include "IVertex.h"
+
 
 namespace TL_Graphics
 {
@@ -23,7 +23,7 @@ namespace TL_Graphics
 		virtual void Present() = 0;
 
 		virtual IMesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount,
-			std::wstring vsFileName = L"UVLightVertex.hlsl", D3D_PRIMITIVE_TOPOLOGY topology = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST) = 0;
+			std::wstring vsFileName = L"UVLightVertex.hlsl") = 0;
 
 		virtual IMaterial* CreateMaterial(const MaterialDesc& desc = MaterialDesc()) = 0;
 	};

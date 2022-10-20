@@ -258,9 +258,9 @@ void DX11Renderer::Present()
     swapChain->Present(0, 0);
 }
 
-Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName, D3D_PRIMITIVE_TOPOLOGY topology)
+Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring vsFileName)
 {
-    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, vsFileName, topology);
+    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, vsFileName);
 }
 
 Material* DX11Renderer::CreateMaterial(const TL_Graphics::MaterialDesc& desc)
