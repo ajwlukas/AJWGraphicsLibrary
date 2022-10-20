@@ -8,7 +8,6 @@
 
 #include "App.h"
 
-
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
