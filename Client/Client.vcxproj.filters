@@ -13,47 +13,62 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\Example">
+      <UniqueIdentifier>{a06a7b58-ee94-4300-b2e0-76f6ffb065bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Example\Ex_Triangle">
+      <UniqueIdentifier>{50d2ab15-2a2e-4856-a48a-0c84fee347be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
+    <ClInclude Include="src\framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="src\targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
+    <ClInclude Include="src\Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h">
+    <ClInclude Include="src\Client.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="App.h">
+    <ClInclude Include="src\App.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Example\IExample.h">
+      <Filter>헤더 파일\Example</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Example\Ex_Triagle\Ex_Triangle.h">
+      <Filter>헤더 파일\Example\Ex_Triangle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp">
+    <ClCompile Include="src\Client.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="App.cpp">
+    <ClCompile Include="src\App.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Client.rc">
+    <ResourceCompile Include="src\Client.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="small.ico">
+    <Image Include="src\small.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Client.ico">
+    <Image Include="src\Client.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="TriangleVS.hlsl" />
     <FxCompile Include="TrianglePS.hlsl" />
+    <FxCompile Include="TriangleVS.hlsl" />
   </ItemGroup>
 </Project>

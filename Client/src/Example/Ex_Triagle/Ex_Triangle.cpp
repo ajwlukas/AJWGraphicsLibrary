@@ -1,6 +1,6 @@
-#include "App.h"
+#include "Ex_Triangle.h"
 
-App::App()
+void Ex_Triangle::Init()
 {
     TL_Graphics::RenderSystem::Create();
     TL_Graphics::RenderSystem::Get()->Init();
@@ -15,7 +15,7 @@ App::App()
         ,{-0.5f, -0.5f}
         ,{0.5f, -0.5f}
     };
-    vertexAttribute.AddElementToDesc(sizeof(float) * 2, TL_Graphics::DataType::FLOAT,"POSITION");
+    vertexAttribute.AddElementToDesc(sizeof(float) * 2, TL_Graphics::DataType::FLOAT, "POSITION");
     vertexAttribute.AddData(vertices, sizeof(vertices));
     UINT indicies[]
         =
@@ -28,12 +28,12 @@ App::App()
     material = TL_Graphics::RenderSystem::Get()->CreateMaterial();
 }
 
-App::~App()
+void Ex_Triangle::UnInit()
 {
-     TL_Graphics::RenderSystem::Delete();
+    TL_Graphics::RenderSystem::Delete();
 }
 
-void App::Update()
+void Ex_Triangle::Update()
 {
     TL_Graphics::RenderSystem::Get()->Clear();
 

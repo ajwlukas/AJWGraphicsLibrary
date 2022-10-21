@@ -105,11 +105,11 @@
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
+copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,11 +137,11 @@ copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
+copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -164,11 +164,11 @@ copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
+copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -192,58 +192,55 @@ copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
     </Link>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IVertex.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMaterial.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)IMesh.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)RenderSystem.h" "$(ProjectDir)inc"
-copy/Y "$(ProjectDir)Export.h" "$(ProjectDir)inc"</Command>
+copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="DX11Renderer.h" />
-    <ClInclude Include="Export.h" />
-    <ClInclude Include="IMaterial.h" />
-    <ClInclude Include="IMesh.h" />
-    <ClInclude Include="IVertex.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="pch_dx_11.h" />
-    <ClInclude Include="RenderSystem.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="Resources.h" />
-    <ClInclude Include="Utility.h" />
-    <ClInclude Include="Vertex.h" />
-    <ClInclude Include="typedef.h" />
-    <ClInclude Include="Pipeline.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="IVertex.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="DX11Renderer.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="Vertex.cpp" />
-    <ClCompile Include="pch_dx_11.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch_dx_11.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="Pipeline.cpp" />
-    <ClCompile Include="Resources.cpp" />
-    <ClCompile Include="Utility.cpp" />
-    <ClCompile Include="Vector3.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JWCommon\Common.vcxproj">
       <Project>{39659ec0-f481-42fe-ae1b-1052893a8997}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
+    <None Include="src\SimpleMath.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\DX11Renderer.cpp" />
+    <ClCompile Include="src\IVertex.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\pch_dx_11.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Pipeline.cpp" />
+    <ClCompile Include="src\RenderSystem.cpp" />
+    <ClCompile Include="src\Resources.cpp" />
+    <ClCompile Include="src\Utility.cpp" />
+    <ClCompile Include="src\Vertex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\DX11Renderer.h" />
+    <ClInclude Include="src\Export.h" />
+    <ClInclude Include="src\IMaterial.h" />
+    <ClInclude Include="src\IMesh.h" />
+    <ClInclude Include="src\IVertex.h" />
+    <ClInclude Include="src\Material.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\PathDefine.h" />
+    <ClInclude Include="src\pch_dx_11.h" />
+    <ClInclude Include="src\Pipeline.h" />
+    <ClInclude Include="src\RenderSystem.h" />
+    <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\Resources.h" />
+    <ClInclude Include="src\typedef.h" />
+    <ClInclude Include="src\Utility.h" />
+    <ClInclude Include="src\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

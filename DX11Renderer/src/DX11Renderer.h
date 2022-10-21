@@ -17,9 +17,7 @@ class  DX11Renderer : public TL_Graphics::RenderSystem
 public:
 	DX11Renderer();
 	virtual ~DX11Renderer();
-	/*static void Create() { instance = nullptr ? instance : new DX11Renderer(); }
-	static void Delete() { delete instance; }
-	static DX11Renderer* Get() { return instance; }*/
+
 	virtual HRESULT Init() override;
 
 	virtual void Clear()override;
@@ -28,15 +26,9 @@ public:
 
 	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount) override;
 
-	//이후할것 example
-	// Mesh* CreateAnimatingMesh();
-
 	virtual Material* CreateMaterial(const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc()) override;
 
-
 private:
-	//static DX11Renderer* instance;
-
 	HWND hWnd;
 	WINDOWINFO windowInfo;
 	UINT width, height;

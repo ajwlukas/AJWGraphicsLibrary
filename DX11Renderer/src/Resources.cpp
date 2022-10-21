@@ -36,7 +36,7 @@ Resources::~Resources()
 	buffers->Release();
 }
 
-ID3D11VertexShader* VertexShaderResources::Get(wstring shaderFileName)
+ID3D11VertexShader* VertexShaderResources::Get(std::wstring shaderFileName)
 {
 	if (vertexShaders.find(shaderFileName) == vertexShaders.end())//해당하는 쉐이더가 없으면
 	{
@@ -90,7 +90,7 @@ void InputLayoutResources::Get(Resource<ID3D11InputLayout>& dest, D3D11_INPUT_EL
 {
 	dest.Return();
 
-	string key = "";
+	string key = {};
 	for (UINT i = 0; i < descSize; i++)
 		key += (string)desc[i].SemanticName;
 	string vsName(vertexShaderFileName.begin(), vertexShaderFileName.end());

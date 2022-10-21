@@ -39,90 +39,90 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch_dx_11.h">
+    <None Include="src\SimpleMath.inl">
+      <Filter>헤더 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\DX11Renderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IVertex.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch_dx_11.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pipeline.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderSystem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resources.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vertex.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\DX11Renderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="DX11Renderer.h">
-      <Filter>헤더 파일\Renderer</Filter>
+    <ClInclude Include="src\Export.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Pipeline.h">
-      <Filter>헤더 파일\Renderer\Pipeline</Filter>
+    <ClInclude Include="src\IMaterial.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>헤더 파일\Renderer\Pipeline\Mesh</Filter>
+    <ClInclude Include="src\IMesh.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>헤더 파일\Renderer\Pipeline\Material</Filter>
+    <ClInclude Include="src\IVertex.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Export.h">
-      <Filter>헤더 파일\Export</Filter>
+    <ClInclude Include="src\Material.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IMaterial.h">
-      <Filter>헤더 파일\Export</Filter>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IMesh.h">
-      <Filter>헤더 파일\Export</Filter>
+    <ClInclude Include="src\PathDefine.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IVertex.h">
-      <Filter>헤더 파일\Export</Filter>
+    <ClInclude Include="src\pch_dx_11.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>헤더 파일\Export</Filter>
+    <ClInclude Include="src\Pipeline.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>헤더 파일\Renderer\Resources</Filter>
+    <ClInclude Include="src\RenderSystem.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>헤더 파일\Renderer\Resources</Filter>
+    <ClInclude Include="src\Resource.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>헤더 파일\etc</Filter>
+    <ClInclude Include="src\Resources.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="typedef.h">
-      <Filter>헤더 파일\etc</Filter>
+    <ClInclude Include="src\typedef.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>헤더 파일\Renderer\Pipeline\Mesh\Vertex</Filter>
+    <ClInclude Include="src\Utility.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DX11Renderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="pch_dx_11.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Resources.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Pipeline.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="IVertex.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
+    <ClInclude Include="src\Vertex.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
