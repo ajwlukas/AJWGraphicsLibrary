@@ -164,6 +164,7 @@
     <ClInclude Include="src\App.h" />
     <ClInclude Include="src\Client.h" />
     <ClInclude Include="src\Example\Ex_Triagle\Ex_Triangle.h" />
+    <ClInclude Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.h" />
     <ClInclude Include="src\Example\IExample.h" />
     <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\Resource.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Client.cpp" />
     <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp" />
+    <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Client.rc" />
@@ -182,6 +184,18 @@
     <Image Include="src\small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="TriangleColorPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="TriangleColorVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="TrianglePS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>

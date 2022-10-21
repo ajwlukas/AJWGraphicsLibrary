@@ -37,6 +37,9 @@
     <Filter Include="헤더 파일\Renderer\Pipeline\Mesh\Vertex">
       <UniqueIdentifier>{18f92a5a-afc1-49d2-b673-0be0d03acc25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Renderer\Pipeline\ConstantBuffer">
+      <UniqueIdentifier>{25b21ae4-ab7e-4598-bb6f-366973d0886b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\SimpleMath.inl">
@@ -74,27 +77,12 @@
     <ClCompile Include="src\Vertex.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConstantBuffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DX11Renderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Export.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\IMaterial.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\IMesh.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\IVertex.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Material.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mesh.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="src\PathDefine.h">
@@ -103,26 +91,50 @@
     <ClInclude Include="src\pch_dx_11.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pipeline.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\RenderSystem.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Resource.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="src\Vertex.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Mesh\Vertex</Filter>
     </ClInclude>
     <ClInclude Include="src\Resources.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Renderer\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="src\typedef.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="src\Resource.h">
+      <Filter>헤더 파일\Renderer\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pipeline.h">
+      <Filter>헤더 파일\Renderer\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMesh.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Material.h">
+      <Filter>헤더 파일\Renderer\Pipeline\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Export.h">
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IMaterial.h">
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IVertex.h">
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderSystem.h">
+      <Filter>헤더 파일\Export</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\etc</Filter>
     </ClInclude>
-    <ClInclude Include="src\Vertex.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="src\typedef.h">
+      <Filter>헤더 파일\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConstantBuffer.h">
+      <Filter>헤더 파일\Renderer\Pipeline\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IConstantBuffer.h">
+      <Filter>헤더 파일\Export</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

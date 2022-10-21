@@ -10,6 +10,8 @@
 
 #include "Mesh.h"
 #include "Material.h"
+#include "ConstantBuffer.h"
+
 #include "Pipeline.h"
 
 class  DX11Renderer : public TL_Graphics::RenderSystem
@@ -24,9 +26,11 @@ public:
 	virtual void Draw() override;
 	virtual void Present()override;
 
-	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount) override;
+	virtual Mesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring fileName) override;
 
-	virtual Material* CreateMaterial(const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc()) override;
+	virtual Material* CreateMaterial(std::wstring fileName, const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc()) override;
+
+	virtual ConstantBuffer* CreateConstantBuffer(UINT slot, void* data, size_t dataSize) override;
 
 private:
 	HWND hWnd;
@@ -57,4 +61,5 @@ private:
 	HRESULT CreateAndSetRasterizerState();
 	HRESULT CreateBlendState();
 	void SetViewPort();
+
 };

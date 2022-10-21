@@ -42,6 +42,9 @@
     <ClInclude Include="src\Example\Ex_Triagle\Ex_Triangle.h">
       <Filter>헤더 파일\Example\Ex_Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Client.cpp">
@@ -51,6 +54,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -70,5 +76,7 @@
   <ItemGroup>
     <FxCompile Include="TrianglePS.hlsl" />
     <FxCompile Include="TriangleVS.hlsl" />
+    <FxCompile Include="TriangleColorPS.hlsl" />
+    <FxCompile Include="TriangleColorVS.hlsl" />
   </ItemGroup>
 </Project>

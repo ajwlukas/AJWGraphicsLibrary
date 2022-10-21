@@ -212,6 +212,7 @@ void DX11Renderer::SetViewPort()
     dc->RSSetViewports(1, &viewPort);
 }
 
+
 void DX11Renderer::OnResize()
 {
     if (this == nullptr) return;
@@ -258,18 +259,23 @@ void DX11Renderer::Present()
     swapChain->Present(0, 0);
 }
 
-Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount)
+Mesh* DX11Renderer::CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, wstring fileName)
 {
-    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, L"TriangleVS.hlsl");
+    return new Mesh(dc, resources, pipeline, vertexSet, indexData, indexCount, fileName);
 }
 
-Material* DX11Renderer::CreateMaterial(const TL_Graphics::MaterialDesc& desc)
+Material* DX11Renderer::CreateMaterial(std::wstring fileName, const TL_Graphics::MaterialDesc& desc)
 {
     D3D11_SAMPLER_DESC samplerDesc = {};
     samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
     samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
     samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
-    return new Material(dc, resources, pipeline, L"TrianglePS.hlsl", samplerDesc, desc);
+    return new Material(dc, resources, pipeline, fileName, samplerDesc, desc);
+}
+
+ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot, void* data, size_t dataSize)
+{
+    return new ConstantBuffer(dc, resources, slot, data, dataSize);
 }
 
 void DX11Renderer::Draw()

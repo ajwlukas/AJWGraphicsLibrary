@@ -109,7 +109,8 @@ copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,7 +142,8 @@ copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -168,7 +170,8 @@ copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -196,7 +199,8 @@ copy/Y "$(ProjectDir)src\IVertex.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -208,6 +212,7 @@ copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     <None Include="src\SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ConstantBuffer.cpp" />
     <ClCompile Include="src\DX11Renderer.cpp" />
     <ClCompile Include="src\IVertex.cpp" />
     <ClCompile Include="src\Material.cpp" />
@@ -225,8 +230,10 @@ copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"</Command>
     <ClCompile Include="src\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ConstantBuffer.h" />
     <ClInclude Include="src\DX11Renderer.h" />
     <ClInclude Include="src\Export.h" />
+    <ClInclude Include="src\IConstantBuffer.h" />
     <ClInclude Include="src\IMaterial.h" />
     <ClInclude Include="src\IMesh.h" />
     <ClInclude Include="src\IVertex.h" />

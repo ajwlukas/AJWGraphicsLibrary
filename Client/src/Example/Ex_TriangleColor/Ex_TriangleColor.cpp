@@ -1,6 +1,6 @@
-#include "Ex_Triangle.h"
+#include "Ex_TriangleColor.h"
 
-void Ex_Triangle::Init()
+void Ex_TriangleColor::Init()
 {
     TL_Graphics::RenderSystem::Create();
     TL_Graphics::RenderSystem::Get()->Init();
@@ -23,23 +23,32 @@ void Ex_Triangle::Init()
         0,2,1
     };
 
-    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"TriangleVS.hlsl");
+    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"TriangleColorVS.hlsl");
 
-    material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"TrianglePS.hlsl");
+    material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"TriangleColorPS.hlsl");
+
+    struct Color
+    {
+        float rgba[4];
+    }color{1,0,1,1};
+
+    constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &color, sizeof(Color));
 }
 
-void Ex_Triangle::UnInit()
+void Ex_TriangleColor::UnInit()
 {
     TL_Graphics::RenderSystem::Delete();
 }
 
-void Ex_Triangle::Update()
+void Ex_TriangleColor::Update()
 {
     TL_Graphics::RenderSystem::Get()->Clear();
 
     material->Set();
 
     mesh->Set();
+
+    constantBuffer->Set();
 
     TL_Graphics::RenderSystem::Get()->Draw();
 

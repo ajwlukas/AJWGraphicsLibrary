@@ -6,6 +6,8 @@
 #include "IMaterial.h"
 #include "IVertex.h"
 
+#include "IConstantBuffer.h"
+
 
 namespace TL_Graphics
 {
@@ -22,8 +24,10 @@ namespace TL_Graphics
 		virtual void Draw() = 0;
 		virtual void Present() = 0;
 
-		virtual IMesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount) = 0;
+		virtual IMesh* CreateMesh(TL_Graphics::VertexSet& vertexSet, UINT indexData[], UINT indexCount, std::wstring fileName) = 0;
 
-		virtual IMaterial* CreateMaterial(const MaterialDesc& desc = MaterialDesc()) = 0;
+		virtual IMaterial* CreateMaterial(std::wstring fileName, const MaterialDesc& desc = MaterialDesc()) = 0;
+
+		virtual IConstantBuffer* CreateConstantBuffer(UINT slot, void* data, size_t dataSize) = 0;
 	};
 }
