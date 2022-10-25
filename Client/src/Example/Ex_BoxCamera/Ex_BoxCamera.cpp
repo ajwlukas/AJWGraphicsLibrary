@@ -2,66 +2,119 @@
 
 void Ex_BoxCamera::Init()
 {
-    TL_Graphics::RenderSystem::Create();
-    TL_Graphics::RenderSystem::Get()->Init();
+	TL_Graphics::RenderSystem::Create();
+	TL_Graphics::RenderSystem::Get()->Init();
 
-    keyboard = new ajwCommon::KeyBoard();
+	keyboard = new ajwCommon::KeyBoard();
 
-    struct Vertex
-    {
-        float position[2];
-    }
-    vertices[3]
-    {
-        {0.0f, 0.5f}
-        ,{-0.5f, -0.5f}
-        ,{0.5f, -0.5f}
-    };
-    vertexAttribute.AddElementToDesc(sizeof(float) * 2, TL_Graphics::DataType::FLOAT, "POSITION");
-    vertexAttribute.AddData(vertices, sizeof(vertices));
-    UINT indicies[]
-        =
-    {
-        0,2,1
-    };
+	struct Vertex
+	{
+		float position[3];
+	}
+	vertices[8]
+	{
+		//¾Õ¸é
+	(-0.5f,        +0.5f,      -0.5f),
+	(+0.5f,        +0.5f,      -0.5f),
+	(-0.5f,        -0.5f,      -0.5f),
+	(+0.5f,        -0.5f,      -0.5f),
 
-    mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, 3, L"TriangleColorVS.hlsl");
+	//µÞ¸é
+	(-0.5f,         +0.5f,     +0.5f),
+	(+0.5f,         +0.5f,     +0.5f),
+	(-0.5f,         -0.5f,     +0.5f),
+	(+0.5f,         -0.5f,     +0.5f)
+	};
 
-    material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"TriangleColorPS.hlsl");
+	vertexAttribute.AddElementToDesc(sizeof(Vertex::position), TL_Graphics::DataType::FLOAT, "POSITION");
 
-    struct Color
-    {
-        float rgba[4];
-    }color{ 1,0,1,1 };
+	vertexAttribute.AddData(vertices, sizeof(vertices));
 
-    constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &color, sizeof(Color));
+	UINT indicies[]
+		=
+	{
+		//front
+		0,1,2,
+		1,3,2,
+		//back
+		5,4,7,
+		4,6,7,
 
-    camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
+		//up
+		4,5,0,
+		5,1,0,
+		//down
+		2,3,6,
+		3,7,6,
+
+		//left
+		4,0,6,
+		0,2,6,
+		//right
+		1,5,3,
+		5,7,3
+	};
+
+	mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, sizeof(indicies) / sizeof(indicies[0]), L"BoxCameraVS.hlsl");
+
+	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"BoxCameraPS.hlsl");
+
+	struct World
+	{
+		float world[4][4];
+	}world
+		=
+	{
+		1,0,0,0,
+		0,1,0,0,
+		0,0,1,0,
+		0,0,0,1
+	};
+
+	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &world, sizeof(World));
+
+	camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
+
 }
 
 void Ex_BoxCamera::UnInit()
 {
-    TL_Graphics::RenderSystem::Delete();
+	TL_Graphics::RenderSystem::Delete();
 
-    delete keyboard;
+	delete keyboard;
 }
 
 void Ex_BoxCamera::Update()
 {
-    TL_Graphics::RenderSystem::Get()->Clear();
+	TL_Graphics::RenderSystem::Get()->Clear();
 
-    keyboard->Update();
+	keyboard->Update();
 
-    if (keyboard->Press(VK_F1))
-    {
-        material->Set();
+	material->Set();
 
-        mesh->Set();
+	mesh->Set();
 
-        constantBuffer->Set();
+	constantBuffer->Set();
 
-        TL_Graphics::RenderSystem::Get()->Draw();
-    }
+	CameraMove();
 
-    TL_Graphics::RenderSystem::Get()->Present();
+	camera->Update(camInfo.pos, camInfo.rot);
+		
+	camera->Set();
+
+	TL_Graphics::RenderSystem::Get()->Draw();
+
+	TL_Graphics::RenderSystem::Get()->Present();
+}
+
+void Ex_BoxCamera::CameraMove()
+{
+	if (keyboard->Press(VK_UP))
+		camInfo.pos[2] += 0.01f;
+	if (keyboard->Press(VK_DOWN))
+		camInfo.pos[2] -= 0.01f;
+	if (keyboard->Press(VK_LEFT))
+		camInfo.pos[0] -= 0.01f;
+	if (keyboard->Press(VK_RIGHT))
+		camInfo.pos[0] += 0.01f;
 }

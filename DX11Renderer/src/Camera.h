@@ -16,7 +16,8 @@ public:
 	virtual void Update(float pos[3], float rot[3]) override;
 
 private:
-	struct Data
+
+	__declspec(align(16)) struct Data
 	{
 		SimpleMath::Matrix view;
 		SimpleMath::Matrix  proj;

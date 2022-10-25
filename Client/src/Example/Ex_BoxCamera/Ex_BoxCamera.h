@@ -10,6 +10,11 @@
 
 #include "AjwCommon\KeyBoard.h"
 
+struct CamInfo
+{
+	float pos[3];
+	float rot[3];
+};
 class ajwCommon::KeyBoard;
 class Ex_BoxCamera : public IExample
 {
@@ -28,4 +33,6 @@ public:
 	TL_Graphics::VertexSet vertexAttribute;
 
 	TL_Graphics::ICamera* camera;
+	struct CamInfo camInfo;
+	void CameraMove();
 };

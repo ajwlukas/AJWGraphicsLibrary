@@ -84,5 +84,7 @@
     <FxCompile Include="TriangleVS.hlsl" />
     <FxCompile Include="TriangleColorPS.hlsl" />
     <FxCompile Include="TriangleColorVS.hlsl" />
+    <FxCompile Include="BoxCameraVS.hlsl" />
+    <FxCompile Include="BoxCameraPS.hlsl" />
   </ItemGroup>
 </Project>
