@@ -1,6 +1,5 @@
 #pragma once
 
-#include "pch_dx_11.h"
 #include "DXTK/SimpleMath.h"
 
 class Vector3

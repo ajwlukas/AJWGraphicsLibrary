@@ -1,7 +1,8 @@
 #pragma once
 
-#include "ConstantBuffer.h"
+#include "DXTK/SimpleMath.h"
 #include "Transform.h"
+#include "ConstantBuffer.h"
 
 class Camera
 {
@@ -10,26 +11,20 @@ public:
 	~Camera();
 	
 	void Set();
-	void Update();
 
 	void Update(float pos[3], float rot[3]);
-
-	void OnResize(UINT height, UINT width);
-
-	//void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);
-
 private:
 	struct Data
 	{
-		Matrix view;
-		Matrix proj;
-		float3 camPos;
-	}viewproj;
+		SimpleMath::Matrix view;
+		SimpleMath::Matrix  proj;
+		SimpleMath::Vector3 camPos;
+	}data;
 
 	ConstantBuffer* viewprojBuffer;
 
-	Transform transform;
-	Matrix view, proj;
+	Transform* transform;
+	SimpleMath::Matrix view, proj;
 
 	float fov;//시야각
 	float fovInRadian;
@@ -37,4 +32,10 @@ private:
 	UINT screenHeight;
 	float frustumNear;
 	float frustumFar;
+
+	//보류
+	void Update();
+	void OnResize(UINT height, UINT width);
+
+	//void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);
 };

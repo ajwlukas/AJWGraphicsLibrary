@@ -4,7 +4,7 @@
 constexpr float pi  = 3.141592f;
 
 Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, float fov, UINT screenWidth, UINT screenHeight, float frustumNear, float frustumFar)
-	:viewproj{}
+	:data{}
 	, view{}
 	, proj{}
 	,fov(80)
@@ -15,21 +15,22 @@ Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline
 {
 	fovInRadian = pi / 180.0f * fov;
 
-	view = XMMatrixInverse(nullptr, *(transform.World()));
+	transform = new Transform(dc, resources, pipeline);
+
+	view = XMMatrixInverse(nullptr, transform->GetWorldMatrix());
 	proj = XMMatrixPerspectiveFovLH(fovInRadian, screenWidth / (float)screenHeight, frustumNear, frustumFar);
 
-	viewproj.view = view;
-	viewproj.proj = proj;
+	data.view = view;
+	data.proj = proj;
+	data.camPos = transform->pos;
 
-	transform.pos = { 0,100, -50 };
-	viewproj.camPos = transform.pos;
-
-	viewprojBuffer = new ConstantBuffer(dc, resources, pipeline, 0, &viewproj, sizeof(Data));
+	viewprojBuffer = new ConstantBuffer(dc, resources, pipeline, 0, &data, sizeof(Data));
 }
 
 Camera::~Camera()
 {
 	SAFE_DELETE(viewprojBuffer);
+	SAFE_DELETE(transform);
 }
 
 void Camera::Set()
@@ -39,18 +40,32 @@ void Camera::Set()
 
 void Camera::Update(float pos[3], float rot[3])
 {
-	pos[0];
+	transform->pos.x = pos[0];
+	transform->pos.y = pos[1];
+	transform->pos.z = pos[2];
+
+	transform->rot.x = rot[0];
+	transform->rot.y = rot[1];
+	transform->rot.z = rot[2];
+
+	transform->UpdateWorld();
+	view = XMMatrixInverse(nullptr, transform->GetWorldMatrix());
+
+	data.camPos = transform->pos;
+	data.view = view;
+
+	viewprojBuffer->Update(&data, sizeof(Data));
 }
 
 void Camera::Update()
 {
-	transform.UpdateWorld();
-	viewproj.camPos = transform.pos;
-	view = XMMatrixInverse(nullptr, *(transform.World()));
+	transform->UpdateWorld();
+	data.camPos = transform->pos;
+	view = XMMatrixInverse(nullptr, transform->GetWorldMatrix());
 
-	viewproj.view = view;
+	data.view = view;
 
-	viewprojBuffer->Update(&viewproj, sizeof(Data));
+	viewprojBuffer->Update(&data, sizeof(Data));
 }
 
 void Camera::OnResize(UINT height, UINT width)
@@ -60,7 +75,7 @@ void Camera::OnResize(UINT height, UINT width)
 
 	proj = XMMatrixPerspectiveFovLH(fovInRadian, width / (float)height, frustumNear, frustumFar);
 
-	viewproj.proj = proj;
+	data.proj = proj;
 }
 
 //

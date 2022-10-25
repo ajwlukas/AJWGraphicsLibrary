@@ -74,9 +74,4 @@ using namespace DirectX;
 
 //#pragma comment(lib, "libfbxsdk.lib")
 
-typedef XMFLOAT2 float2;
-typedef XMFLOAT3 float3;
-typedef XMFLOAT4 float4;
-typedef XMMATRIX Matrix;
-
 #include "DX11Renderer.h"

@@ -229,13 +229,13 @@ copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command
     <ClCompile Include="src\Resources.cpp" />
     <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\Utility.cpp" />
-    <ClCompile Include="src\Vector3.cpp" />
     <ClCompile Include="src\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\ConstantBuffer.h" />
     <ClInclude Include="src\DX11Renderer.h" />
+    <ClInclude Include="src\DXTK\SimpleMath.h" />
     <ClInclude Include="src\Export.h" />
     <ClInclude Include="src\IConstantBuffer.h" />
     <ClInclude Include="src\IMaterial.h" />
@@ -252,7 +252,6 @@ copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command
     <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\typedef.h" />
     <ClInclude Include="src\Utility.h" />
-    <ClInclude Include="src\Vector3.h" />
     <ClInclude Include="src\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
