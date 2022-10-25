@@ -275,7 +275,7 @@ Material* DX11Renderer::CreateMaterial(std::wstring fileName, const TL_Graphics:
 
 ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot, void* data, size_t dataSize)
 {
-    return new ConstantBuffer(dc, resources, slot, data, dataSize);
+    return new ConstantBuffer(dc, resources, pipeline, slot, data, dataSize);
 }
 
 void DX11Renderer::Draw()

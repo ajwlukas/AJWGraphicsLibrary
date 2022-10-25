@@ -1,26 +1,22 @@
 #pragma once
 
-class Camera //: public Object
+#include "ConstantBuffer.h"
+#include "Transform.h"
+
+class Camera
 {
 public:
-	Camera();
+	Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, float fov = 80.0f, UINT screenWidth = 100, UINT screenHeight = 100, float frustumNear = 1.0f, float frustumFar = 2000.0f);
 	~Camera();
-
-	//virtual void Update() override;
-	//virtual void Render() override;
 	
-	void Update() ;
-	void Render() ;
+	void Set();
+	void Update();
+
+	void Update(float pos[3], float rot[3]);
 
 	void OnResize(UINT height, UINT width);
 
-	void Move();
-	bool bMovable;
-
-	void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);
-
-private:
-	float camMovSpeed, camRotSpeed;
+	//void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);
 
 private:
 	struct Data
@@ -30,10 +26,15 @@ private:
 		float3 camPos;
 	}viewproj;
 
-	ID3D11Buffer* viewprojBuffer;
+	ConstantBuffer* viewprojBuffer;
 
+	Transform transform;
 	Matrix view, proj;
 
 	float fov;//½Ã¾ß°¢
-	float fovInDegree;
+	float fovInRadian;
+	UINT screenWidth;
+	UINT screenHeight;
+	float frustumNear;
+	float frustumFar;
 };

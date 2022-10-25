@@ -2,16 +2,15 @@
 
 #include "Example\IExample.h"
 
-
 #include "Graphics/RenderSystem.h"
-#include "Graphics/IMesh.h"
-#include "Graphics/IMaterial.h"
-#include "Graphics/IVertex.h"
 
-
-class Ex_TriangleColor : public IExample
+class Ex_BoxCamera : public IExample
 {
 public:
+	Ex_BoxCamera();
+	~Ex_BoxCamera();
+
+
 	// IExample을(를) 통해 상속됨
 	virtual void Init() override;
 	virtual void UnInit() override;

@@ -22,7 +22,7 @@ Transform::Transform()
 	cbd.StructureByteStride = 0;
 	D3D11_SUBRESOURCE_DATA initData;
 	initData.pSysMem = &world;
-	RESOURCES->buffers->Create(worldBuffer, cbd, &initData);
+	//RESOURCES->buffers->Create(worldBuffer, cbd, &initData);
 }
 
 Transform::~Transform()
