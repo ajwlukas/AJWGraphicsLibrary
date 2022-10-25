@@ -14,16 +14,16 @@ void Ex_BoxCamera::Init()
 	vertices[8]
 	{
 		//¾Õ¸é
-	(-0.5f,        +0.5f,      -0.5f),
-	(+0.5f,        +0.5f,      -0.5f),
-	(-0.5f,        -0.5f,      -0.5f),
-	(+0.5f,        -0.5f,      -0.5f),
+	{-0.5f,        +0.5f,      -0.5f},
+	{+0.5f,        +0.5f,      -0.5f},
+	{-0.5f,        -0.5f,      -0.5f},
+	{+0.5f,        -0.5f,      -0.5f},
 
 	//µÞ¸é
-	(-0.5f,         +0.5f,     +0.5f),
-	(+0.5f,         +0.5f,     +0.5f),
-	(-0.5f,         -0.5f,     +0.5f),
-	(+0.5f,         -0.5f,     +0.5f)
+	{-0.5f,         +0.5f,     +0.5f},
+	{+0.5f,         +0.5f,     +0.5f},
+	{-0.5f,         -0.5f,     +0.5f},
+	{+0.5f,         -0.5f,     +0.5f}
 	};
 
 	vertexAttribute.AddElementToDesc(sizeof(Vertex::position), TL_Graphics::DataType::FLOAT, "POSITION");
