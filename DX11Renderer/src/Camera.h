@@ -1,18 +1,20 @@
 #pragma once
 
+#include "ICamera.h"
+
 #include "DXTK/SimpleMath.h"
 #include "Transform.h"
 #include "ConstantBuffer.h"
 
-class Camera
+class Camera : public TL_Graphics::ICamera
 {
 public:
 	Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, float fov = 80.0f, UINT screenWidth = 100, UINT screenHeight = 100, float frustumNear = 1.0f, float frustumFar = 2000.0f);
 	~Camera();
 	
-	void Set();
+	virtual void Set() override;
+	virtual void Update(float pos[3], float rot[3]) override;
 
-	void Update(float pos[3], float rot[3]);
 private:
 	struct Data
 	{

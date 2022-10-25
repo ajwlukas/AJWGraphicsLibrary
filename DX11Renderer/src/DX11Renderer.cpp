@@ -278,6 +278,11 @@ ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot, void* data, size_t
     return new ConstantBuffer(dc, resources, pipeline, slot, data, dataSize);
 }
 
+Camera* DX11Renderer::CreateCamera()
+{
+    return new Camera(dc, resources, pipeline, 80.0f, width, height, 1.0f, 2000.0f);
+}
+
 void DX11Renderer::Draw()
 {
     pipeline->Draw();

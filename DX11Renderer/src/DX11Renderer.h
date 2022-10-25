@@ -11,6 +11,7 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "ConstantBuffer.h"
+#include "Camera.h"
 
 #include "Pipeline.h"
 
@@ -31,6 +32,9 @@ public:
 	virtual Material* CreateMaterial(std::wstring fileName, const TL_Graphics::MaterialDesc& desc = TL_Graphics::MaterialDesc()) override;
 
 	virtual ConstantBuffer* CreateConstantBuffer(UINT slot, void* data, size_t dataSize) override;
+
+	virtual Camera* CreateCamera() override;
+
 
 private:
 	HWND hWnd;

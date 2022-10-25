@@ -110,7 +110,8 @@ copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,7 +144,8 @@ copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -171,7 +173,8 @@ copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -200,14 +203,10 @@ copy/Y "$(ProjectDir)src\IMaterial.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\IMesh.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\RenderSystem.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\Export.h" "$(ProjectDir)inc\Graphics"
-copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command>
+copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"
+copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JWCommon\Common.vcxproj">
-      <Project>{39659ec0-f481-42fe-ae1b-1052893a8997}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <None Include="src\SimpleMath.inl" />
   </ItemGroup>
@@ -232,6 +231,7 @@ copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"</Command
     <ClCompile Include="src\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ICamera.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\ConstantBuffer.h" />
     <ClInclude Include="src\DX11Renderer.h" />

@@ -7,6 +7,7 @@
 #include "IVertex.h"
 
 #include "IConstantBuffer.h"
+#include "ICamera.h"
 
 
 namespace TL_Graphics
@@ -29,5 +30,7 @@ namespace TL_Graphics
 		virtual IMaterial* CreateMaterial(std::wstring fileName, const MaterialDesc& desc = MaterialDesc()) = 0;
 
 		virtual IConstantBuffer* CreateConstantBuffer(UINT slot, void* data, size_t dataSize) = 0;
+
+		virtual ICamera* CreateCamera() = 0;
 	};
 }

@@ -1,9 +1,11 @@
 #include "Ex_BoxCamera.h"
 
-Ex_BoxCamera::Ex_BoxCamera()
+void Ex_BoxCamera::Init()
 {
     TL_Graphics::RenderSystem::Create();
     TL_Graphics::RenderSystem::Get()->Init();
+
+    keyboard = new ajwCommon::KeyBoard();
 
     struct Vertex
     {
@@ -33,20 +35,33 @@ Ex_BoxCamera::Ex_BoxCamera()
     }color{ 1,0,1,1 };
 
     constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &color, sizeof(Color));
-}
 
-Ex_BoxCamera::~Ex_BoxCamera()
-{
-}
-
-void Ex_BoxCamera::Init()
-{
+    camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
 }
 
 void Ex_BoxCamera::UnInit()
 {
+    TL_Graphics::RenderSystem::Delete();
+
+    delete keyboard;
 }
 
 void Ex_BoxCamera::Update()
 {
+    TL_Graphics::RenderSystem::Get()->Clear();
+
+    keyboard->Update();
+
+    if (keyboard->Press(VK_F1))
+    {
+        material->Set();
+
+        mesh->Set();
+
+        constantBuffer->Set();
+
+        TL_Graphics::RenderSystem::Get()->Draw();
+    }
+
+    TL_Graphics::RenderSystem::Get()->Present();
 }
