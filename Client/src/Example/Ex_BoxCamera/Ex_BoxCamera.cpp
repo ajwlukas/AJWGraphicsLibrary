@@ -5,7 +5,7 @@ void Ex_BoxCamera::Init()
 	TL_Graphics::RenderSystem::Create();
 	TL_Graphics::RenderSystem::Get()->Init();
 
-	keyboard = new ajwCommon::KeyBoard();
+	input = new ajwCommon::Input();
 
 	struct Vertex
 	{
@@ -81,14 +81,14 @@ void Ex_BoxCamera::UnInit()
 {
 	TL_Graphics::RenderSystem::Delete();
 
-	delete keyboard;
+	delete input;
 }
 
 void Ex_BoxCamera::Update()
 {
 	TL_Graphics::RenderSystem::Get()->Clear();
 
-	keyboard->Update();
+	input->Update();
 
 	material->Set();
 
@@ -109,12 +109,18 @@ void Ex_BoxCamera::Update()
 
 void Ex_BoxCamera::CameraMove()
 {
-	if (keyboard->Press(VK_UP))
+	if (input->Press(VK_LBUTTON))
+	{
+		camInfo.rot[1] += input->MouseDiff().x * 0.01f;
+		camInfo.rot[0] += input->MouseDiff().y * 0.01f;
+	}
+
+	if (input->Press(VK_UP))
 		camInfo.pos[2] += 0.01f;
-	if (keyboard->Press(VK_DOWN))
+	if (input->Press(VK_DOWN))
 		camInfo.pos[2] -= 0.01f;
-	if (keyboard->Press(VK_LEFT))
+	if (input->Press(VK_LEFT))
 		camInfo.pos[0] -= 0.01f;
-	if (keyboard->Press(VK_RIGHT))
+	if (input->Press(VK_RIGHT))
 		camInfo.pos[0] += 0.01f;
 }

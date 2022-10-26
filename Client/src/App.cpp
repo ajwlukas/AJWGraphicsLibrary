@@ -7,7 +7,7 @@
 App::App()
 {
 	//example = new Ex_Triangle();
-	example = new Ex_TriangleColor();
+	//example = new Ex_TriangleColor();
 	example = new Ex_BoxCamera();
 
 

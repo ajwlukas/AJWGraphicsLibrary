@@ -8,14 +8,14 @@
 #include "Graphics/IVertex.h"
 #include "Graphics\ICamera.h"
 
-#include "AjwCommon\KeyBoard.h"
+#include "AjwCommon\Input.h"
 
 struct CamInfo
 {
 	float pos[3];
 	float rot[3];
 };
-class ajwCommon::KeyBoard;
+class ajwCommon::Input;
 class Ex_BoxCamera : public IExample
 {
 public:
@@ -25,7 +25,7 @@ public:
 	virtual void UnInit() override;
 	virtual void Update() override;
 
-	ajwCommon::KeyBoard* keyboard;
+	ajwCommon::Input* input;
 
 	TL_Graphics::IMesh* mesh;
 	TL_Graphics::IMaterial* material;
