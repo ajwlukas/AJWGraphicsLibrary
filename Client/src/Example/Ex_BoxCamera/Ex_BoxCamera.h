@@ -10,6 +10,8 @@
 
 #include "AjwCommon\Input.h"
 
+#include "Helper\Transform.h"
+
 struct CamInfo
 {
 	float pos[3];
@@ -35,4 +37,7 @@ public:
 	TL_Graphics::ICamera* camera;
 	struct CamInfo camInfo;
 	void CameraMove();
+
+	Transform t;
+	void TransformMove();
 };

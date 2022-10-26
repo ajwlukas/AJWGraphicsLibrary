@@ -53,10 +53,10 @@ public:
 	SimpleMath::Vector3 rot;
 	SimpleMath::Vector3 scale;
 
-	SimpleMath::Vector3 worldPos;
-	SimpleMath::Vector3 worldRot;
-	SimpleMath::Quaternion worldRotQuat;
-	SimpleMath::Vector3 worldScale;
+	SimpleMath::Vector3 posW;
+	SimpleMath::Vector3 rotW;
+	SimpleMath::Quaternion quatW;
+	SimpleMath::Vector3 scaleW;
 
 	//void SaveWorldIngredient();
 

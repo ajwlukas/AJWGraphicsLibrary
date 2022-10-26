@@ -12,6 +12,8 @@ Transform::Transform(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pi
 	worldBuffer = new ConstantBuffer(dc, resources, pipeline, 1, &world, sizeof(Data));
 }
 
+
+
 Transform::~Transform()
 {
 	SAFE_DELETE(worldBuffer);
@@ -22,7 +24,7 @@ void Transform::UpdateWorld()
 	S = XMMatrixScalingFromVector(XMLoadFloat3(&scale));
 	R = XMMatrixRotationRollPitchYawFromVector(XMLoadFloat3(&rot));
 	T = XMMatrixTranslationFromVector(XMLoadFloat3(&pos));
-	worldRotQuat = XMQuaternionRotationRollPitchYawFromVector(rot);
+	quatW = XMQuaternionRotationRollPitchYawFromVector(rot);
 
 	local = S * R * T;
 

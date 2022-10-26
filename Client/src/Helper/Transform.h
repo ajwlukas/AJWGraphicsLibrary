@@ -9,68 +9,63 @@ public:
 	Transform();
 	~Transform();
 
-	void UpdateWorld();//외부용, 패런트가 없는 애들만 호출 의미 있음 자식들 순회하며 업데이트하기위해
+	void UpdateWorld();
 
-	DirectX::SimpleMath::Matrix GetWorldMatrix() { return world.data; }
+	DirectX::SimpleMath::Matrix& GetWorldMatrix() { return world; }
 
+	DirectX::SimpleMath::Vector3& Pos();
+	DirectX::SimpleMath::Vector3& Rot();
+	DirectX::SimpleMath::Vector3& Scale();
+
+	const DirectX::SimpleMath::Vector3& Up();
+	const DirectX::SimpleMath::Vector3& Right();
+	const DirectX::SimpleMath::Vector3& Forward();
 private:
-	DirectX::SimpleMath::Matrix local, S, R, T;
-	Transform* parent;
+	DirectX::SimpleMath::Vector3 pos, rot, scale;
 
-	struct Data
-	{
-		Data()
-		{
-			data = XMMatrixIdentity();
-		}
-		DirectX::SimpleMath::Matrix data;
-	}world;
+	DirectX::SimpleMath::Vector3 posW, rotW, scaleW;
+	DirectX::SimpleMath::Quaternion quatW;
 
-
-public:
 	DirectX::SimpleMath::Vector3 up, right, forward;
 
+	DirectX::SimpleMath::Matrix local, S, R, T;
+	DirectX::SimpleMath::Matrix world;
 
-	static DirectX::SimpleMath::Vector3 WorldUp, WorldRight, WorldForward;
-	DirectX::SimpleMath::Vector3& Up() {
-		XMStoreFloat3(&up, XMVector3Transform(WorldUp, world.data));
-		up.Normalize();
-		return  up;
-	}
-	DirectX::SimpleMath::Vector3& Right() {
-		XMStoreFloat3(&right, XMVector4Transform(WorldRight, world.data));
-		right.Normalize();
-		return  right;
-	}
-	DirectX::SimpleMath::Vector3& Forward() {
-		XMStoreFloat3(&forward, XMVector4Transform(WorldForward, world.data));
-		forward.Normalize();
-		return  forward;
-	}
+	Transform* parent;
 
-	DirectX::SimpleMath::Vector3 pos;
-	DirectX::SimpleMath::Vector3 rot;
-	DirectX::SimpleMath::Vector3 scale;
-
-	DirectX::SimpleMath::Vector3 worldPos;
-	DirectX::SimpleMath::Vector3 worldRot;
-	DirectX::SimpleMath::Quaternion worldRotQuat;
-	DirectX::SimpleMath::Vector3 worldScale;
-
-	//void SaveWorldIngredient();
-
-	/*void DecomposeMatrix(SimpleMath::Matrix& m, OUT SimpleMath::Vector3& pos, OUT SimpleMath::Vector3& rot, OUT SimpleMath::Vector3& scale);
-	void DecomposeMatrix(SimpleMath::Matrix& m, OUT SimpleMath::Vector3& pos, OUT SimpleMath::Quaternion& rot, OUT SimpleMath::Vector3& scale);*/
-
-
-
-	//public:
-	//	void SetWorldPos(SimpleMath::Vector3 pos);
-	//	void SetWorldPos(SimpleMath::Vector3 pos, SimpleMath::Vector3 offset);//이상한 코드 쓰지 말 것
-	//	void SetWorldRot(DirectX::SimpleMath::Quaternion quat);
-	//	void LookAtOnlyY(SimpleMath::Vector3 TargetPos);
-	//
-	//private:
-	//	void UpdateWorldTransform();
-	//	void UpdateWorldTransform(SimpleMath::Vector3 offset);
+	const static DirectX::SimpleMath::Vector3 WorldUp, WorldRight, WorldForward;
 };
+
+inline DirectX::SimpleMath::Vector3& Transform::Pos()
+{
+	return pos;
+}
+inline DirectX::SimpleMath::Vector3& Transform::Rot()
+{
+	return rot;
+}
+inline DirectX::SimpleMath::Vector3& Transform::Scale()
+{
+	return scale;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::Up()
+{
+	XMStoreFloat3(&up, XMVector3Transform(WorldUp, world));
+	up.Normalize();
+	return  up;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::Right()
+{
+	XMStoreFloat3(&right, XMVector4Transform(WorldRight, world));
+	right.Normalize();
+	return  right;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::Forward()
+{
+	XMStoreFloat3(&forward, XMVector4Transform(WorldForward, world));
+	forward.Normalize();
+	return  forward;
+}

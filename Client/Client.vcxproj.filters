@@ -68,6 +68,9 @@
     <ClCompile Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Helper\Transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Client.rc">

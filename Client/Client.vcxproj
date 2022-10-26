@@ -182,6 +182,7 @@
     <ClCompile Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.cpp" />
     <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp" />
     <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp" />
+    <ClCompile Include="src\Helper\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Client.rc" />

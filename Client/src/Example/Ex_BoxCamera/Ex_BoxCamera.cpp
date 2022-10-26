@@ -59,6 +59,7 @@ void Ex_BoxCamera::Init()
 
 	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"BoxCameraPS.hlsl");
 
+	/* 
 	struct World
 	{
 		float world[4][4];
@@ -72,9 +73,10 @@ void Ex_BoxCamera::Init()
 	};
 
 	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &world, sizeof(World));
+	*/
+	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
 
 	camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
-
 }
 
 void Ex_BoxCamera::UnInit()
@@ -96,6 +98,12 @@ void Ex_BoxCamera::Update()
 
 	constantBuffer->Set();
 
+	TransformMove();
+
+	t.UpdateWorld();
+
+	constantBuffer->Update(&(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
+
 	CameraMove();
 
 	camera->Update(camInfo.pos, camInfo.rot);
@@ -115,12 +123,24 @@ void Ex_BoxCamera::CameraMove()
 		camInfo.rot[0] += input->MouseDiff().y * 0.01f;
 	}
 
-	if (input->Press(VK_UP))
+	if (input->Press('W'))
 		camInfo.pos[2] += 0.01f;
-	if (input->Press(VK_DOWN))
+	if (input->Press('S'))
 		camInfo.pos[2] -= 0.01f;
-	if (input->Press(VK_LEFT))
+	if (input->Press('A'))
 		camInfo.pos[0] -= 0.01f;
-	if (input->Press(VK_RIGHT))
+	if (input->Press('D'))
 		camInfo.pos[0] += 0.01f;
+}
+
+void Ex_BoxCamera::TransformMove()
+{
+	if (input->Press(VK_UP))
+		t.Pos().y += 0.01f;
+	if (input->Press(VK_DOWN))
+		t.Pos().y -= 0.01f;
+	if (input->Press(VK_RIGHT))
+		t.Pos().x += 0.01f;
+	if (input->Press(VK_LEFT))
+		t.Pos().x -= 0.01f;
 }
