@@ -11,12 +11,13 @@
 #include "AjwCommon\Input.h"
 
 #include "Helper\Transform.h"
+#include "Helper\Camera.h"
 
-struct CamInfo
-{
-	float pos[3];
-	float rot[3];
-};
+//struct CamInfo
+//{
+//	float pos[3];
+//	float rot[3];
+//};
 class ajwCommon::Input;
 class Ex_BoxCamera : public IExample
 {
@@ -31,13 +32,16 @@ public:
 
 	TL_Graphics::IMesh* mesh;
 	TL_Graphics::IMaterial* material;
-	TL_Graphics::IConstantBuffer* constantBuffer;
 	TL_Graphics::VertexSet vertexAttribute;
 
-	TL_Graphics::ICamera* camera;
-	struct CamInfo camInfo;
+	
+	/*TL_Graphics::ICamera* camera;
+	struct CamInfo camInfo;*/
+	Camera* cam;
+	TL_Graphics::IConstantBuffer* cameraBuffer;
 	void CameraMove();
 
 	Transform t;
+	TL_Graphics::IConstantBuffer* worldBuffer;
 	void TransformMove();
 };

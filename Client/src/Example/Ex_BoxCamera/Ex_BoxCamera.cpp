@@ -74,13 +74,19 @@ void Ex_BoxCamera::Init()
 
 	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &world, sizeof(World));
 	*/
-	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
 
-	camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
+	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
+
+	//camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
+	cam = new Camera();
+
+	cameraBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &cam->data, sizeof(cam->data));
 }
 
 void Ex_BoxCamera::UnInit()
 {
+	delete cam;
+
 	TL_Graphics::RenderSystem::Delete();
 
 	delete input;
@@ -92,23 +98,30 @@ void Ex_BoxCamera::Update()
 
 	input->Update();
 
+	CameraMove();
+
+	cam->Update();
+
+	cameraBuffer->Update(&cam->data, sizeof(cam->data));
+
+	cameraBuffer->Set();
+
+	//camera->Update(camInfo.pos, camInfo.rot);
+
+	//camera->Set();
+
 	material->Set();
 
 	mesh->Set();
-
-	constantBuffer->Set();
 
 	TransformMove();
 
 	t.UpdateWorld();
 
-	constantBuffer->Update(&(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
+	worldBuffer->Update(&(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
 
-	CameraMove();
+	worldBuffer->Set();
 
-	camera->Update(camInfo.pos, camInfo.rot);
-		
-	camera->Set();
 
 	TL_Graphics::RenderSystem::Get()->Draw();
 
@@ -117,6 +130,23 @@ void Ex_BoxCamera::Update()
 
 void Ex_BoxCamera::CameraMove()
 {
+	
+	if (input->Press(VK_LBUTTON))
+	{
+		cam->transform.Rot().y += input->MouseDiff().x * 0.01f;
+		cam->transform.Rot().x += input->MouseDiff().y * 0.01f;
+	}
+
+	if (input->Press('W'))
+		cam->transform.Pos().z += 0.01f;
+	if (input->Press('S'))
+		cam->transform.Pos().z -= 0.01f;
+	if (input->Press('A'))
+		cam->transform.Pos().x -= 0.01f;
+	if (input->Press('D'))
+		cam->transform.Pos().x += 0.01f;
+	
+	/*
 	if (input->Press(VK_LBUTTON))
 	{
 		camInfo.rot[1] += input->MouseDiff().x * 0.01f;
@@ -130,7 +160,8 @@ void Ex_BoxCamera::CameraMove()
 	if (input->Press('A'))
 		camInfo.pos[0] -= 0.01f;
 	if (input->Press('D'))
-		camInfo.pos[0] += 0.01f;
+		camInfo.pos[0] += 0.01f;*/
+
 }
 
 void Ex_BoxCamera::TransformMove()

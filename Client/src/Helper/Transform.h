@@ -11,11 +11,15 @@ public:
 
 	void UpdateWorld();
 
-	DirectX::SimpleMath::Matrix& GetWorldMatrix() { return world; }
+	DirectX::SimpleMath::Matrix& GetWorldMatrix();
 
 	DirectX::SimpleMath::Vector3& Pos();
 	DirectX::SimpleMath::Vector3& Rot();
 	DirectX::SimpleMath::Vector3& Scale();
+
+	const DirectX::SimpleMath::Vector3& PosW();
+	const DirectX::SimpleMath::Vector3& RotW();
+	const DirectX::SimpleMath::Vector3& ScaleW();
 
 	const DirectX::SimpleMath::Vector3& Up();
 	const DirectX::SimpleMath::Vector3& Right();
@@ -36,6 +40,11 @@ private:
 	const static DirectX::SimpleMath::Vector3 WorldUp, WorldRight, WorldForward;
 };
 
+inline DirectX::SimpleMath::Matrix& Transform::GetWorldMatrix()
+{ 
+	 return world; 
+}
+
 inline DirectX::SimpleMath::Vector3& Transform::Pos()
 {
 	return pos;
@@ -47,6 +56,21 @@ inline DirectX::SimpleMath::Vector3& Transform::Rot()
 inline DirectX::SimpleMath::Vector3& Transform::Scale()
 {
 	return scale;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::PosW()
+{
+	return posW;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::RotW()
+{
+	return rotW;
+}
+
+inline const DirectX::SimpleMath::Vector3& Transform::ScaleW()
+{
+	return scaleW;
 }
 
 inline const DirectX::SimpleMath::Vector3& Transform::Up()

@@ -13,7 +13,8 @@ public:
 	~Camera();
 	
 	virtual void Set() override;
-	virtual void Update(float pos[3], float rot[3]) override;
+	virtual void Update(SimpleMath::Vector3 pos, SimpleMath::Vector3 rot) override;
+	virtual void Update(SimpleMath::Matrix m) override;
 
 private:
 
@@ -26,9 +27,6 @@ private:
 
 	ConstantBuffer* viewprojBuffer;
 
-	Transform* transform;
-	SimpleMath::Matrix view, proj;
-
 	float fov;//시야각
 	float fovInRadian;
 	UINT screenWidth;
@@ -37,7 +35,6 @@ private:
 	float frustumFar;
 
 	//보류
-	void Update();
 	void OnResize(UINT height, UINT width);
 
 	//void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);

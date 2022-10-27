@@ -172,6 +172,7 @@
     <ClInclude Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.h" />
     <ClInclude Include="src\Example\IExample.h" />
     <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\Helper\Camera.h" />
     <ClInclude Include="src\Helper\Transform.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\targetver.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.cpp" />
     <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp" />
     <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp" />
+    <ClCompile Include="src\Helper\Camera.cpp" />
     <ClCompile Include="src\Helper\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
