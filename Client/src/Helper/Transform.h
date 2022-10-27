@@ -75,7 +75,7 @@ inline const DirectX::SimpleMath::Vector3& Transform::ScaleW()
 
 inline const DirectX::SimpleMath::Vector3& Transform::Up()
 {
-	XMStoreFloat3(&up, XMVector3Transform(WorldUp, world));
+	XMStoreFloat3(&up, XMVector4Transform(WorldUp, world));
 	up.Normalize();
 	return  up;
 }

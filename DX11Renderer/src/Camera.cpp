@@ -52,9 +52,9 @@ void Camera::Update(SimpleMath::Matrix m)
 {
 	data.view = XMMatrixInverse(nullptr, m);
 
-	XMVECTOR p;
+	XMVECTOR p, r, s;
 
-	XMMatrixDecompose(nullptr, nullptr, &p, m);
+	XMMatrixDecompose(&s, &r, &p, m);
 
 	XMStoreFloat3(&data.camPos, p);
 

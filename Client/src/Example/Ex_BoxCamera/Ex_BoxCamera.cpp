@@ -59,34 +59,14 @@ void Ex_BoxCamera::Init()
 
 	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"BoxCameraPS.hlsl");
 
-	/* 
-	struct World
-	{
-		float world[4][4];
-	}world
-		=
-	{
-		1,0,0,0,
-		0,1,0,0,
-		0,0,1,0,
-		0,0,0,1
-	};
+	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(boxT.GetWorldMatrix()), sizeof(boxT.GetWorldMatrix()));
 
-	constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &world, sizeof(World));
-	*/
+	camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
 
-	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
-
-	//camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
-	cam = new Camera();
-
-	cameraBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &cam->data, sizeof(cam->data));
 }
 
 void Ex_BoxCamera::UnInit()
 {
-	delete cam;
-
 	TL_Graphics::RenderSystem::Delete();
 
 	delete input;
@@ -94,84 +74,72 @@ void Ex_BoxCamera::UnInit()
 
 void Ex_BoxCamera::Update()
 {
-	TL_Graphics::RenderSystem::Get()->Clear();
+	TL_Graphics::RenderSystem::Get()->Clear();//화면을 지우고
 
-	input->Update();
-
-	CameraMove();
-
-	cam->Update();
-
-	cameraBuffer->Update(&cam->data, sizeof(cam->data));
-
-	cameraBuffer->Set();
-
-	//camera->Update(camInfo.pos, camInfo.rot);
-
-	//camera->Set();
-
-	material->Set();
-
-	mesh->Set();
-
-	TransformMove();
-
-	t.UpdateWorld();
-
-	worldBuffer->Update(&(t.GetWorldMatrix()), sizeof(t.GetWorldMatrix()));
-
-	worldBuffer->Set();
+	{
+		input->Update();//키보드 마우스 업데이트
 
 
-	TL_Graphics::RenderSystem::Get()->Draw();
+		CameraMove();//카메라 포지션 무브
 
-	TL_Graphics::RenderSystem::Get()->Present();
+		camT.UpdateWorld();
+
+		camera->Update(camT.GetWorldMatrix());
+
+		camera->Set();
+
+
+		{//파이프라인을 채운다
+			material->Set();
+
+			mesh->Set();
+
+			TransformMove();
+
+			boxT.UpdateWorld();
+
+			worldBuffer->Update(&(boxT.GetWorldMatrix()), sizeof(boxT.GetWorldMatrix()));
+
+			worldBuffer->Set();
+
+			TL_Graphics::RenderSystem::Get()->Draw();//파이프 라인의 내용을 이행(렌더타겟에 Draw)
+		}
+	}
+
+
+	TL_Graphics::RenderSystem::Get()->Present();//그려놓은 렌더타겟을 출현 시킴
 }
 
 void Ex_BoxCamera::CameraMove()
 {
-	
 	if (input->Press(VK_LBUTTON))
 	{
-		cam->transform.Rot().y += input->MouseDiff().x * 0.01f;
-		cam->transform.Rot().x += input->MouseDiff().y * 0.01f;
+		camT.Rot().y += input->MouseDiff().x * 0.01f;
+		camT.Rot().x += input->MouseDiff().y * 0.01f;
 	}
 
 	if (input->Press('W'))
-		cam->transform.Pos().z += 0.01f;
+		camT.Pos() += camT.Forward() * 0.01f;
 	if (input->Press('S'))
-		cam->transform.Pos().z -= 0.01f;
+		camT.Pos() -= camT.Forward() * 0.01f;
 	if (input->Press('A'))
-		cam->transform.Pos().x -= 0.01f;
+		camT.Pos() -= camT.Right() * 0.01f;
 	if (input->Press('D'))
-		cam->transform.Pos().x += 0.01f;
-	
-	/*
-	if (input->Press(VK_LBUTTON))
-	{
-		camInfo.rot[1] += input->MouseDiff().x * 0.01f;
-		camInfo.rot[0] += input->MouseDiff().y * 0.01f;
-	}
-
-	if (input->Press('W'))
-		camInfo.pos[2] += 0.01f;
-	if (input->Press('S'))
-		camInfo.pos[2] -= 0.01f;
-	if (input->Press('A'))
-		camInfo.pos[0] -= 0.01f;
-	if (input->Press('D'))
-		camInfo.pos[0] += 0.01f;*/
-
+		camT.Pos() += camT.Right() * 0.01f;
+	if (input->Press('Q'))
+		camT.Pos() -= camT.Up() * 0.01f;
+	if (input->Press('E'))
+		camT.Pos() += camT.Up() * 0.01f;
 }
 
 void Ex_BoxCamera::TransformMove()
 {
 	if (input->Press(VK_UP))
-		t.Pos().y += 0.01f;
+		boxT.Pos().y += 0.01f;
 	if (input->Press(VK_DOWN))
-		t.Pos().y -= 0.01f;
+		boxT.Pos().y -= 0.01f;
 	if (input->Press(VK_RIGHT))
-		t.Pos().x += 0.01f;
+		boxT.Pos().x += 0.01f;
 	if (input->Press(VK_LEFT))
-		t.Pos().x -= 0.01f;
+		boxT.Pos().x -= 0.01f;
 }
