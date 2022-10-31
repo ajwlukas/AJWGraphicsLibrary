@@ -50,7 +50,7 @@ private:
 	IDXGISwapChain* swapChain;
 
 	OnResizeNotice onResizeNotice;
-	virtual void OnResize(uint32_t _width, uint32_t _height) override;
+	virtual void  OnResize(uint32_t _width, uint32_t _height) override;
 
 	Resources* resources;
 

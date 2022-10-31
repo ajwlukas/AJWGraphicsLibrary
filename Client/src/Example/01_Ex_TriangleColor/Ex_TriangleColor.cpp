@@ -2,8 +2,6 @@
 
 void Ex_TriangleColor::Init()
 {
-    TL_Graphics::RenderSystem::Create();
-    TL_Graphics::RenderSystem::Get()->Init();
 
     struct Vertex
     {

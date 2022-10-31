@@ -167,9 +167,10 @@
   <ItemGroup>
     <ClInclude Include="src\App.h" />
     <ClInclude Include="src\Client.h" />
-    <ClInclude Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.h" />
-    <ClInclude Include="src\Example\Ex_Triagle\Ex_Triangle.h" />
-    <ClInclude Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.h" />
+    <ClInclude Include="src\Example\02_Ex_BoxCamera\Ex_BoxCamera.h" />
+    <ClInclude Include="src\Example\00_Ex_Triagle\Ex_Triangle.h" />
+    <ClInclude Include="src\Example\01_Ex_TriangleColor\Ex_TriangleColor.h" />
+    <ClInclude Include="src\Example\03_Ex_Light\Ex_Light.h" />
     <ClInclude Include="src\Example\IExample.h" />
     <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\Helper\Transform.h" />
@@ -179,9 +180,10 @@
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Client.cpp" />
-    <ClCompile Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.cpp" />
-    <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp" />
-    <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp" />
+    <ClCompile Include="src\Example\02_Ex_BoxCamera\Ex_BoxCamera.cpp" />
+    <ClCompile Include="src\Example\00_Ex_Triagle\Ex_Triangle.cpp" />
+    <ClCompile Include="src\Example\01_Ex_TriangleColor\Ex_TriangleColor.cpp" />
+    <ClCompile Include="src\Example\03_Ex_Light\Ex_Light.cpp" />
     <ClCompile Include="src\Helper\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +204,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="LightPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="LightVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="TriangleColorPS.hlsl">

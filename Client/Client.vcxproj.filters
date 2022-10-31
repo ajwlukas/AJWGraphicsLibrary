@@ -19,6 +19,12 @@
     <Filter Include="헤더 파일\Example\Ex_Triangle">
       <UniqueIdentifier>{50d2ab15-2a2e-4856-a48a-0c84fee347be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Example\Ex_BoxCamera">
+      <UniqueIdentifier>{1d82ad73-2b3e-4fba-bb37-5ae40a1f42b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Example\Ex_TriangleColor">
+      <UniqueIdentifier>{bde0d243-37b7-45a8-ba7a-320c30479abb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\framework.h">
@@ -39,16 +45,19 @@
     <ClInclude Include="src\Example\IExample.h">
       <Filter>헤더 파일\Example</Filter>
     </ClInclude>
-    <ClInclude Include="src\Example\Ex_Triagle\Ex_Triangle.h">
+    <ClInclude Include="src\Example\00_Ex_Triagle\Ex_Triangle.h">
       <Filter>헤더 파일\Example\Ex_Triangle</Filter>
     </ClInclude>
-    <ClInclude Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="src\Helper\Transform.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Example\02_Ex_BoxCamera\Ex_BoxCamera.h">
+      <Filter>헤더 파일\Example\Ex_BoxCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Example\01_Ex_TriangleColor\Ex_TriangleColor.h">
+      <Filter>헤더 파일\Example\Ex_TriangleColor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Example\03_Ex_Light\Ex_Light.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,16 +68,19 @@
     <ClCompile Include="src\App.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Example\Ex_Triagle\Ex_Triangle.cpp">
+    <ClCompile Include="src\Example\00_Ex_Triagle\Ex_Triangle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Example\Ex_TriangleColor\Ex_TriangleColor.cpp">
+    <ClCompile Include="src\Example\01_Ex_TriangleColor\Ex_TriangleColor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Example\Ex_BoxCamera\Ex_BoxCamera.cpp">
+    <ClCompile Include="src\Example\02_Ex_BoxCamera\Ex_BoxCamera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="src\Helper\Transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Example\03_Ex_Light\Ex_Light.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,5 +104,7 @@
     <FxCompile Include="TriangleColorVS.hlsl" />
     <FxCompile Include="BoxCameraVS.hlsl" />
     <FxCompile Include="BoxCameraPS.hlsl" />
+    <FxCompile Include="LightPS.hlsl" />
+    <FxCompile Include="LightVS.hlsl" />
   </ItemGroup>
 </Project>

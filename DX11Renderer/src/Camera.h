@@ -37,5 +37,5 @@ private:
 	float frustumFar;
 
 	//º¸·ù
-	virtual void OnResize(UINT width, UINT height) override;
+	virtual void  OnResize(UINT width, UINT height) override;
 };

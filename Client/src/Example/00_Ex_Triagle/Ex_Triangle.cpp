@@ -2,9 +2,6 @@
 
 void Ex_Triangle::Init()
 {
-    TL_Graphics::RenderSystem::Create();
-    TL_Graphics::RenderSystem::Get()->Init();
-
     struct Vertex
     {
         float position[2];

@@ -146,11 +146,14 @@
     <ClInclude Include="src\DXTK\SimpleMath.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="src\ICamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="src\OnResize.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ILight.h">
+      <Filter>헤더 파일\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ICamera.h">
+      <Filter>헤더 파일\Export</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
