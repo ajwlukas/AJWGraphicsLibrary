@@ -32,5 +32,7 @@ namespace TL_Graphics
 		virtual IConstantBuffer* CreateConstantBuffer(UINT slot, void* data, size_t dataSize) = 0;
 
 		virtual ICamera* CreateCamera() = 0;
+
+		virtual void UpdateWindowSize(UINT width, UINT height) = 0;
 	};
 }

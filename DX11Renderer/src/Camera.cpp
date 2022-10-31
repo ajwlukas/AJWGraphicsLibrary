@@ -3,7 +3,7 @@
 
 constexpr float pi  = 3.141592f;
 
-Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, float fov, UINT screenWidth, UINT screenHeight, float frustumNear, float frustumFar)
+Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, OnResizeNotice* resizeNotice, float fov, UINT screenWidth, UINT screenHeight, float frustumNear, float frustumFar)
 	:data{}
 	,fov(fov)
 	, screenWidth(screenWidth)
@@ -12,6 +12,8 @@ Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline
 	,frustumFar(frustumFar)
 {
 	fovInRadian = pi / 180.0f * fov;
+	
+	resizeNotice->AddObserver(this);
 
 	data.view = XMMatrixInverse(nullptr, XMMatrixIdentity());
 	data.proj = XMMatrixPerspectiveFovLH(fovInRadian, screenWidth / (float)screenHeight, frustumNear, frustumFar);
@@ -61,40 +63,13 @@ void Camera::Update(SimpleMath::Matrix m)
 	viewprojBuffer->Update(&data, sizeof(Data));
 }
 
-void Camera::OnResize(UINT height, UINT width)
+void Camera::OnResize(UINT width, UINT height)
 {
 	screenWidth = width;
 	screenHeight = height;
 
 	data.proj = XMMatrixPerspectiveFovLH(fovInRadian, width / (float)height, frustumNear, frustumFar);
+
+	viewprojBuffer->Update(&data, sizeof(Data));
 }
-
-
-//
-//void Camera::ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir)
-//{
-//	struct Float2
-//	{
-//		float x;
-//		float y;
-//	};
-//
-//	Float2 point;
-//
-//	point.x = ((2 * screenX) / (float)DX->width) - 1.0f;
-//	point.y = (((2 * screenY) /(float) DX->height) - 1.0f) * -1.0f;
-//
-//
-//	point.x /= proj.r[0].m128_f32[0];
-//	point.y /= proj.r[1].m128_f32[1];
-//
-//	rayPos = transform.worldPos;
-//
-//	Matrix invView = *transform.World();
-//
-//	XMVECTOR tempPos = { point.x, point.y, 1.0f };
-//
-//	XMStoreFloat4(dir, XMVector3TransformNormal(tempPos, invView));
-//	dir.Normalize();
-//}
 

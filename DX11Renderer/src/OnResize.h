@@ -31,9 +31,11 @@ public:
 			this->width = width;
 			this->height = height;
 
-			OccurEvent;
+			OccurEvent();
 		}
 	}
+
+private:
 
 	void OccurEvent()
 	{
@@ -41,7 +43,6 @@ public:
 			ob->OnResize(width, height);
 	}
 
-private:
 	uint32_t width , height;
 
 	std::vector<Observer*> observers;

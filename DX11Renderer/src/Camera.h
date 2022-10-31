@@ -2,14 +2,16 @@
 
 #include "ICamera.h"
 
+#include "OnResize.h"
+
 #include "DXTK/SimpleMath.h"
 #include "Transform.h"
 #include "ConstantBuffer.h"
 
-class Camera : public TL_Graphics::ICamera
+class Camera : public TL_Graphics::ICamera, public OnResize_Observer
 {
 public:
-	Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, float fov = 80.0f, UINT screenWidth = 100, UINT screenHeight = 100, float frustumNear = 1.0f, float frustumFar = 2000.0f);
+	Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, OnResizeNotice* resizeNotice, float fov = 80.0f, UINT screenWidth = 100, UINT screenHeight = 100, float frustumNear = 1.0f, float frustumFar = 2000.0f);
 	~Camera();
 	
 	virtual void Set() override;
@@ -35,7 +37,5 @@ private:
 	float frustumFar;
 
 	//º¸·ù
-	void OnResize(UINT height, UINT width);
-
-	//void ScreenPointToRay(IN UINT screenX, UINT screenY, OUT Vector3& rayPos, OUT Vector3& dir);
+	virtual void OnResize(UINT width, UINT height) override;
 };

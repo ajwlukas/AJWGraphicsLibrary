@@ -2,9 +2,6 @@
 
 void Ex_BoxCamera::Init()
 {
-	TL_Graphics::RenderSystem::Create();
-	TL_Graphics::RenderSystem::Get()->Init();
-
 	input = new ajwCommon::Input();
 
 	struct Vertex

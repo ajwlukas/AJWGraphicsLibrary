@@ -9,6 +9,7 @@ DX11Renderer::DX11Renderer()
     :device(nullptr), dc(nullptr), hWnd(0), windowInfo{}, swapChain(nullptr), rtv{}, depthStencilBuffer{},
     depthStencilView{}, rasterState{}, width(0), height(0)
 {
+    onResizeNotice.AddObserver(this);
 }
 
 DX11Renderer::~DX11Renderer()
@@ -26,8 +27,10 @@ HRESULT DX11Renderer::Init()
 {
     hWnd = GetActiveWindow();
     GetWindowInfo(hWnd, &windowInfo);
+    width = windowInfo.rcClient.right - windowInfo.rcClient.left;
+    height = windowInfo.rcClient.bottom - windowInfo.rcClient.top;
 
-    OnResize();
+    OnResize(width, height);
 
     HRESULT hr = S_OK;
 
@@ -213,18 +216,20 @@ void DX11Renderer::SetViewPort()
 }
 
 
-void DX11Renderer::OnResize()
+void DX11Renderer::OnResize(uint32_t _width, uint32_t _height)
 {
     if (this == nullptr) return;
 
     GetWindowInfo(hWnd, &windowInfo);
-        width = windowInfo.rcClient.right - windowInfo.rcClient.left;
-        height = windowInfo.rcClient.bottom - windowInfo.rcClient.top;
+        width = _width;
+        height = _height;
 
         if (width == 0 && height == 0) return;
 
     if (dc != nullptr)
     {
+        CreateRtv();
+
         CreateAndSetDepthStencilView();
 
         SetViewPort();
@@ -268,7 +273,12 @@ ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot, void* data, size_t
 
 Camera* DX11Renderer::CreateCamera()
 {
-    return new Camera(dc, resources, pipeline, 80.0f, width, height, 1.0f, 2000.0f);
+    return new Camera(dc, resources, pipeline, &onResizeNotice, 80.0f, width, height, 1.0f, 2000.0f);
+}
+
+void DX11Renderer::UpdateWindowSize(UINT width, UINT height)
+{
+    onResizeNotice.Update(width, height);
 }
 
 void DX11Renderer::Draw()

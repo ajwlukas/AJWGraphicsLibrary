@@ -5,6 +5,8 @@
 #include <d3d11.h>
 #include <vector>
 
+#include "OnResize.h"
+
 #include "Resource.h"
 #include "Resources.h"
 
@@ -15,7 +17,8 @@
 
 #include "Pipeline.h"
 
-class  DX11Renderer : public TL_Graphics::RenderSystem
+
+class  DX11Renderer : public TL_Graphics::RenderSystem, public OnResize_Observer
 {
 public:
 	DX11Renderer();
@@ -35,6 +38,7 @@ public:
 
 	virtual Camera* CreateCamera() override;
 
+	virtual void UpdateWindowSize(UINT width, UINT height) override;
 
 private:
 	HWND hWnd;
@@ -45,7 +49,8 @@ private:
 	ID3D11DeviceContext* dc;
 	IDXGISwapChain* swapChain;
 
-	void OnResize();
+	OnResizeNotice onResizeNotice;
+	virtual void OnResize(uint32_t _width, uint32_t _height) override;
 
 	Resources* resources;
 
