@@ -231,7 +231,6 @@ void DX11Renderer::OnResize()
     }
 }
 
-
 void DX11Renderer::Clear()
 {
     float color[4] = { 0.0f, 0.7f, 1.0f, 1.0f };
@@ -242,17 +241,6 @@ void DX11Renderer::Clear()
 
     dc->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
-
-
-//void DX11Renderer::PreRender()
-//{
-//    dc->OMSetDepthStencilState(depthStencilState, 1);
-//}
-//
-//void DX11Renderer::PostRender()
-//{
-//    dc->OMSetDepthStencilState(noDepthStencilState, 1);
-//}
 
 void DX11Renderer::Present()
 {

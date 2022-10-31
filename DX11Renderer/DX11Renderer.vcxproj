@@ -208,6 +208,7 @@ copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="src\SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +243,7 @@ copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"</Command>
     <ClInclude Include="src\IVertex.h" />
     <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\OnResize.h" />
     <ClInclude Include="src\PathDefine.h" />
     <ClInclude Include="src\pch_dx_11.h" />
     <ClInclude Include="src\Pipeline.h" />

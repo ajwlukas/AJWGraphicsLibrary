@@ -45,6 +45,7 @@
     <None Include="src\SimpleMath.inl">
       <Filter>헤더 파일</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DX11Renderer.cpp">
@@ -146,6 +147,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="src\ICamera.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OnResize.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -79,7 +79,6 @@ void Ex_BoxCamera::Update()
 	{
 		input->Update();//키보드 마우스 업데이트
 
-
 		CameraMove();//카메라 포지션 무브
 
 		camT.UpdateWorld();
@@ -87,7 +86,6 @@ void Ex_BoxCamera::Update()
 		camera->Update(camT.GetWorldMatrix());
 
 		camera->Set();
-
 
 		{//파이프라인을 채운다
 			material->Set();
@@ -105,7 +103,6 @@ void Ex_BoxCamera::Update()
 			TL_Graphics::RenderSystem::Get()->Draw();//파이프 라인의 내용을 이행(렌더타겟에 Draw)
 		}
 	}
-
 
 	TL_Graphics::RenderSystem::Get()->Present();//그려놓은 렌더타겟을 출현 시킴
 }
