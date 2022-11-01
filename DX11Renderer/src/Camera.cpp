@@ -20,7 +20,7 @@ Camera::Camera(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline
 
 	data.camPos = { 0,0,0 };
 
-	viewprojBuffer = new ConstantBuffer(dc, resources, pipeline, 0, &data, sizeof(Data));
+	viewprojBuffer = new ConstantBuffer(dc, resources, pipeline, 0, TL_Graphics::E_SHADER_TYPE::VS, &data, sizeof(Data));
 }
 
 Camera::~Camera()

@@ -30,7 +30,7 @@ void Ex_TriangleColor::Init()
         float rgba[4];
     }color{1,0,1,1};
 
-    constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, &color, sizeof(Color));
+    constantBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(0, TL_Graphics::E_SHADER_TYPE::VS, &color, sizeof(Color));
 }
 
 void Ex_TriangleColor::UnInit()

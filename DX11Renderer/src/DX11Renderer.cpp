@@ -266,9 +266,9 @@ Material* DX11Renderer::CreateMaterial(std::wstring fileName, const TL_Graphics:
     return new Material(dc, resources, pipeline, fileName, samplerDesc, desc);
 }
 
-ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot, void* data, size_t dataSize)
+ConstantBuffer* DX11Renderer::CreateConstantBuffer(UINT slot,TL_Graphics::E_SHADER_TYPE type, void* data, size_t dataSize)
 {
-    return new ConstantBuffer(dc, resources, pipeline, slot, data, dataSize);
+    return new ConstantBuffer(dc, resources, pipeline, slot, type, data, dataSize);
 }
 
 Camera* DX11Renderer::CreateCamera()

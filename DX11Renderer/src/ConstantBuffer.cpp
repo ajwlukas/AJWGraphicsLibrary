@@ -1,10 +1,11 @@
 #include "pch_dx_11.h"
 #include "ConstantBuffer.h"
 
-ConstantBuffer::ConstantBuffer(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, UINT slot, void* data, size_t dataSize)
+ConstantBuffer::ConstantBuffer(ID3D11DeviceContext* dc, Resources* resources, Pipeline* pipeline, UINT slot, TL_Graphics::E_SHADER_TYPE type, void* data, size_t dataSize)
 	:dc(dc)
 	,resources(resources)
 	,slot(slot)
+	,type(type)
 {
 	D3D11_BUFFER_DESC desc = {};
 	desc.Usage = D3D11_USAGE_DYNAMIC;
@@ -26,7 +27,11 @@ ConstantBuffer::~ConstantBuffer()
 
 void ConstantBuffer::Set()
 {
-	dc->VSSetConstantBuffers( slot, 1, buffer);
+	if(type == TL_Graphics::E_SHADER_TYPE::VS)
+		dc->VSSetConstantBuffers( slot, 1, buffer);
+	
+	else if(type == TL_Graphics::E_SHADER_TYPE::PS)
+		dc->PSSetConstantBuffers( slot, 1, buffer);
 
 	//pipeline->SetConstantBuffer(this);
 }

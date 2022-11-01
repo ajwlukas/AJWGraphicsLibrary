@@ -56,7 +56,7 @@ void Ex_BoxCamera::Init()
 
 	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"BoxCameraPS.hlsl");
 
-	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, &(boxT.GetWorldMatrix()), sizeof(boxT.GetWorldMatrix()));
+	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, TL_Graphics::E_SHADER_TYPE::VS, &(boxT.GetWorldMatrix()), sizeof(boxT.GetWorldMatrix()));
 
 	camera = TL_Graphics::RenderSystem::Get()->CreateCamera();
 
