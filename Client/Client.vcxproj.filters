@@ -97,14 +97,4 @@
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="TrianglePS.hlsl" />
-    <FxCompile Include="TriangleVS.hlsl" />
-    <FxCompile Include="TriangleColorPS.hlsl" />
-    <FxCompile Include="TriangleColorVS.hlsl" />
-    <FxCompile Include="BoxCameraVS.hlsl" />
-    <FxCompile Include="BoxCameraPS.hlsl" />
-    <FxCompile Include="LightPS.hlsl" />
-    <FxCompile Include="LightVS.hlsl" />
-  </ItemGroup>
 </Project>

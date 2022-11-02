@@ -156,4 +156,12 @@
       <Filter>헤더 파일\Export</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\BoxCameraPS.hlsl" />
+    <FxCompile Include="Shader\BoxCameraVS.hlsl" />
+    <FxCompile Include="Shader\TriangleColorPS.hlsl" />
+    <FxCompile Include="Shader\TriangleColorVS.hlsl" />
+    <FxCompile Include="Shader\TrianglePS.hlsl" />
+    <FxCompile Include="Shader\TriangleVS.hlsl" />
+  </ItemGroup>
 </Project>

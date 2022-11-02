@@ -102,6 +102,8 @@
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>$(OutDir)Shader\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
@@ -136,7 +138,8 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
-      <ShaderType>Vertex</ShaderType>
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>$(OutDir)Shader\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
@@ -167,6 +170,8 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>$(OutDir)Shader\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <PostBuildEvent>
       <Command>IF NOT EXIST "$(ProjectDir)inc" mkdir "$(ProjectDir)inc"
@@ -210,6 +215,11 @@ copy/Y "$(ProjectDir)src\IConstantBuffer.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\ICamera.h" "$(ProjectDir)inc\Graphics"
 copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
     </PostBuildEvent>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>$(OutDir)Shader\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -258,6 +268,35 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
     <ClInclude Include="src\typedef.h" />
     <ClInclude Include="src\Utility.h" />
     <ClInclude Include="src\Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\BoxCameraPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="Shader\BoxCameraVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\TriangleColorPS.hlsl" />
+    <FxCompile Include="Shader\TriangleColorVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\TrianglePS.hlsl" />
+    <FxCompile Include="Shader\TriangleVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
