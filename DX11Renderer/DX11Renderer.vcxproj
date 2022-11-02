@@ -93,7 +93,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch_dx_11.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./;include/;../JWCommon/;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -127,7 +127,7 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch_dx_11.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./;include/;../JWCommon/;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -161,7 +161,7 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch_dx_11.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./;include/;../JWCommon/;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -195,7 +195,7 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch_dx_11.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>./;include/;../JWCommon/;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -222,7 +222,6 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="src\SimpleMath.inl" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +277,13 @@ copy/Y "$(ProjectDir)src\ILight.h" "$(ProjectDir)inc\Graphics"</Command>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
     <FxCompile Include="Shader\BoxCameraVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\LightPS.hlsl" />
+    <FxCompile Include="Shader\LightVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>

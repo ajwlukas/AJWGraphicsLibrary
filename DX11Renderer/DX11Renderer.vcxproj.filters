@@ -45,7 +45,6 @@
     <None Include="src\SimpleMath.inl">
       <Filter>헤더 파일</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DX11Renderer.cpp">
@@ -163,5 +162,7 @@
     <FxCompile Include="Shader\TriangleColorVS.hlsl" />
     <FxCompile Include="Shader\TrianglePS.hlsl" />
     <FxCompile Include="Shader\TriangleVS.hlsl" />
+    <FxCompile Include="Shader\LightPS.hlsl" />
+    <FxCompile Include="Shader\LightVS.hlsl" />
   </ItemGroup>
 </Project>

@@ -18,6 +18,7 @@
   }													  \
 }
 
+
 #ifdef WIN32
 
 #ifdef _DEBUG
@@ -62,6 +63,8 @@ using namespace std;
 #include <DirectXMath.h>
 #include <DirectXCollision.h>
 using namespace DirectX;
+
+
 
 #include "DXTK\d3dx11effect.h"
 #include "DXTK\WICTextureLoader\WICTextureLoader.h"

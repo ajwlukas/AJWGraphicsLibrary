@@ -52,9 +52,9 @@ void Ex_Light::Init()
 		5,7,3
 	};
 
-	mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, sizeof(indicies) / sizeof(indicies[0]), L"LightVS.hlsl");
+	mesh = TL_Graphics::RenderSystem::Get()->CreateMesh(vertexAttribute, indicies, sizeof(indicies) / sizeof(indicies[0]), L"Shader/LightVS.hlsl");
 
-	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"LightPS.hlsl");
+	material = TL_Graphics::RenderSystem::Get()->CreateMaterial(L"Shader/LightPS.hlsl");
 
 	worldBuffer = TL_Graphics::RenderSystem::Get()->CreateConstantBuffer(1, TL_Graphics::E_SHADER_TYPE::VS, &(boxT.GetWorldMatrix()), sizeof(boxT.GetWorldMatrix()));
 
